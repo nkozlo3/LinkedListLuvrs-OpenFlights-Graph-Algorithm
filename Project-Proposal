@@ -1,37 +1,22 @@
-Dataset Acquisition
+# Dataset Acquisition
 We are using the dataset airports.dat supplied to us on the project page, from https://openflights.org/data.html.
 
-Data Format
-We have chosen to use the dataset from https://openflights.org/data.html; specifically airports.dat. airports.dat
-is in CSV (comma seperated values) format. This dataset is 14,110 lines long and includes id, name, city, country,
-iata (International Air Transport Association), icao(four-letter alphanumeric code designating each airport around the world),
-latitude, longitude, altitude, timezone, dst, tz, type, source. We plan on using a subset of the data. Limited to 
-the 10 countries we are finding the shortest distance between.
+## Data Format
+We have chosen to use the dataset from https://openflights.org/data.html; specifically airports.dat. airports.datis in CSV (comma seperated values) format. This dataset is 14,110 lines long and includes id, name, city, country,iata (International Air Transport Association), icao(four-letter alphanumeric code designating each airport around the world),latitude, longitude, altitude, timezone, dst, tz, type, source. We plan on using a subset of the data. Limited to the 10 countries we are finding the shortest distance between.
 
-Data Correction
-To prevent errors and missing entries, we will ensure that each entry has 14 commas. This will ensure that all the
-data is present in that certain entry. We will check the accuracy of the information (latitude and longitude) by 
-comparing it to information found on Google. This will also fix any statistical outliers we may have. We will 
-discard any entries with inaccurate values or missing entries.
+## Data Correction
+To prevent errors and missing entries, we will ensure that each entry has 14 commas. This will ensure that all the\data is present in that certain entry. We will check the accuracy of the information (latitude and longitude) by comparing it to information found on Google. This will also fix any statistical outliers we may have. We will discard any entries with inaccurate values or missing entries.
 
-Data Storage
-Our primary data structure will be the CSV file. One auxiliary data structure we will be using is a vector. We
-estimate the total storage cost to be the size of the csv and the graph and a Big O runtime of n.
+## Data Storage
+Our primary data structure will be the CSV file. One auxiliary data structure we will be using is a vector. Weestimate the total storage cost to be the size of the csv and the graph and a Big O runtime of n.
 
-Algorithm
-For this project, we will populate a graph contained the airports and the different routes between them. 
-From there we will implement a Depth First Search(DFS) traversal utilizing iterators to visit the nodes.
-For our algorithms we will use Djikstra's Algorithm to find the shortest path between the airports. We 
-will take the information from the CSV and turn the information into a graph. From there, those nodes 
-will be used in our algorithms. We will implement this algorithm in its original form of inputting two 
-nodes, a start and an end node. We can also highlight specific landmarks along this path using the landmark algorithm.
+## Algorithm
+For this project, we will populate a graph contained the airports and the different routes between them. From there we will implement a Depth First Search(DFS) traversal utilizing iterators to visit the nodes.For our algorithms we will use Djikstra's Algorithm to find the shortest path between the airports. We will take the information from the CSV and turn the information into a graph. From there, those nodes will be used in our algorithms. We will implement this algorithm in its original form of inputting two nodes, a start and an end node. We can also highlight specific landmarks along this path using the landmark algorithm.
 
-Timeline
+## Timeline
 November 4th: Create a descriptive readme, a makefile, and the skeleton of 1 - 3 functions. Make sure it is runnable (makefile works, can execute in terminal).
 
-November 11th: Have skeleton of all functions completed and 1 - 2 working functions. Also convert the 
-csv into a graph. Also ensure each group member has a solid understanding of how our algorithm will work,
-our goals, and what our final project will be able to do.
+November 11th: Have skeleton of all functions completed and 1 - 2 working functions. Also convert the csv into a graph. Also ensure each group member has a solid understanding of how our algorithm will work,our goals, and what our final project will be able to do.
 
 November 19th: Have all functions completed and be able to run algorithms of interest on our graph using command line arguments.
 
