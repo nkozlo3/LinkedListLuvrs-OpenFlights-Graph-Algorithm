@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-# Assignment Information (these are the *only* things you need to change here between assignments)
 set(assignment_name "final_project") # Name of the assignment
 set(assignment_entrypoints "main") # Entrypoints to run the program
 set(assignment_clean_rm "") # Generated files that should be removed with "make clean"

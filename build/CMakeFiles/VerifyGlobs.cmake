@@ -6,15 +6,19 @@ cmake_policy(SET CMP0009 NEW)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/*.cpp")
 set(OLD_GLOB
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/dfs.cpp"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/graph.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
   file(TOUCH_NOCREATE "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles/cmake.verify_globs")
 endif()
 
-# tests_src at CMakeLists.txt:130 (file)
+# tests_src at CMakeLists.txt:129 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/*.cpp")
 set(OLD_GLOB
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/correctOutputTests.cpp"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
