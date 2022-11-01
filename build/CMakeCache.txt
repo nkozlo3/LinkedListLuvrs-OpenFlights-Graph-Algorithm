@@ -226,15 +226,6 @@ final_project_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 final_project_SOURCE_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm
 
-//Value Computed by CMake
-mp_stickers_BINARY_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build
-
-//Value Computed by CMake
-mp_stickers_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-mp_stickers_SOURCE_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm
-
 
 ########################
 # INTERNAL cache entries
