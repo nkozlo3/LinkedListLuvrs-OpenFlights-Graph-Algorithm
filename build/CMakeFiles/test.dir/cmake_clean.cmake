@@ -7,7 +7,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/test.dir/tests/graphTests.cpp.o.d"
   "test"
   "test.pdb"
-  "test_tests-b12d07c.cmake"
 )
 
 # Per-language clean rules from dependency scanning.

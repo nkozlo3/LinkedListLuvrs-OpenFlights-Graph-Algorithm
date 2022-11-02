@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /workspaces/CS225/lab_heaps
+CMAKE_SOURCE_DIR = /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /workspaces/CS225/lab_heaps/build
+CMAKE_BINARY_DIR = /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/CS225/lab_heaps/build/CMakeFiles /workspaces/CS225/lab_heaps/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/CS225/lab_heaps/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -113,7 +113,7 @@ preinstall/fast:
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /workspaces/CS225/lab_heaps/build/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -147,27 +147,27 @@ main/fast:
 # Target rules for targets named lodepng
 
 # Build rule for target.
-lodepng: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lodepng
-.PHONY : lodepng
+# lodepng: cmake_check_build_system
+#	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lodepng
+# .PHONY : lodepng
 
 # fast build rule for target.
-lodepng/fast:
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/lodepng.dir/build.make lib/CMakeFiles/lodepng.dir/build
-.PHONY : lodepng/fast
+# lodepng/fast:
+# $(MAKE) $(MAKESILENT) -f lib/CMakeFiles/lodepng.dir/build.make lib/CMakeFiles/lodepng.dir/build
+# .PHONY : lodepng/fast
 
 #=============================================================================
 # Target rules for targets named cs225
 
 # Build rule for target.
-cs225: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cs225
-.PHONY : cs225
+#cs225: cmake_check_build_system
+#	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 cs225
+#.PHONY : cs225
 
 # fast build rule for target.
-cs225/fast:
-	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/cs225.dir/build.make lib/CMakeFiles/cs225.dir/build
-.PHONY : cs225/fast
+#cs225/fast:
+#	$(MAKE) $(MAKESILENT) -f lib/CMakeFiles/cs225.dir/build.make lib/CMakeFiles/cs225.dir/build
+#.PHONY : cs225/fast
 
 #=============================================================================
 # Target rules for targets named src
@@ -238,8 +238,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... cs225"
-	@echo "... lodepng"
+#	@echo "... cs225"
+# @echo "... lodepng"
 	@echo "... main"
 	@echo "... src"
 	@echo "... test"
@@ -260,6 +260,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /workspaces/CS225/lab_heaps/build/CMakeFiles/VerifyGlobs.cmake
+	$(CMAKE_COMMAND) -P /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system

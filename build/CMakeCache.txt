@@ -217,9 +217,6 @@ Catch2_DIR:PATH=/usr/lib/cmake/Catch2
 //Name of the computer/site where compile is being run
 SITE_NAME:STRING=ea54dd35eca0
 
-//Dependencies for the target
-cs225_LIB_DEPENDS:STATIC=general;lodepng;
-
 //Value Computed by CMake
 mp_stickers_BINARY_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build
 
