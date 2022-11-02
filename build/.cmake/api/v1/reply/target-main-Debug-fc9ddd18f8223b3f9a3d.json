@@ -98,10 +98,6 @@
 				"backtrace" : 2,
 				"fragment" : "src/libsrc.a",
 				"role" : "libraries"
-			},
-			{
-				"fragment" : "-lcs225",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"

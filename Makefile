@@ -212,7 +212,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-#	@echo "... cs225"
+# @echo "... cs225"
 # @echo "... lodepng"
 	@echo "... main"
 	@echo "... src"

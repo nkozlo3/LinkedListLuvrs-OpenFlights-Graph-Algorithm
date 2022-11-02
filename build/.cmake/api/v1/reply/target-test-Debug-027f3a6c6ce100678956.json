@@ -128,10 +128,6 @@
 			{
 				"fragment" : "/usr/lib/libCatch2.a",
 				"role" : "libraries"
-			},
-			{
-				"fragment" : "-lcs225",
-				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"

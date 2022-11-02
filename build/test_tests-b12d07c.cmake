@@ -1,0 +1,7 @@
+add_test( [==[Graph csvToVect returns a vector of the right width and length]==] /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/test [==[Graph csvToVect returns a vector of the right width and length]==]  )
+set_tests_properties( [==[Graph csvToVect returns a vector of the right width and length]==] PROPERTIES WORKING_DIRECTORY /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build)
+add_test( [==[Graph csvToVect properly maps vectors]==] /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/test [==[Graph csvToVect properly maps vectors]==]  )
+set_tests_properties( [==[Graph csvToVect properly maps vectors]==] PROPERTIES WORKING_DIRECTORY /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build)
+add_test( [==[Graph codeToName returns a map with the right values and keys]==] /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/test [==[Graph codeToName returns a map with the right values and keys]==]  )
+set_tests_properties( [==[Graph codeToName returns a map with the right values and keys]==] PROPERTIES WORKING_DIRECTORY /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build)
+set( test_TESTS [==[Graph csvToVect returns a vector of the right width and length]==] [==[Graph csvToVect properly maps vectors]==] [==[Graph codeToName returns a map with the right values and keys]==])

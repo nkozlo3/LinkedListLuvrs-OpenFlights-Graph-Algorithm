@@ -23,10 +23,12 @@ TEST_CASE("Graph csvToVect properly maps vectors", "[weight=5][graph]")
 {
     Graph graph = Graph();
     std::vector<std::vector<std::string>> vect = graph.csvToVect("routes.csv");
+    std::string vectAtZero = "2B,410,AER,2965,KZN,2990,,0,CR2";
 
     REQUIRE(vect[0][0] == "2B");
     REQUIRE(vect[0][1] == "410");
     REQUIRE(vect[3][3] == "2968");
+    REQUIRE((std::find(vect[0].begin(), vect[0].end(), vectAtZero)) != vect[0].end());
 }
 
 TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph]")
