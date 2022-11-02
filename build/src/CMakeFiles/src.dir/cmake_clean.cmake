@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
   "CMakeFiles/src.dir/dfs.cpp.o"
   "CMakeFiles/src.dir/dfs.cpp.o.d"
+  "CMakeFiles/src.dir/dijkstra.cpp.o"
+  "CMakeFiles/src.dir/dijkstra.cpp.o.d"
   "CMakeFiles/src.dir/graph.cpp.o"
   "CMakeFiles/src.dir/graph.cpp.o.d"
+  "CMakeFiles/src.dir/landalgo.cpp.o"
+  "CMakeFiles/src.dir/landalgo.cpp.o.d"
   "libsrc.a"
   "libsrc.pdb"
 )

@@ -155,6 +155,30 @@ dfs.cpp.s:
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/dfs.cpp.s
 .PHONY : dfs.cpp.s
 
+dijkstra.o: dijkstra.cpp.o
+.PHONY : dijkstra.o
+
+# target to build an object file
+dijkstra.cpp.o:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/dijkstra.cpp.o
+.PHONY : dijkstra.cpp.o
+
+dijkstra.i: dijkstra.cpp.i
+.PHONY : dijkstra.i
+
+# target to preprocess a source file
+dijkstra.cpp.i:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/dijkstra.cpp.i
+.PHONY : dijkstra.cpp.i
+
+dijkstra.s: dijkstra.cpp.s
+.PHONY : dijkstra.s
+
+# target to generate assembly for a file
+dijkstra.cpp.s:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/dijkstra.cpp.s
+.PHONY : dijkstra.cpp.s
+
 graph.o: graph.cpp.o
 .PHONY : graph.o
 
@@ -179,6 +203,30 @@ graph.cpp.s:
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/graph.cpp.s
 .PHONY : graph.cpp.s
 
+landalgo.o: landalgo.cpp.o
+.PHONY : landalgo.o
+
+# target to build an object file
+landalgo.cpp.o:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/landalgo.cpp.o
+.PHONY : landalgo.cpp.o
+
+landalgo.i: landalgo.cpp.i
+.PHONY : landalgo.i
+
+# target to preprocess a source file
+landalgo.cpp.i:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/landalgo.cpp.i
+.PHONY : landalgo.cpp.i
+
+landalgo.s: landalgo.cpp.s
+.PHONY : landalgo.s
+
+# target to generate assembly for a file
+landalgo.cpp.s:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/landalgo.cpp.s
+.PHONY : landalgo.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -191,9 +239,15 @@ help:
 	@echo "... dfs.o"
 	@echo "... dfs.i"
 	@echo "... dfs.s"
+	@echo "... dijkstra.o"
+	@echo "... dijkstra.i"
+	@echo "... dijkstra.s"
 	@echo "... graph.o"
 	@echo "... graph.i"
 	@echo "... graph.s"
+	@echo "... landalgo.o"
+	@echo "... landalgo.i"
+	@echo "... landalgo.s"
 .PHONY : help
 
 
