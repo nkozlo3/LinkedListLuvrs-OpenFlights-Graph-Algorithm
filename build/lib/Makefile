@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(CMAKE_COMMAND) -E cmake_progress_start /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/lib//CMakeFiles/progress.marks
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,69 +103,19 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -P /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles/VerifyGlobs.cmake
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(CMAKE_COMMAND) -P /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles/VerifyGlobs.cmake
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-#=============================================================================
-# Target rules for targets named main
-
-# Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
-
-# fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
-
-#=============================================================================
-# Target rules for targets named src
-
-# Build rule for target.
-src: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src
-.PHONY : src
-
-# fast build rule for target.
-src/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/build
-.PHONY : src/fast
-
-entry/main.o: entry/main.cpp.o
-.PHONY : entry/main.o
-
-# target to build an object file
-entry/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/entry/main.cpp.o
-.PHONY : entry/main.cpp.o
-
-entry/main.i: entry/main.cpp.i
-.PHONY : entry/main.i
-
-# target to preprocess a source file
-entry/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/entry/main.cpp.i
-.PHONY : entry/main.cpp.i
-
-entry/main.s: entry/main.cpp.s
-.PHONY : entry/main.s
-
-# target to generate assembly for a file
-entry/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/entry/main.cpp.s
-.PHONY : entry/main.cpp.s
 
 # Help Target
 help:
@@ -175,11 +125,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main"
-	@echo "... src"
-	@echo "... entry/main.o"
-	@echo "... entry/main.i"
-	@echo "... entry/main.s"
 .PHONY : help
 
 
@@ -191,7 +136,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -P /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles/VerifyGlobs.cmake
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(CMAKE_COMMAND) -P /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles/VerifyGlobs.cmake
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

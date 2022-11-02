@@ -132,22 +132,22 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=final_project
+CMAKE_PROJECT_NAME:STATIC=mp_stickers
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION:STATIC=
+CMAKE_PROJECT_VERSION:STATIC=1.2022.12.0
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_MAJOR:STATIC=
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=1
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_MINOR:STATIC=
+CMAKE_PROJECT_VERSION_MINOR:STATIC=2022
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_PATCH:STATIC=
+CMAKE_PROJECT_VERSION_PATCH:STATIC=12
 
 //Value Computed by CMake
-CMAKE_PROJECT_VERSION_TWEAK:STATIC=
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=0
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -217,14 +217,17 @@ Catch2_DIR:PATH=/usr/lib/cmake/Catch2
 //Name of the computer/site where compile is being run
 SITE_NAME:STRING=ea54dd35eca0
 
-//Value Computed by CMake
-final_project_BINARY_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build
+//Dependencies for the target
+cs225_LIB_DEPENDS:STATIC=general;lodepng;
 
 //Value Computed by CMake
-final_project_IS_TOP_LEVEL:STATIC=ON
+mp_stickers_BINARY_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build
 
 //Value Computed by CMake
-final_project_SOURCE_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm
+mp_stickers_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+mp_stickers_SOURCE_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm
 
 
 ########################
@@ -325,7 +328,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

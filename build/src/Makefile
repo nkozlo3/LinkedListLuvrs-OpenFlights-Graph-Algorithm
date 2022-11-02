@@ -117,6 +117,68 @@ depend:
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+src/CMakeFiles/src.dir/rule:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/src.dir/rule
+.PHONY : src/CMakeFiles/src.dir/rule
+
+# Convenience name for target.
+src: src/CMakeFiles/src.dir/rule
+.PHONY : src
+
+# fast build rule for target.
+src/fast:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/build
+.PHONY : src/fast
+
+dfs.o: dfs.cpp.o
+.PHONY : dfs.o
+
+# target to build an object file
+dfs.cpp.o:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/dfs.cpp.o
+.PHONY : dfs.cpp.o
+
+dfs.i: dfs.cpp.i
+.PHONY : dfs.i
+
+# target to preprocess a source file
+dfs.cpp.i:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/dfs.cpp.i
+.PHONY : dfs.cpp.i
+
+dfs.s: dfs.cpp.s
+.PHONY : dfs.s
+
+# target to generate assembly for a file
+dfs.cpp.s:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/dfs.cpp.s
+.PHONY : dfs.cpp.s
+
+graph.o: graph.cpp.o
+.PHONY : graph.o
+
+# target to build an object file
+graph.cpp.o:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/graph.cpp.o
+.PHONY : graph.cpp.o
+
+graph.i: graph.cpp.i
+.PHONY : graph.i
+
+# target to preprocess a source file
+graph.cpp.i:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/graph.cpp.i
+.PHONY : graph.cpp.i
+
+graph.s: graph.cpp.s
+.PHONY : graph.s
+
+# target to generate assembly for a file
+graph.cpp.s:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/graph.cpp.s
+.PHONY : graph.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -125,6 +187,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... src"
+	@echo "... dfs.o"
+	@echo "... dfs.i"
+	@echo "... dfs.s"
+	@echo "... graph.o"
+	@echo "... graph.i"
+	@echo "... graph.s"
 .PHONY : help
 
 
