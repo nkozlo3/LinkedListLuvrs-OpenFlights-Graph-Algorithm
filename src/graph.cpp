@@ -11,44 +11,32 @@
  */
 std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName)
 {
-    //TODO:
+    // TODO:
+    std::vector<std::vector<std::string>> v;
 
-    // std::vector<std::vector<std::string>> v;
+    std::string line;
+    std::string word;
 
-    // std::string line;
-    // std::string word;
-
-    // std::ifstream file(fileName);
+    std::ifstream file(fileName);
 
     /**
-     * Loop through every line in the csv file. 
-     * Then loop through every word in that line of the csv file. 
+     * Loop through every line in the csv file.
+     * Then loop through every word in that line of the csv file.
      * Add every word in an individual line ot a new vector of strings
      * Add the full vector of strings of the line to the vector of vectors of strings
-    */
-    // while (getline(file, line))
-    // {
-    //     std::vector<std::string> w;
+     */
+    while (std::getline(file, line))
+    {
+        std::vector<std::string> w;
 
-    //     std::stringstream ss(line);
-    //     while (getline(ss, word, ','))
-    //     {
-    //         w.push_back(word);
-    //     }
-    //     v.push_back(w);
-    // }
-    std::vector<std::string> vector;
-    std::ifstream file{fileName};
-    for (std::string line; std::getline(file, line); line = "\n") {
-        vector.push_back(line);
+        std::stringstream ss(line);
+        while (std::getline(ss, word, ','))
+        {
+            w.push_back(word);
+        }
+        v.push_back(w);
     }
-    std::vector<std::vector<std::string>> vector1;
-    for (size_t idx = 0; idx < vector.size(); ++idx) {
-        vector1.push_back(vector.at(idx));
-    }
-    return vector1;
-
-    // return v;
+    return v;
 }
 
 /**
@@ -58,7 +46,7 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName)
  */
 std::map<std::string, std::string> Graph::codeToName(std::string txtFileName)
 {
-    //TODO:
+    // TODO:
 
     std::map<std::string, std::string> m;
     std::ifstream file(txtFileName);
