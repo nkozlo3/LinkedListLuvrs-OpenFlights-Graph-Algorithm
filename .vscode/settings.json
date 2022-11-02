@@ -50,6 +50,8 @@
     "ctime": "cpp",
     "optional": "cpp",
     "ratio": "cpp",
-    "variant": "cpp"
-  }
+    "variant": "cpp",
+    "map": "cpp"
+  },
+  "todo-tree.tree.scanMode": "workspace"
 }

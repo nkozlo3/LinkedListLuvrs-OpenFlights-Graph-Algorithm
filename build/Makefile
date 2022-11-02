@@ -118,6 +118,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -167,6 +180,78 @@ entry/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/entry/main.cpp.s
 .PHONY : entry/main.cpp.s
 
+tests/correctOutputTests.o: tests/correctOutputTests.cpp.o
+.PHONY : tests/correctOutputTests.o
+
+# target to build an object file
+tests/correctOutputTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/correctOutputTests.cpp.o
+.PHONY : tests/correctOutputTests.cpp.o
+
+tests/correctOutputTests.i: tests/correctOutputTests.cpp.i
+.PHONY : tests/correctOutputTests.i
+
+# target to preprocess a source file
+tests/correctOutputTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/correctOutputTests.cpp.i
+.PHONY : tests/correctOutputTests.cpp.i
+
+tests/correctOutputTests.s: tests/correctOutputTests.cpp.s
+.PHONY : tests/correctOutputTests.s
+
+# target to generate assembly for a file
+tests/correctOutputTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/correctOutputTests.cpp.s
+.PHONY : tests/correctOutputTests.cpp.s
+
+tests/dfsTests.o: tests/dfsTests.cpp.o
+.PHONY : tests/dfsTests.o
+
+# target to build an object file
+tests/dfsTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/dfsTests.cpp.o
+.PHONY : tests/dfsTests.cpp.o
+
+tests/dfsTests.i: tests/dfsTests.cpp.i
+.PHONY : tests/dfsTests.i
+
+# target to preprocess a source file
+tests/dfsTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/dfsTests.cpp.i
+.PHONY : tests/dfsTests.cpp.i
+
+tests/dfsTests.s: tests/dfsTests.cpp.s
+.PHONY : tests/dfsTests.s
+
+# target to generate assembly for a file
+tests/dfsTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/dfsTests.cpp.s
+.PHONY : tests/dfsTests.cpp.s
+
+tests/graphTests.o: tests/graphTests.cpp.o
+.PHONY : tests/graphTests.o
+
+# target to build an object file
+tests/graphTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/graphTests.cpp.o
+.PHONY : tests/graphTests.cpp.o
+
+tests/graphTests.i: tests/graphTests.cpp.i
+.PHONY : tests/graphTests.i
+
+# target to preprocess a source file
+tests/graphTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/graphTests.cpp.i
+.PHONY : tests/graphTests.cpp.i
+
+tests/graphTests.s: tests/graphTests.cpp.s
+.PHONY : tests/graphTests.s
+
+# target to generate assembly for a file
+tests/graphTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/graphTests.cpp.s
+.PHONY : tests/graphTests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -177,9 +262,19 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... main"
 	@echo "... src"
+	@echo "... test"
 	@echo "... entry/main.o"
 	@echo "... entry/main.i"
 	@echo "... entry/main.s"
+	@echo "... tests/correctOutputTests.o"
+	@echo "... tests/correctOutputTests.i"
+	@echo "... tests/correctOutputTests.s"
+	@echo "... tests/dfsTests.o"
+	@echo "... tests/dfsTests.i"
+	@echo "... tests/dfsTests.s"
+	@echo "... tests/graphTests.o"
+	@echo "... tests/graphTests.i"
+	@echo "... tests/graphTests.s"
 .PHONY : help
 
 

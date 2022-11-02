@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build",
+  "command": "/usr/bin/clang++  -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/lib -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/test.dir/tests/correctOutputTests.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/correctOutputTests.cpp",
+  "file": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/correctOutputTests.cpp"
+},
+{
+  "directory": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build",
+  "command": "/usr/bin/clang++  -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/lib -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/test.dir/tests/dfsTests.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp",
+  "file": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp"
+},
+{
+  "directory": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build",
+  "command": "/usr/bin/clang++  -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/lib -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/test.dir/tests/graphTests.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp",
+  "file": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp"
+},
+{
+  "directory": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build",
+  "command": "/usr/bin/clang++  -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/lib -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/main.dir/entry/main.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/entry/main.cpp",
+  "file": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/entry/main.cpp"
+},
+{
+  "directory": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src",
+  "command": "/usr/bin/clang++  -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/lib  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/src.dir/dfs.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/dfs.cpp",
+  "file": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/dfs.cpp"
+},
+{
+  "directory": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src",
+  "command": "/usr/bin/clang++  -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src -I/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/lib  -pedantic -Wall -Werror -Wfatal-errors -Wextra -Wno-unused-parameter -Wno-unused-variable -Wno-unused-function -g -D_GLIBCXX_DEBUG -O0 -gdwarf-4 -std=gnu++17 -o CMakeFiles/src.dir/graph.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/graph.cpp",
+  "file": "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/graph.cpp"
+}
+]

@@ -1,6 +1,10 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "graph.h"
+#include <iostream>
+#include <algorithm>
+#include <cctype>
+#include <string>
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph]")
 {
@@ -13,4 +17,26 @@ TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[we
 
     REQUIRE(width == 8);
     REQUIRE(height == 67662);
+}
+
+TEST_CASE("Graph csvToVect properly maps vectors", "[weight=5][graph]")
+{
+    Graph graph = Graph();
+    std::vector<std::vector<std::string>> vect = graph.csvToVect("routes.csv");
+
+    REQUIRE(vect[0][0] == "2B");
+    REQUIRE(vect[0][1] == "410");
+    REQUIRE(vect[3][3] == "2968");
+}
+
+TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph]")
+{
+    Graph graph = Graph();
+    std::map<std::string, std::string> m = graph.codeToName("Codes.txt");
+
+    REQUIRE(m["ZSJ"] == "Sandy Lake Airport");
+    REQUIRE(m["YZZ"] == "Canada, Trail Airport");
+    REQUIRE(m["YWG"] == "Winnipeg / James Armstrong Richar.");
+    REQUIRE(m["2B"] == "Aerocondor");
+    REQUIRE(m["DX"] == "Air Transport");
 }

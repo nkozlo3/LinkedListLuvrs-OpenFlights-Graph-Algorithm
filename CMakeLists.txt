@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Assignment Information (these are the *only* things you need to change here between assignments)
-set(assignment_name "mp_stickers") # Name of the assignment
-set(assignment_version 1.2022.12.0) # Version, where minor=semester_year, patch=semester_end_month, tweak=revision
+set(assignment_name "final") # Name of the assignment
 set(assignment_entrypoints "main") # Entrypoints to run the program
-set(assignment_clean_rm "../out.png" "../lighten.png" "../saturate.png" "../scale2x.png") # Generated files that should be removed with "make clean"
+set(assignment_clean_rm "") # Generated files that should be removed with "make clean"
 set(assignment_container "fa22") # Container we are targetting
+project("Graphs")
 
 # Add color support to our messages.
 # See: https://stackoverflow.com/questions/18968979/how-to-get-colorized-output-with-cmake
@@ -20,46 +20,6 @@ if(NOT WIN32)
   set(ColorMagenta "${Esc}[35m")
   set(ColorCyan    "${Esc}[36m")
   set(ColorWhite   "${Esc}[37m")
-endif()
-
-site_name(SITE_NAME)
-
-if(SITE_NAME MATCHES "ews.illinois.edu$")
-    set(EWS TRUE)
-endif()
-
-# Handle unsupported container warnings.
-# Default to remind students to use our container, unless they are using our targeted container.
-set(REMIND_CONTAINER TRUE)
-if(DEFINED ENV{CS225_CONTAINER})
-    if($ENV{CS225_CONTAINER} STREQUAL ${assignment_container})
-        # This is the container we are targetting, so don't print the reminder.
-        unset(REMIND_CONTAINER)
-    elseif($ENV{CS225_CONTAINER} MATCHES ".+-arm")
-        message(STATUS "${ColorYellow}Looks like you are using an ARM/M1 container.${ColorReset}")
-    else()
-        message(STATUS "${ColorYellow}Looks like you are using an unrecognized container.${ColorReset}")
-    endif()
-elseif(DEFINED EWS)
-    message(STATUS "${ColorYellow}Looks like you are using EWS.${ColorReset}")
-    message(STATUS "${ColorRed}EWS is outdated and unsupported. Use at your own risk.${ColorReset}")
-else()
-    # Warn students who are not using our container at all.
-    message(STATUS "${ColorYellow}Looks like you are not using the provided container.${ColorReset}")
-endif()
-
-# Remind students to use our container.
-if(DEFINED REMIND_CONTAINER)
-    message(WARNING "${ColorYellow}Make sure you test on the CS225 container before the deadline.${ColorReset}")
-endif()
-
-# Disable in-source builds (running "cmake ." in the project directory)
-# This is bad practice as it pollutes the project directory.
-# See: https://dpiepgrass.medium.com/cmake-fights-against-disabling-in-source-builds-ab1d71c1d26f
-if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}") 
-  message(FATAL_ERROR "${ColorRed}In-source builds are disabled.\n"
-    "Create a subdirectory `build/` and use `cmake ..` inside it.\n"
-    "${ColorBold}Delete `CMakeCache.txt` and `CMakeFiles/` before you continue.${ColorReset}")
 endif()
 
 # Specify C++ compiler and linker.
@@ -80,9 +40,6 @@ endif()
 # Specify C++ Standard.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-
-# Define project.   
-project(${assignment_name} VERSION ${assignment_version})
 
 # Specify Debug build.
 set(CMAKE_BUILD_TYPE Debug)
@@ -132,13 +89,13 @@ file(GLOB_RECURSE tests_src CONFIGURE_DEPENDS ${tests_dir}/*.cpp)
 
 include(Catch)
 
-# add_executable(test ${tests_src})
-# target_link_libraries(test PRIVATE Catch2::Catch2WithMain libs src)
+add_executable(test ${tests_src})
+target_link_libraries(test PRIVATE Catch2::Catch2WithMain libs src)
 
-# catch_discover_tests(test)
+catch_discover_tests(test)
 
 # Add the assignment entrypoints using our libs and src code.
 foreach(entrypoint IN LISTS assignment_entrypoints)
     add_executable(${entrypoint} ${entry_dir}/${entrypoint}.cpp)
-    # target_link_libraries(${entrypoint} PRIVATE libs src)
+    target_link_libraries(${entrypoint} PRIVATE libs src)
 endforeach()
