@@ -37,8 +37,18 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName)
         }
         v.push_back(w);
     }
+    std::vector<std::string> vector;
+    std::ifstream file{input_file};
+    for (std::string line; std::getline(file, line); line = "") {
+        vector.push_back(line);
+    }
+    std::vector<std::vector<std::string>> vector1;
+    for (size_t idx = 0; idx < vector.size(); ++idx) {
+        vector1.push_back(utilities::GetSubstrs(vector.at(idx), ','));
+    }
+    return vector1;
 
-    return v;
+    // return v;
 }
 
 /**
