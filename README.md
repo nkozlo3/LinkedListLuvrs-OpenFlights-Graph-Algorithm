@@ -10,6 +10,10 @@ Team Members: Collin Fox, Nora Batko, Neil Kozlowski, Nisha Ramanathan
  The goals of this project are to create a graph out of the airport.dat csv file. And be able to run algorithms of interest on this graph. We will be able to determine things such as the optimal flight paths between the last 10 olympic host countries using our algorithms.
  
   ## File Description(work in progress):
+  -Graph: This file will construct graphs from the information collected in the datasets.
+  
+  -DFS: This file will utilize a Depth First Search(DFS) to traverse through our datasets.
+  
   ## How To Test(work in progress):
  
  # Team Contract
