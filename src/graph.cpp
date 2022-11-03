@@ -45,8 +45,6 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName)
  */
 std::map<std::string, std::string> Graph::codeToName(std::string txtFileName)
 {
-    // TODO:
-
     std::map<std::string, std::string> m;
     std::ifstream file(txtFileName);
 

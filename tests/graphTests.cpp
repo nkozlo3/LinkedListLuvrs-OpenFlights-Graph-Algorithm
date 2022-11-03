@@ -49,7 +49,7 @@ TEST_CASE("Graph csvToVect properly maps vectors", "[weight=5][graph][7]")
     REQUIRE(actual == expected);
 }
 
-TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph][9]")
+TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph][7]")
 {
     Graph graph = Graph();
     std::map<std::string, std::string> m = graph.codeToName("Codes.txt");
