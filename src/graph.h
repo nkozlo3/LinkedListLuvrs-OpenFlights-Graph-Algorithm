@@ -42,7 +42,7 @@ class Graph
 public:
     // helper functions:
     std::vector<std::vector<std::string>> csvToVect(std::string filename);  
-    std::map<std::string, std::string> codeToName(std::string txtFileName); 
+    std::map<std::string, std::string> codeToName(std::string txtFileName);
 
 private:
     std::vector<std::vector<std::string>> airport_csv_vect_;
