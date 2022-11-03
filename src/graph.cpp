@@ -57,10 +57,18 @@ std::map<std::string, std::string> Graph::codeToName(std::string txtFileName)
      * everything from ',' to '(' will be the airport name
      * loop through the file each word is the space between the commas
      */
+    std::string country = "";
     while (getline(file, word, ','))
     {
         std::string airportName = "";
         std::string airportCode = "";
+
+        // if a country should be attached, attach it
+        if (country != "")
+        {
+            airportName += country + ",";
+            country = "";
+        }
 
         // if there is a '(' in the word then this is a valid word to add to the map (it has an airport code and destination name)
         if (word.find("(") != std::string::npos)
@@ -94,6 +102,13 @@ std::map<std::string, std::string> Graph::codeToName(std::string txtFileName)
 
             // add the airport code and name to the map
             m[airportCode] = airportName;
+        }
+        else
+        {
+            for (size_t i = 0; i < word.length(); i++)
+            {
+                country += word[i];
+            }
         }
     }
     return m;
