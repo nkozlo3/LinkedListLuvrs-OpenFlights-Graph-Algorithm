@@ -49,14 +49,14 @@ TEST_CASE("Graph csvToVect properly maps vectors", "[weight=5][graph][7]")
     REQUIRE(actual == expected);
 }
 
-TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph]")
+TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph][9]")
 {
     Graph graph = Graph();
     std::map<std::string, std::string> m = graph.codeToName("Codes.txt");
 
     REQUIRE(m["ZSJ"] == "Sandy Lake Airport");
-    REQUIRE(m["YZZ"] == "Canada, Trail Airport");
+    REQUIRE(m["YZZ"] == "Trail Airport");
     REQUIRE(m["YWG"] == "Winnipeg / James Armstrong Richar.");
     REQUIRE(m["2B"] == "Aerocondor");
-    REQUIRE(m["DX"] == "Air Transport");
+    REQUIRE(m["DX"] == "DAT Danish Air Transport");
 }

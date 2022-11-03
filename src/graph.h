@@ -13,6 +13,9 @@
 #include <sstream>
 #include <map>
 #include <string>
+#include <functional>
+#include <locale>
+#include <cctype>
 
 /**
  * airports.csv is formatted as:

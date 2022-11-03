@@ -11,7 +11,6 @@
  */
 std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName)
 {
-    // TODO:
     std::vector<std::vector<std::string>> v;
 
     std::string line;
@@ -86,6 +85,15 @@ std::map<std::string, std::string> Graph::codeToName(std::string txtFileName)
                 }
                 airportName += word[i];
             }
+
+            // trim extra whitespaces
+            if (std::isspace(*airportName.begin()))
+                airportName.erase(airportName.begin());
+
+            auto end = airportName.end();
+            if (std::isspace(*(end - 1)))
+                airportName.erase(end - 1);
+
             // add the airport code and name to the map
             m[airportCode] = airportName;
         }
