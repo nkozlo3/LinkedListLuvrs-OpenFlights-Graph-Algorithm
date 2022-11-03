@@ -41,8 +41,9 @@ class Graph
 {
 public:
     // helper functions:
-    std::vector<std::vector<std::string>> csvToVect(std::string filename);  
+    std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns={-1});
     std::map<std::string, std::string> codeToName(std::string txtFileName);
+    std::vector<std::vector<int>> imgLocationsMapping(std::vector<int> latitudes, std::vector<int> longitudes, int width, int height);
 
 private:
     std::vector<std::vector<std::string>> airport_csv_vect_;

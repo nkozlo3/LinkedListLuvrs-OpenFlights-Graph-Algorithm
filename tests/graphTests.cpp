@@ -49,6 +49,30 @@ TEST_CASE("Graph csvToVect properly maps vectors", "[weight=5][graph][7]")
     REQUIRE(actual == expected);
 }
 
+TEST_CASE("Graph csvToVect properly maps vectors and only takes in the specified columns", "[weight=5][graph][7]")
+{
+    Graph graph = Graph();
+    std::vector<std::vector<std::string>> vect = graph.csvToVect("airports.csv", {6, 7});
+    std::vector<std::string> vectAtZero;
+    vectAtZero.push_back("-6.081689834590001");
+    vectAtZero.push_back("145.391998291");
+    std::string expected = "";
+    std::string actual = "";
+    for (size_t i = 0; i < vectAtZero.size(); i++)
+    {
+        expected += vectAtZero.at(i);
+    }
+    for (size_t i = 0; i < vect[0].size(); i++)
+    {
+        actual += vect[0].at(i);
+    }
+
+    REQUIRE(vect[0][0] == "-6.081689834590001");
+    REQUIRE(vect[0][1] == "145.391998291");
+    REQUIRE(vect[3][1] == "146.725977");
+    REQUIRE(actual == expected);
+}
+
 TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph][7]")
 {
     Graph graph = Graph();

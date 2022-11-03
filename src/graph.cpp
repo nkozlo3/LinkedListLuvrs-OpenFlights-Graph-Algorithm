@@ -9,7 +9,7 @@
  * @param filename The name of the csv file
  * @return A vector of vectors of strings
  */
-std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName)
+std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName, std::vector<int> columns)
 {
     std::vector<std::vector<std::string>> v;
 
@@ -29,9 +29,24 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName)
         std::vector<std::string> w;
 
         std::stringstream ss(line);
+
+        int column = 0;
+
+        size_t placeInVect = 0;
+
         while (std::getline(ss, word, ','))
         {
-            w.push_back(word);
+            if (columns[0] == -1)
+                w.push_back(word);
+            else
+            {
+                if (placeInVect < columns.size() && columns[placeInVect] == column)
+                {
+                    w.push_back(word);
+                    placeInVect++;
+                }
+                column++;
+            }
         }
         v.push_back(w);
     }
@@ -112,4 +127,25 @@ std::map<std::string, std::string> Graph::codeToName(std::string txtFileName)
         }
     }
     return m;
+}
+
+/**
+ * This function will take an image of heght height and width width
+ * Then map the correct pixelized location for our vectors of longitutes and latitudes
+ * @brief Maps and normalizes longitudes and latitudes to pixels on a map
+ * @param longitudes A vector of longitudes
+ * @param latitudes A vector of latitudes
+ * @param height The height of the image
+ * @param width The width of the image
+ * @return A 2D vector of x and y locations
+ */
+std::vector<std::vector<int>> Graph::imgLocationsMapping(std::vector<int> latitudes, std::vector<int> longitudes, int width, int height)
+{
+
+    // Right to left or width longitudes should run from -180 in the west to 180 in the east // with 0 at the exact center
+    // Bottom to top or height latitudes should run from -90 in the south to 90 in the north // with 0 at the exact center
+
+    std::vector<std::vector<int>> l;
+
+    return l;
 }
