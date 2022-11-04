@@ -73,14 +73,13 @@ TEST_CASE("Graph csvToVect properly maps vectors and only takes in the specified
     REQUIRE(actual == expected);
 }
 
-TEST_CASE("Graph codeToName returns a map with the right values and keys", "[weight=10][graph][7]")
+TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][graph][7]")
 {
     Graph graph = Graph();
-    std::map<std::string, std::string> m = graph.codeToName("Codes.txt");
 
-    REQUIRE(m["ZSJ"] == "Reunion, Sandy Lake Airport");
-    REQUIRE(m["YZZ"] == "Canada, Trail Airport");
-    REQUIRE(m["YWG"] == "Canada, Winnipeg / James Armstrong Richar.");
-    REQUIRE(m["2B"] == "Aerocondor");
-    REQUIRE(m["DX"] == "DAT Danish Air Transport");
+    double actual = graph.numberNormalized(-180, 180, 0, 500, 0);
+
+    double expected = 250;
+
+    REQUIRE(actual == expected);
 }

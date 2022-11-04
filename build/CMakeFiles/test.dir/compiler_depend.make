@@ -251,9 +251,13 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
   /usr/include/catch2/interfaces/catch_interfaces_testcase.hpp \
   /usr/include/catch2/internal/catch_preprocessor_remove_parens.hpp \
   ../src/graph.h \
+  ../lib/cs225/PNG.h \
+  ../lib/cs225/HSLAPixel.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/c++/11/sstream \
+  /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
   /usr/include/c++/11/algorithm \
@@ -290,8 +294,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
   /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/map \
   /usr/include/c++/11/bits/stl_tree.h \
   /usr/include/c++/11/bits/stl_map.h \
@@ -314,8 +316,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/c++/11/bits/stl_tree.h:
 
 /usr/include/c++/11/map:
-
-/usr/include/c++/11/sstream:
 
 /usr/include/c++/11/bits/fstream.tcc:
 
@@ -354,6 +354,12 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/c++/11/bits/std_function.h:
 
 /usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/c++/11/pstl/execution_defs.h:
+
+/usr/include/c++/11/bits/algorithmfwd.h:
+
+/usr/include/c++/11/bits/stl_algo.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h:
 
@@ -581,8 +587,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/c++/11/ratio:
 
-/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
-
 /usr/include/x86_64-linux-gnu/asm/errno.h:
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
@@ -640,6 +644,8 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h:
 
 ../tests/dfsTests.cpp:
+
+../lib/cs225/HSLAPixel.h:
 
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
@@ -717,6 +723,10 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/alloca.h:
 
+/usr/include/c++/11/bits/stl_heap.h:
+
+/usr/include/c++/11/bits/std_abs.h:
+
 /usr/include/c++/11/cstdio:
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
@@ -753,8 +763,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/c++/11/cassert:
 
-/usr/include/c++/11/bits/stl_algo.h:
-
 /usr/include/catch2/internal/catch_decomposer.hpp:
 
 /usr/include/catch2/internal/catch_config_wchar.hpp:
@@ -774,6 +782,10 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/c++/11/bits/vector.tcc:
 
 /usr/include/c++/11/optional:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
+
+../lib/cs225/PNG.h:
 
 /usr/include/c++/11/bits/stl_relops.h:
 
@@ -885,10 +897,4 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/c++/11/bits/istream.tcc:
 
-/usr/include/c++/11/pstl/execution_defs.h:
-
-/usr/include/c++/11/bits/algorithmfwd.h:
-
-/usr/include/c++/11/bits/std_abs.h:
-
-/usr/include/c++/11/bits/stl_heap.h:
+/usr/include/c++/11/sstream:

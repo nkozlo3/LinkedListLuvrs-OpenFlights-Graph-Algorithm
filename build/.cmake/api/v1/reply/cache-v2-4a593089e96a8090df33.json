@@ -1278,6 +1278,18 @@
 			"value" : "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm"
 		},
 		{
+			"name" : "cs225_LIB_DEPENDS",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Dependencies for the target"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "general;lodepng;"
+		},
+		{
 			"name" : "final_BINARY_DIR",
 			"properties" : 
 			[

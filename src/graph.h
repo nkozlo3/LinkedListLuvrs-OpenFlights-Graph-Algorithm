@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include "cs225/PNG.h"
 #include <vector>
 #include <iostream>
 #include <iterator>
@@ -42,8 +43,8 @@ class Graph
 public:
     // helper functions:
     std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns={-1});
-    std::map<std::string, std::string> codeToName(std::string txtFileName);
     std::vector<std::vector<int>> imgLocationsMapping(std::vector<int> latitudes, std::vector<int> longitudes, int width, int height);
+    double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 
 private:
     std::vector<std::vector<std::string>> airport_csv_vect_;

@@ -243,6 +243,9 @@ _IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 _SOURCE_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm
 
+//Dependencies for the target
+cs225_LIB_DEPENDS:STATIC=general;lodepng;
+
 //Value Computed by CMake
 final_BINARY_DIR:STATIC=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build
 
