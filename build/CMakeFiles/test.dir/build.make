@@ -127,6 +127,8 @@ test: CMakeFiles/test.dir/build.make
 test: /usr/lib/libCatch2Main.a
 test: src/libsrc.a
 test: /usr/lib/libCatch2.a
+test: lib/libcs225.a
+test: lib/liblodepng.a
 test: CMakeFiles/test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)

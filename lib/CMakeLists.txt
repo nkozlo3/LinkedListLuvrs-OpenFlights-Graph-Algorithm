@@ -14,7 +14,7 @@ add_library(cs225 ${cs225_sources})
 target_include_directories(cs225 PRIVATE ${lib_dir})
 target_link_libraries(cs225 PRIVATE lodepng)
 
-
 # Add overall libs library.
 add_library(libs INTERFACE)
 target_include_directories(libs INTERFACE ${lib_dir})
+target_link_libraries(libs INTERFACE cs225 util)

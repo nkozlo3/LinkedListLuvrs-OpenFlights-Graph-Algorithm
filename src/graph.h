@@ -43,7 +43,7 @@ class Graph
 public:
     // helper functions:
     std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns={-1});
-    std::vector<std::vector<int>> imgLocationsMapping(std::vector<int> latitudes, std::vector<int> longitudes, int width, int height);
+    std::vector<std::vector<string>> imgLocationsMapping(std::vector<std::vector<std::string>> latsAndLongs, int width, int height);
     double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 
 private:

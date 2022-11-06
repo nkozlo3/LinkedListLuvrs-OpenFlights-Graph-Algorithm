@@ -4,6 +4,8 @@
  */
 #include "graph.h"
 
+using namespace cs225;
+
 /**
  * @brief Converts a csv file to a vector of vectors of strings
  * @param filename The name of the csv file
@@ -63,15 +65,19 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName, std
  * @param width The width of the image
  * @return A 2D vector of x and y locations
  */
-std::vector<std::vector<int>> Graph::imgLocationsMapping(std::vector<int> latitudes, std::vector<int> longitudes, int width, int height)
+std::vector<std::vector<string>> Graph::imgLocationsMapping(std::vector<std::vector<std::string>> latsAndLongs, int width, int height)
 {
     // TODO:
     //  Right to left or width longitudes should run from -180 in the west to 180 in the east // with 0 at the exact center
     //  Bottom to top or height latitudes should run from -90 in the south to 90 in the north // with 0 at the exact center
 
-    std::vector<std::vector<int>> l;
+    for (size_t i = 0; i < latsAndLongs.size(); i++)
+    {
+        latsAndLongs[i][7] = std::to_string((int)numberNormalized(-180, 180, 0, width, std::stod(latsAndLongs[i][7])));
+        latsAndLongs[i][8] = std::to_string((int)numberNormalized(-90, 90, 0, width, std::stod(latsAndLongs[i][8])));
+    }
 
-    return l;
+    return latsAndLongs;
 }
 
 /**

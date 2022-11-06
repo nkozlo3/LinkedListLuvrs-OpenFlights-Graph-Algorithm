@@ -99,6 +99,14 @@
 	[
 		{
 			"backtrace" : 2,
+			"id" : "lodepng::@306ed2d68c6501e8728f"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "cs225::@306ed2d68c6501e8728f"
+		},
+		{
+			"backtrace" : 2,
 			"id" : "src::@145eef247bfb46b6828c"
 		}
 	],
@@ -127,6 +135,18 @@
 			},
 			{
 				"fragment" : "/usr/lib/libCatch2.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib/libcs225.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "lib/liblodepng.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lutil",
 				"role" : "libraries"
 			}
 		],
