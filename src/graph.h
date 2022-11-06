@@ -43,10 +43,5 @@ class Graph
 public:
     // helper functions:
     std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns={-1});
-    std::vector<std::vector<string>> imgLocationsMapping(std::vector<std::vector<std::string>> latsAndLongs, int width, int height);
     double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
-
-private:
-    std::vector<std::vector<std::string>> airport_csv_vect_;
-    std::vector<std::vector<std::string>> routes_csv_vect_;
 };

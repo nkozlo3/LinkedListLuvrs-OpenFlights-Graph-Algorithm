@@ -56,31 +56,6 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName, std
 }
 
 /**
- * This function will take an image of heght height and width width
- * Then map the correct pixelized location for our vectors of longitutes and latitudes
- * @brief Maps and normalizes longitudes and latitudes to pixels on a map
- * @param longitudes A vector of longitudes
- * @param latitudes A vector of latitudes
- * @param height The height of the image
- * @param width The width of the image
- * @return A 2D vector of x and y locations
- */
-std::vector<std::vector<string>> Graph::imgLocationsMapping(std::vector<std::vector<std::string>> latsAndLongs, int width, int height)
-{
-    // TODO:
-    //  Right to left or width longitudes should run from -180 in the west to 180 in the east // with 0 at the exact center
-    //  Bottom to top or height latitudes should run from -90 in the south to 90 in the north // with 0 at the exact center
-
-    for (size_t i = 0; i < latsAndLongs.size(); i++)
-    {
-        latsAndLongs[i][7] = std::to_string((int)numberNormalized(-180, 180, 0, width, std::stod(latsAndLongs[i][7])));
-        latsAndLongs[i][8] = std::to_string((int)numberNormalized(-90, 90, 0, width, std::stod(latsAndLongs[i][8])));
-    }
-
-    return latsAndLongs;
-}
-
-/**
  * @brief This function normalizes the number position between originalMinRange and originalMaxRange given an origonal position between minRange and maxRange
  * @param originalMinRange The original minimum range
  * @param originalMaxRange The original maximum range

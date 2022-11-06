@@ -413,7 +413,6 @@ unsigned lodepng_save_file(const unsigned char* buffer, size_t buffersize, const
 
 #ifdef LODEPNG_COMPILE_ZLIB
 #ifdef LODEPNG_COMPILE_ENCODER
-/*TODO: this ignores potential out of memory errors*/
 #define addBitToStream(/*size_t**/ bitpointer, /*ucvector**/ bitstream, /*unsigned char*/ bit)\
 {\
   /*add a new byte at the end*/\
@@ -970,7 +969,6 @@ static unsigned huffmanDecodeSymbol(const unsigned char* in, size_t* bp,
 /*get the tree of a deflated block with fixed tree, as specified in the deflate specification*/
 static void getTreeInflateFixed(HuffmanTree* tree_ll, HuffmanTree* tree_d)
 {
-  /*TODO: check for out of memory errors*/
   generateFixedLitLenTree(tree_ll);
   generateFixedDistanceTree(tree_d);
 }
@@ -1367,7 +1365,7 @@ typedef struct Hash
   unsigned short* chain;
   int* val; /*circular pos to hash value*/
 
-  /*TODO: do this not only for zeros but for any repeated byte. However for PNG
+  /* do this not only for zeros but for any repeated byte. However for PNG
   it's always going to be the zeros that dominate, so not important for PNG*/
   int* headz; /*similar to head, but for chainz*/
   unsigned short* chainz; /*those with same amount of zeros*/
@@ -4411,7 +4409,7 @@ static unsigned postProcessScanlines(unsigned char* out, unsigned char* in,
     for(i = 0; i != 7; ++i)
     {
       CERROR_TRY_RETURN(unfilter(&in[padded_passstart[i]], &in[filter_passstart[i]], passw[i], passh[i], bpp));
-      /*TODO: possible efficiency improvement: if in this reduced image the bits fit nicely in 1 scanline,
+      /* possible efficiency improvement: if in this reduced image the bits fit nicely in 1 scanline,
       move bytes instead of bits or move not at all*/
       if(bpp < 8)
       {
@@ -4627,7 +4625,7 @@ static unsigned readChunk_iTXt(LodePNGInfo* info, const LodePNGDecompressSetting
   unsigned length, begin, compressed;
   char *key = 0, *langtag = 0, *transkey = 0;
   ucvector decoded;
-  ucvector_init(&decoded); /* TODO: only use in case of compressed text */
+  ucvector_init(&decoded); /* only use in case of compressed text */
 
   while(!error) /*not really a while loop, only used to break on error*/
   {
@@ -5079,7 +5077,7 @@ unsigned lodepng_decode(unsigned char** out, unsigned* w, unsigned* h,
     unsigned char* data = *out;
     size_t outsize;
 
-    /*TODO: check if this works according to the statement in the documentation: "The converter can convert
+    /* check if this works according to the statement in the documentation: "The converter can convert
     from greyscale input color type, to 8-bit greyscale or greyscale with alpha"*/
     if(!(state->info_raw.colortype == LCT_RGB || state->info_raw.colortype == LCT_RGBA)
        && !(state->info_raw.bitdepth == 8))
@@ -6141,7 +6139,7 @@ unsigned lodepng_encode(unsigned char** out, size_t* outsize,
   {
     unsigned grey_icc = isGreyICCProfile(state->info_png.iccp_profile, state->info_png.iccp_profile_size);
     unsigned grey_png = info.color.colortype == LCT_GREY || info.color.colortype == LCT_GREY_ALPHA;
-    /* TODO: perhaps instead of giving errors or less optimal compression, we can automatically modify
+    /* perhaps instead of giving errors or less optimal compression, we can automatically modify
     the ICC profile here to say "GRAY" or "RGB " to match the PNG color type, unless this will require
     non trivial changes to the rest of the ICC profile */
     if(!grey_icc && !isRGBICCProfile(state->info_png.iccp_profile, state->info_png.iccp_profile_size))
