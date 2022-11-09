@@ -41,7 +41,15 @@
 class Graph
 {
 public:
+    struct structone
+    {
+        std::pair<double, double> p;
+        std::string str;
+    };
+
     // helper functions:
-    std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns={-1});
+    std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns = {-1});
+    std::map<std::string, std::pair<double, double>> codeToPositionMapMaker(std::string txtFileName);
+    std::map<std::string, std::vector<structone>> sourceToDestsMapMaker(std::string txtFileName);
     double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 };

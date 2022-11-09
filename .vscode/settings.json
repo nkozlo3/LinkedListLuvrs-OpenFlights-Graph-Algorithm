@@ -53,5 +53,6 @@
     "variant": "cpp",
     "map": "cpp"
   },
-  "todo-tree.tree.scanMode": "workspace"
+  "todo-tree.tree.scanMode": "workspace",
+  "C_Cpp.errorSquiggles": "Disabled"
 }

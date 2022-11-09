@@ -193,7 +193,7 @@
 194,"Downsview Airport","Toronto","Canada","YZD","CYZD",43.74250030517578,-79.4655990600586,652,-5,"A","America/Toronto","airport","OurAirports"
 195,"Gore Bay Manitoulin Airport","Gore Bay","Canada","YZE","CYZE",45.88529968261719,-82.56780242919922,635,-5,"A","America/Toronto","airport","OurAirports"
 196,"Yellowknife Airport","Yellowknife","Canada","YZF","CYZF",62.462799072265625,-114.44000244140625,675,-7,"A","America/Edmonton","airport","OurAirports"
-197,"Slave Lake Airport","Slave Lake","Canada","YZH","CYZH",55.2930984497,-114.777000427,1912,-7,"A","America/Edmonton","airport","OurAirports"
+197,"Slave Lake Airport","Slave Lake","Canada","YZH","CYZH",YZH,1912,-7,"A","America/Edmonton","airport","OurAirports"
 198,"Sandspit Airport","Sandspit","Canada","YZP","CYZP",53.25429916379999,-131.813995361,21,-8,"A","America/Vancouver","airport","OurAirports"
 199,"Chris Hadfield Airport","Sarnia","Canada","YZR","CYZR",42.9994010925293,-82.30889892578125,594,-5,"A","America/Toronto","airport","OurAirports"
 200,"Port Hardy Airport","Port Hardy","Canada","YZT","CYZT",50.680599212646484,-127.36699676513672,71,-8,"A","America/Vancouver","airport","OurAirports"

@@ -55,6 +55,81 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName, std
     return v;
 }
 
+std::map<std::string, std::pair<double, double>> Graph::codeToPositionMapMaker(std::string txtFileName)
+{
+    std::map<std::string, std::pair<double, double>> m;
+    /**
+     * loop through the airports.csv file and add the IATA code and the latitude and longitude to a map
+     * The IATA is on the fourth column and the latitude and longitude are on the 6th and 7th column
+     * The IATA is the key and the vector of latitude and longitude are the value
+     * We can use csvToVect to get all the values into a vector of vectors of strings
+     * if IATA is null it will have the \N in which case we will use the ICAO code instead
+     * IACO is on the 5th column
+     */
+    std::vector<std::vector<std::string>> v = csvToVect(txtFileName);
+    std::pair<double, double> w;
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        if (v[i][4] != "\\N")
+        {
+            double lat = std::strtod(v[i][6].c_str(), nullptr);
+            double lon = std::strtod(v[i][7].c_str(), nullptr);
+            w.first = lat;
+            w.second = lon;
+            m[v[i][4]] = w;
+        }
+        // else don't add it to the map
+    }
+    return m;
+}
+
+/**
+ * @brief This function will map our IACO and ICAO codes to a vector of distances
+ * @param txtFileName The name of the txt file (in our case, Codes.txt)
+ * @return map of edges
+ */
+std::map<std::string, std::vector<structone>> Graph::sourceToDestsMapMaker(std::string txtFileName)
+{
+    // Now we need to compile a map of every destination that each individual airport has
+    // we have a routes file that has the source and destination IATA codes
+    // the source is on the 3rd column and the destination is on the 5th column
+    // The key is the source and the value is a vector of destinations
+
+    std::vector<std::vector<std::string>> v2 = csvToVect(txtFileName, {2, 4});
+    std::map<std::string, std::pair<double, double>> points = codeToPositionMapMaker("airports.csv");
+
+    std::map<std::string, std::vector<structone>> m2;
+
+    std::string currSource = "";
+
+    std::vector<structone> currVect;
+
+    for (size_t i = 0; i < v2.size(); i++)
+    {
+        structone struc;
+        if (!currVect.empty())
+            currVect.clear();
+
+        if (m2.find(v2[i][0]) == m2.end())
+            currSource = v2[i][0];
+        else
+            continue;
+
+        for (size_t i = 0; i < v2.size(); i++)
+        {
+            if (v2[i][0] == currSource && std::find(v2[i].begin(), v2[i].end(), v2[i][1]) == v2[i].end())
+            {
+                struc.str = v2[i][1];
+                struc.p = points[v2[i][1]];
+                currVect.push_back(struc);
+            }
+        }
+
+        m2[currSource] = currVect;
+    }
+    return m2;
+}
+
 /**
  * @brief This function normalizes the number position between originalMinRange and originalMaxRange given an origonal position between minRange and maxRange
  * @param originalMinRange The original minimum range

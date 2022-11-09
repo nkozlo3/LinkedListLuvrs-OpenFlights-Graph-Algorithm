@@ -79,7 +79,76 @@ TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][
 
     double actual = graph.numberNormalized(-180, 180, 0, 500, 0);
 
+    double actual1 = graph.numberNormalized(-180, 180, 0, 1254, 107.73799896240234);
+
+    std::cout << actual1 << std::endl;
+
     double expected = 250;
 
     REQUIRE(actual == expected);
+}
+
+TEST_CASE("Graph sourceToDestsMapMaker does not have duplicates", "[weight=5][graph][7]")
+{
+    Graph graph = Graph();
+
+    std::map<std::string, std::vector<std::string>> m = graph.sourceToDestsMapMaker("routes.csv");
+
+    std::vector<std::string> str =
+        {
+            "AUH",
+            "BKK",
+            "RGN",
+            "SGN",
+            "SIN",
+            "SYD",
+            "TBB",
+            "THD",
+            "TPE",
+            "UIH",
+            "VCA",
+            "VCL",
+            "VCS",
+            "VDH",
+            "VII",
+            "VKG",
+            "VTE",
+            "WNZ"};
+    for (size_t i = 0; i < str.size(); i++)
+    {
+        std::vector<std::string> v = m[str[i]];
+
+        std::map<std::string, int> countMap;
+        for (auto &elem : v)
+        {
+            auto result = countMap.insert(std::pair<std::string, int>(elem, 1));
+            if (result.second == false)
+                result.first->second++;
+        }
+
+        for (auto &elem : countMap)
+        {
+            if (elem.second > 1)
+            {
+                std::cout << elem.first << " :: " << elem.second << std::endl;
+                FAIL();
+            }
+        }
+    }
+}
+
+TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][graph][9]")
+{
+    Graph graph = Graph();
+
+    std::map<std::string, std::pair<double, double>> m = graph.codeToPositionMapMaker("airports.csv");
+
+    double actual1 = m["\"GKA\""].first;
+    double actual2 = m["\"GKA\""].second;
+
+    double expected1 = -6.081689834590001;
+    double expected2 = 145.391998291;
+
+    REQUIRE(actual1 == expected1);
+    REQUIRE(actual2 == expected2);
 }
