@@ -256,6 +256,13 @@ src/CMakeFiles/src.dir/graph.cpp.o: ../src/graph.cpp \
   /usr/include/c++/11/debug/map.h \
   /usr/include/c++/11/debug/multimap.h
 
+src/CMakeFiles/src.dir/landalgo.cpp.o: ../src/landalgo.cpp \
+  ../src/landalgo.h
+
+
+../src/landalgo.h:
+
+../src/landalgo.cpp:
 
 /usr/include/c++/11/debug/map.h:
 

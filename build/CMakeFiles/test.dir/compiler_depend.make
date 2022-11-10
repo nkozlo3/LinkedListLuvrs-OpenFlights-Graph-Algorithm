@@ -251,9 +251,13 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
   /usr/include/catch2/interfaces/catch_interfaces_testcase.hpp \
   /usr/include/catch2/internal/catch_preprocessor_remove_parens.hpp \
   ../src/graph.h \
+  ../lib/cs225/PNG.h \
+  ../lib/cs225/HSLAPixel.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/c++/11/sstream \
+  /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/iterator \
   /usr/include/c++/11/bits/stream_iterator.h \
   /usr/include/c++/11/algorithm \
@@ -290,8 +294,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
   /usr/include/aarch64-linux-gnu/c++/11/bits/basic_file.h \
   /usr/include/aarch64-linux-gnu/c++/11/bits/c++io.h \
   /usr/include/c++/11/bits/fstream.tcc \
-  /usr/include/c++/11/sstream \
-  /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/c++/11/map \
   /usr/include/c++/11/bits/stl_tree.h \
   /usr/include/c++/11/bits/stl_map.h \
@@ -345,6 +347,12 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/c++/11/bits/stl_tempbuf.h:
 
+/usr/include/c++/11/pstl/execution_defs.h:
+
+/usr/include/c++/11/bits/algorithmfwd.h:
+
+/usr/include/c++/11/bits/stl_algo.h:
+
 /usr/include/c++/11/debug/safe_local_iterator.tcc:
 
 /usr/include/aarch64-linux-gnu/bits/struct_mutex.h:
@@ -355,6 +363,10 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
 
+/usr/include/c++/11/algorithm:
+
+/usr/include/catch2/catch_message.hpp:
+
 /usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/timer_t.h:
@@ -364,10 +376,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/aarch64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/c++/11/bits/allocator.h:
-
-/usr/include/c++/11/sstream:
-
-/usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
 
 /usr/include/c++/11/debug/helper_functions.h:
 
@@ -404,10 +412,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/c++/11/cerrno:
 
 /usr/include/c++/11/bits/localefwd.h:
-
-/usr/include/c++/11/bits/sstream.tcc:
-
-/usr/include/c++/11/new:
 
 /usr/include/c++/11/bits/stl_iterator.h:
 
@@ -456,10 +460,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/c++/11/bits/node_handle.h:
 
 /usr/include/c++/11/iostream:
-
-/usr/include/catch2/catch_message.hpp:
-
-/usr/include/c++/11/algorithm:
 
 /usr/include/c++/11/debug/macros.h:
 
@@ -645,8 +645,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/catch2/internal/catch_reusable_string_stream.hpp:
 
-/usr/include/aarch64-linux-gnu/c++/11/bits/c++config.h:
-
 /usr/include/aarch64-linux-gnu/bits/errno.h:
 
 /usr/include/catch2/interfaces/catch_interfaces_enum_values_registry.hpp:
@@ -656,6 +654,10 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/aarch64-linux-gnu/bits/pthreadtypes.h:
 
 ../tests/dfsTests.cpp:
+
+/usr/include/aarch64-linux-gnu/c++/11/bits/c++config.h:
+
+../lib/cs225/HSLAPixel.h:
 
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
@@ -691,10 +693,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/aarch64-linux-gnu/bits/waitflags.h:
 
-/usr/include/c++/11/pstl/execution_defs.h:
-
-/usr/include/c++/11/bits/algorithmfwd.h:
-
 /usr/include/aarch64-linux-gnu/sys/types.h:
 
 /usr/include/c++/11/bits/erase_if.h:
@@ -720,6 +718,12 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/aarch64-linux-gnu/bits/stdint-intn.h:
 
 /usr/include/catch2/internal/catch_noncopyable.hpp:
+
+/usr/include/c++/11/bits/stl_heap.h:
+
+/usr/include/aarch64-linux-gnu/bits/long-double.h:
+
+/usr/include/c++/11/bits/std_abs.h:
 
 /usr/include/stdio.h:
 
@@ -751,8 +755,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/c++/11/cassert:
 
-/usr/include/c++/11/bits/stl_algo.h:
-
 /usr/include/catch2/internal/catch_decomposer.hpp:
 
 /usr/include/c++/11/vector:
@@ -766,6 +768,8 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/aarch64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/c++/11/optional:
+
+../lib/cs225/PNG.h:
 
 /usr/include/c++/11/bits/locale_facets.tcc:
 
@@ -794,6 +798,10 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 /usr/include/string.h:
 
 /usr/include/strings.h:
+
+/usr/include/c++/11/new:
+
+/usr/include/c++/11/bits/sstream.tcc:
 
 /usr/include/c++/11/bits/charconv.h:
 
@@ -887,8 +895,6 @@ CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp \
 
 /usr/include/c++/11/bits/istream.tcc:
 
-/usr/include/aarch64-linux-gnu/bits/long-double.h:
+/usr/include/aarch64-linux-gnu/bits/types/struct_timeval.h:
 
-/usr/include/c++/11/bits/std_abs.h:
-
-/usr/include/c++/11/bits/stl_heap.h:
+/usr/include/c++/11/sstream:
