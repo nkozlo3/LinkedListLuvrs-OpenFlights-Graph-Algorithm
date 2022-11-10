@@ -2,12 +2,11 @@
 
 #include <iostream>
 #include "graph.h"
-class DFS {
-    public:
-        DFS();
-        ~DFS();
-        DFS();//copy constructor
-    private:
+class DFS
+{
+public:
+    DFS();
+    ~DFS();
 
-
+private:
 };

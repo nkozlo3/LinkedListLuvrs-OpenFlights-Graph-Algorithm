@@ -227,6 +227,30 @@ landalgo.cpp.s:
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/landalgo.cpp.s
 .PHONY : landalgo.cpp.s
 
+stronglyconnected.o: stronglyconnected.cpp.o
+.PHONY : stronglyconnected.o
+
+# target to build an object file
+stronglyconnected.cpp.o:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/stronglyconnected.cpp.o
+.PHONY : stronglyconnected.cpp.o
+
+stronglyconnected.i: stronglyconnected.cpp.i
+.PHONY : stronglyconnected.i
+
+# target to preprocess a source file
+stronglyconnected.cpp.i:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/stronglyconnected.cpp.i
+.PHONY : stronglyconnected.cpp.i
+
+stronglyconnected.s: stronglyconnected.cpp.s
+.PHONY : stronglyconnected.s
+
+# target to generate assembly for a file
+stronglyconnected.cpp.s:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/stronglyconnected.cpp.s
+.PHONY : stronglyconnected.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -248,6 +272,9 @@ help:
 	@echo "... landalgo.o"
 	@echo "... landalgo.i"
 	@echo "... landalgo.s"
+	@echo "... stronglyconnected.o"
+	@echo "... stronglyconnected.i"
+	@echo "... stronglyconnected.s"
 .PHONY : help
 
 

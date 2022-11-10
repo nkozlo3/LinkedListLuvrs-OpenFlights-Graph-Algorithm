@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/src.dir/graph.cpp.o.d"
   "CMakeFiles/src.dir/landalgo.cpp.o"
   "CMakeFiles/src.dir/landalgo.cpp.o.d"
+  "CMakeFiles/src.dir/stronglyconnected.cpp.o"
+  "CMakeFiles/src.dir/stronglyconnected.cpp.o.d"
   "libsrc.a"
   "libsrc.pdb"
 )

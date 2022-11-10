@@ -81,14 +81,12 @@ TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][
 
     double actual1 = graph.numberNormalized(-180, 180, 0, 1254, 107.73799896240234);
 
-    std::cout << actual1 << std::endl;
-
     double expected = 250;
 
     REQUIRE(actual == expected);
 }
 
-TEST_CASE("Graph sourceToDestLongLat does not have duplicates", "[weight=5][graph][7]")
+TEST_CASE("Graph sourceToDestLongLat outputs correct data", "[weight=5][graph][7]")
 {
     Graph graph = Graph();
 
@@ -135,6 +133,15 @@ TEST_CASE("Graph sourceToDestLongLat does not have duplicates", "[weight=5][grap
     for (size_t i = 0; i < str.size(); i++)
     {
         std::string dest = m[str[i]].at(0).airportCode;
+
+        for (size_t j = 0; j < m[str[i]].size(); j++)
+        {
+            std::string dest = m[str[i]].at(j).airportCode;
+            REQUIRE(m[str[i]][j].lonAndLatPoints.first == m1[dest].first);
+            REQUIRE(m[str[i]][j].lonAndLatPoints.second == m1[dest].second);
+            REQUIRE(m[str[i]][j].distance == graph.sourceToDestLongLatHelper(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
+        }
+
         REQUIRE(m[str[i]].at(0).lonAndLatPoints.first == m1[dest].first);
         REQUIRE(m[str[i]].at(0).lonAndLatPoints.second == m1[dest].second);
         REQUIRE(m[str[i]].at(0).distance == graph.sourceToDestLongLatHelper(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
