@@ -125,12 +125,19 @@ TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][
 
     std::map<std::string, std::pair<double, double>> m = graph.codeToPositionMapMaker("airports.csv");
 
-    double actual1 = m["\"GKA\""].first;
-    double actual2 = m["\"GKA\""].second;
+    double actual1 = m["GKA"].first;
+    double actual2 = m["GKA"].second;
+    double actual3 = m["AER"].first;
+    double actual4 = m["AER"].second;
+
+    double expected3 = 43.449902;
+    double expected4 = 39.9566;
 
     double expected1 = -6.081689834590001;
     double expected2 = 145.391998291;
 
     REQUIRE(actual1 == expected1);
     REQUIRE(actual2 == expected2);
+    REQUIRE(actual3 == expected3);
+    REQUIRE(actual4 == expected4);
 }
