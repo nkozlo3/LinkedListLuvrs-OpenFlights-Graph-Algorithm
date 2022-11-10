@@ -4,10 +4,9 @@
 #include "graph.h"
 #include "dfs.h"
 
-class StronglyConnected {
-    public:
-        StronglyConnected();
-    private:
-
-
+class StronglyConnected
+{
+public:
+    StronglyConnected(); // TODO:
+private:
 };

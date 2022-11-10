@@ -4,11 +4,10 @@
 #include "graph.h"
 #include "dfs.h"
 
-class LandmarkAlgo {
-    public:
-        LandmarkAlgo();
-        Graph getGraph();
-    private:
-
-
+class LandmarkAlgo
+{
+public:
+    LandmarkAlgo();   // TODO:
+    Graph getGraph(); // TODO:
+private:
 };

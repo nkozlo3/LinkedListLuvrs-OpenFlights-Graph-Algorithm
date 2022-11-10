@@ -5,8 +5,9 @@
 class DFS
 {
 public:
-    DFS();
-    ~DFS();
+    DFS();                  // TODO:
+    ~DFS();                 // TODO:
+    DFS(const DFS &object); // TODO:
 
 private:
 };

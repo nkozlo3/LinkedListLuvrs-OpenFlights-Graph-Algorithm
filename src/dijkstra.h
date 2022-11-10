@@ -2,11 +2,10 @@
 
 #include <iostream>
 #include "graph.h"
-class Dijkstras {
-    public:
-        Dijkstras();
-        Graph getGraph();
-    private:
-
-
+class Dijkstras
+{
+public:
+    Dijkstras();      // TODO:
+    Graph getGraph(); // TODO:
+private:
 };
