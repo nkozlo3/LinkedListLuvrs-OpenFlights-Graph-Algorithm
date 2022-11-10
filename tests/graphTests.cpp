@@ -88,11 +88,13 @@ TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][
     REQUIRE(actual == expected);
 }
 
-TEST_CASE("Graph sourceToDestsMapMaker does not have duplicates", "[weight=5][graph][9]")
+TEST_CASE("Graph sourceToDestLongLat does not have duplicates", "[weight=5][graph][7]")
 {
     Graph graph = Graph();
 
-    std::map<std::string, std::vector<Graph::structone>> m = graph.sourceToDestsMapMaker("routes.csv");
+    std::map<std::string, std::vector<Graph::structone>> m = graph.sourceToDestLongLat("routes.csv");
+
+    std::map<std::string, std::pair<double, double>> m1 = graph.codeToPosition("airports.csv");
 
     std::vector<std::string> str =
         {
@@ -115,15 +117,35 @@ TEST_CASE("Graph sourceToDestsMapMaker does not have duplicates", "[weight=5][gr
             "VTE",
             "WNZ"};
 
-    std::cout << m["TBB"].at(0).lonAndLatPoints.first << " " << m["AUH"].at(0).lonAndLatPoints.second << std::endl;
-    std::cout << m["TBB"].at(0).airportCode << std::endl;
+    REQUIRE(m[str[0]].at(0).airportCode == "AMD");
+    REQUIRE(m[str[0]].at(1).airportCode == "BLR");
+    REQUIRE(m[str[0]].at(2).airportCode == "BOM");
+    REQUIRE(m[str[0]].at(3).airportCode == "CCJ");
+    REQUIRE(m[str[0]].at(4).airportCode == "COK");
+    REQUIRE(m[str[0]].at(5).airportCode == "DEL");
+    REQUIRE(m[str[0]].at(6).airportCode == "DMM");
+    REQUIRE(m[str[0]].at(7).airportCode == "HYD");
+    REQUIRE(m[str[0]].at(8).airportCode == "KWI");
+    REQUIRE(m[str[0]].at(9).airportCode == "MAA");
+    REQUIRE(m[str[0]].at(10).airportCode == "TRV");
+    REQUIRE(m[str[0]].at(11).airportCode == "ATH");
+    REQUIRE(m[str[0]].at(12).airportCode == "CMB");
+    REQUIRE(m[str[0]].at(13).airportCode == "DUS");
+
+    for (size_t i = 0; i < str.size(); i++)
+    {
+        std::string dest = m[str[i]].at(0).airportCode;
+        REQUIRE(m[str[i]].at(0).lonAndLatPoints.first == m1[dest].first);
+        REQUIRE(m[str[i]].at(0).lonAndLatPoints.second == m1[dest].second);
+        REQUIRE(m[str[i]].at(0).distance == graph.sourceToDestLongLatHelper(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
+    }
 }
 
 TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][graph][7]")
 {
     Graph graph = Graph();
 
-    std::map<std::string, std::pair<double, double>> m = graph.codeToPositionMapMaker("airports.csv");
+    std::map<std::string, std::pair<double, double>> m = graph.codeToPosition("airports.csv");
 
     double actual1 = m["GKA"].first;
     double actual2 = m["GKA"].second;

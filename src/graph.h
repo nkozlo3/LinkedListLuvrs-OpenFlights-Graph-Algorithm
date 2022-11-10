@@ -14,6 +14,7 @@
 #include <sstream>
 #include <map>
 #include <string>
+#include <math.h>
 
 /**
  * airports.csv is formatted as:
@@ -45,11 +46,18 @@ public:
     {
         std::pair<double, double> lonAndLatPoints;
         std::string airportCode;
+        double distance;
     };
 
+    // gets a map of edges
+    double getEdges(std::string airpCode1, std::string airpCode2);
+
+    // returns a vector of structs of every airport's destinations, lats/longs, and distances
+    std::map<std::string, std::vector<structone>> sourceToDestLongLat(std::string txtFileName);
+
     // helper functions:
+    double sourceToDestLongLatHelper(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon);
     std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns = {-1});
-    std::map<std::string, std::pair<double, double>> codeToPositionMapMaker(std::string txtFileName);
-    std::map<std::string, std::vector<structone>> sourceToDestsMapMaker(std::string txtFileName);
+    std::map<std::string, std::pair<double, double>> codeToPosition(std::string txtFileName);
     double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 };

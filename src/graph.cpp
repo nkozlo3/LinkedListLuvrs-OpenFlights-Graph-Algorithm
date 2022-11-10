@@ -6,6 +6,20 @@
 
 using namespace cs225;
 
+double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
+{
+    std::map<std::pair<std::string, std::string>, double> m;
+    std::map<std::string, std::vector<Graph::structone>> pairs = sourceToDestLongLat("routes.csv");
+    double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.first - pairs[destAirpCode][0].lonAndLatPoints.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.second - pairs[destAirpCode][0].lonAndLatPoints.second, 2));
+    return distance;
+}
+
+double Graph::sourceToDestLongLatHelper(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon)
+{
+    double distance = sqrt(std::pow(sourceAirpLat - destAirpLat, 2) + std::pow(sourceAirpLon - destAirLon, 2));
+    return distance;
+}
+
 /**
  * @brief Converts a csv file to a vector of vectors of strings
  * @param filename The name of the csv file
@@ -55,7 +69,7 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName, std
     return v;
 }
 
-std::map<std::string, std::pair<double, double>> Graph::codeToPositionMapMaker(std::string txtFileName)
+std::map<std::string, std::pair<double, double>> Graph::codeToPosition(std::string txtFileName)
 {
     std::map<std::string, std::pair<double, double>> m;
     /**
@@ -90,7 +104,7 @@ std::map<std::string, std::pair<double, double>> Graph::codeToPositionMapMaker(s
  * @param txtFileName The name of the txt file (in our case, Codes.txt)
  * @return map of edges
  */
-std::map<std::string, std::vector<Graph::structone>> Graph::sourceToDestsMapMaker(std::string txtFileName)
+std::map<std::string, std::vector<Graph::structone>> Graph::sourceToDestLongLat(std::string txtFileName)
 {
     // Now we need to compile a map of every destination that each individual airport has
     // we have a routes file that has the source and destination IATA codes
@@ -98,7 +112,7 @@ std::map<std::string, std::vector<Graph::structone>> Graph::sourceToDestsMapMake
     // The key is the source and the value is a vector of destinations
 
     std::vector<std::vector<std::string>> v2 = csvToVect(txtFileName, {2, 4});
-    std::map<std::string, std::pair<double, double>> points = codeToPositionMapMaker("airports.csv");
+    std::map<std::string, std::pair<double, double>> points = codeToPosition("airports.csv");
 
     std::map<std::string, std::vector<structone>> m2;
 
@@ -124,6 +138,7 @@ std::map<std::string, std::vector<Graph::structone>> Graph::sourceToDestsMapMake
                 struc.airportCode = v2[i][1];
                 struc.lonAndLatPoints.first = points[v2[i][1]].first;
                 struc.lonAndLatPoints.second = points[v2[i][1]].second;
+                struc.distance = sourceToDestLongLatHelper(points[v2[i][0]].first, points[v2[i][0]].second, points[v2[i][1]].first, points[v2[i][1]].second);
                 currVect.push_back(struc);
             }
         }
