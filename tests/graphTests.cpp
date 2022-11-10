@@ -88,11 +88,11 @@ TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][
     REQUIRE(actual == expected);
 }
 
-TEST_CASE("Graph sourceToDestsMapMaker does not have duplicates", "[weight=5][graph][7]")
+TEST_CASE("Graph sourceToDestsMapMaker does not have duplicates", "[weight=5][graph][9]")
 {
     Graph graph = Graph();
 
-    std::map<std::string, std::vector<std::string>> m = graph.sourceToDestsMapMaker("routes.csv");
+    std::map<std::string, std::vector<Graph::structone>> m = graph.sourceToDestsMapMaker("routes.csv");
 
     std::vector<std::string> str =
         {
@@ -114,30 +114,12 @@ TEST_CASE("Graph sourceToDestsMapMaker does not have duplicates", "[weight=5][gr
             "VKG",
             "VTE",
             "WNZ"};
-    for (size_t i = 0; i < str.size(); i++)
-    {
-        std::vector<std::string> v = m[str[i]];
 
-        std::map<std::string, int> countMap;
-        for (auto &elem : v)
-        {
-            auto result = countMap.insert(std::pair<std::string, int>(elem, 1));
-            if (result.second == false)
-                result.first->second++;
-        }
-
-        for (auto &elem : countMap)
-        {
-            if (elem.second > 1)
-            {
-                std::cout << elem.first << " :: " << elem.second << std::endl;
-                FAIL();
-            }
-        }
-    }
+    std::cout << m["TBB"].at(0).lonAndLatPoints.first << " " << m["AUH"].at(0).lonAndLatPoints.second << std::endl;
+    std::cout << m["TBB"].at(0).airportCode << std::endl;
 }
 
-TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][graph][9]")
+TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][graph][7]")
 {
     Graph graph = Graph();
 

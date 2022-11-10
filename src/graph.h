@@ -43,8 +43,8 @@ class Graph
 public:
     struct structone
     {
-        std::pair<double, double> p;
-        std::string str;
+        std::pair<double, double> lonAndLatPoints;
+        std::string airportCode;
     };
 
     // helper functions:

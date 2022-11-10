@@ -88,7 +88,7 @@ std::map<std::string, std::pair<double, double>> Graph::codeToPositionMapMaker(s
  * @param txtFileName The name of the txt file (in our case, Codes.txt)
  * @return map of edges
  */
-std::map<std::string, std::vector<structone>> Graph::sourceToDestsMapMaker(std::string txtFileName)
+std::map<std::string, std::vector<Graph::structone>> Graph::sourceToDestsMapMaker(std::string txtFileName)
 {
     // Now we need to compile a map of every destination that each individual airport has
     // we have a routes file that has the source and destination IATA codes
@@ -119,8 +119,8 @@ std::map<std::string, std::vector<structone>> Graph::sourceToDestsMapMaker(std::
         {
             if (v2[i][0] == currSource && std::find(v2[i].begin(), v2[i].end(), v2[i][1]) == v2[i].end())
             {
-                struc.str = v2[i][1];
-                struc.p = points[v2[i][1]];
+                struc.airportCode = v2[i][1];
+                struc.lonAndLatPoints = points[v2[i][1]];
                 currVect.push_back(struc);
             }
         }
