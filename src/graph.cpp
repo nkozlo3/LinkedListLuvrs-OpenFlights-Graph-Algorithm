@@ -76,6 +76,8 @@ std::map<std::string, std::pair<double, double>> Graph::codeToPositionMapMaker(s
             double lon = std::strtod(v[i][7].c_str(), nullptr);
             w.first = lat;
             w.second = lon;
+            v[i][4].erase(0, 1);
+            v[i][4].erase(v[i][4].end() - 1);
             m[v[i][4]] = w;
         }
         // else don't add it to the map
@@ -117,10 +119,11 @@ std::map<std::string, std::vector<Graph::structone>> Graph::sourceToDestsMapMake
 
         for (size_t i = 0; i < v2.size(); i++)
         {
-            if (v2[i][0] == currSource && std::find(v2[i].begin(), v2[i].end(), v2[i][1]) == v2[i].end())
+            if (v2[i][0] == currSource)
             {
                 struc.airportCode = v2[i][1];
-                struc.lonAndLatPoints = points[v2[i][1]];
+                struc.lonAndLatPoints.first = points[v2[i][1]].first;
+                struc.lonAndLatPoints.second = points[v2[i][1]].second;
                 currVect.push_back(struc);
             }
         }
