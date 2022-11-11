@@ -9,7 +9,7 @@ using namespace cs225;
 double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
 {
     std::map<std::pair<std::string, std::string>, double> m;
-    std::map<std::string, std::vector<Graph::structone>> pairs = sourceToDestLongLat("routes.csv");
+    std::map<std::string, std::vector<Graph::airport>> pairs = sourceToDestLongLat("routes.csv");
     double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.first - pairs[destAirpCode][0].lonAndLatPoints.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.second - pairs[destAirpCode][0].lonAndLatPoints.second, 2));
     return distance;
 }

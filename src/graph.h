@@ -42,7 +42,7 @@
 class Graph
 {
 public:
-    struct structone
+    struct airport
     {
         std::pair<double, double> lonAndLatPoints;
         std::string airportCode;
@@ -53,7 +53,7 @@ public:
     double getEdges(std::string airpCode1, std::string airpCode2);
 
     // returns a vector of structs of every airport's destinations, lats/longs, and distances
-    std::map<std::string, std::vector<structone>> sourceToDestLongLat(std::string txtFileName);
+    std::map<std::string, std::vector<airport>> sourceToDestLongLat(std::string txtFileName);
 
     // helper functions:
     double sourceToDestLongLatHelper(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon);
