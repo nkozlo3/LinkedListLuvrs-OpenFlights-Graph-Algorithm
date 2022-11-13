@@ -42,60 +42,22 @@
 class Graph
 {
 public:
-    // constructors
-    /**
-     * @CITE: I am basing this function off of the Graph constructor from CS225's lab_ml Graph class
-     *
-     *
-     * Constructor to create an empty graph.
-     * @param weighted - specifies whether the graph is a weighted graph or
-     *  not
-     */
-    Graph(bool weighted);
-
-    /**
-     * @CITE: I am basing this function off of the Graph constructor from CS225's lab_ml Graph class
-     *
-     *
-     * Constructor to create an empty graph.
-     * @param weighted - specifies whether the graph is a weighted graph or
-     *  not
-     * @param directed - specifies whether the graph is directed
-     */
-    Graph(bool weighted, bool directed);
-
-    // edge struct containing vertex's of the edge and the edge weight
-    struct edge
+    struct airport
     {
         std::pair<double, double> lonAndLatPoints;
-        std::string sourceAirportCode_vertex1;
-        std::string destAirportCode_vertex2;
-        double distance_weight;
-
-        // overloading < so we can call std::sort on edges
-        bool operator<(const edge &other) const
-        {
-            return distance_weight < other.distance_weight;
-        }
+        std::string airportCode;
+        double distance;
     };
 
-    // helper functions:
     // gets a map of edges
     double getEdges(std::string airpCode1, std::string airpCode2);
-    // returns a vector of structs of every airport's destinations, lats/longs, and distances
-    std::map<std::string, std::vector<edge>> sourceToDestLongLat(std::string txtFileName);
-    // returns the distance between two airports
-    double sourceToDestLongLatHelper(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon);
-    // converts a csv to a vector of vectors of strings
-    std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns = {-1});
-    // returns a map where the airport code is the key and a pair of the longitude and latitude is the element
-    std::map<std::string, std::pair<double, double>> codeToPosition(std::string txtFileName);
-    // normalizes tow numbers
-    double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 
-private:
-    // int picNum;
-    // string picName;
-    bool weighted_;
-    bool directed_;
+    // returns a vector of structs of every airport's destinations, lats/longs, and distances
+    std::map<std::string, std::vector<airport>> sourceToDestLongLat(std::string txtFileName);
+
+    // helper functions:
+    double sourceToDestLongLatHelper(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon);
+    std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns = {-1});
+    std::map<std::string, std::pair<double, double>> codeToPosition(std::string txtFileName);
+    double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 };

@@ -6,22 +6,10 @@
 
 using namespace cs225;
 
-Graph::Graph(bool weighted)
-{
-    weighted_ = weighted;
-    directed_ = true;
-}
-
-Graph::Graph(bool weighted, bool directed)
-{
-    weighted_ = weighted;
-    directed_ = directed;
-}
-
 double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
 {
     std::map<std::pair<std::string, std::string>, double> m;
-    std::map<std::string, std::vector<Graph::edge>> pairs = sourceToDestLongLat("routes.csv");
+    std::map<std::string, std::vector<Graph::airport>> pairs = sourceToDestLongLat("routes.csv");
     double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.first - pairs[destAirpCode][0].lonAndLatPoints.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.second - pairs[destAirpCode][0].lonAndLatPoints.second, 2));
     return distance;
 }
@@ -116,7 +104,7 @@ std::map<std::string, std::pair<double, double>> Graph::codeToPosition(std::stri
  * @param txtFileName The name of the txt file (in our case, Codes.txt)
  * @return map of edges
  */
-std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::string txtFileName)
+std::map<std::string, std::vector<Graph::structone>> Graph::sourceToDestLongLat(std::string txtFileName)
 {
     // Now we need to compile a map of every destination that each individual airport has
     // we have a routes file that has the source and destination IATA codes
@@ -126,15 +114,15 @@ std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::
     std::vector<std::vector<std::string>> v2 = csvToVect(txtFileName, {2, 4});
     std::map<std::string, std::pair<double, double>> points = codeToPosition("airports.csv");
 
-    std::map<std::string, std::vector<edge>> m2;
+    std::map<std::string, std::vector<structone>> m2;
 
     std::string currSource = "";
 
-    std::vector<edge> currVect;
+    std::vector<structone> currVect;
 
     for (size_t i = 0; i < v2.size(); i++)
     {
-        edge struc;
+        structone struc;
         if (!currVect.empty())
             currVect.clear();
 
@@ -147,11 +135,10 @@ std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::
         {
             if (v2[i][0] == currSource)
             {
-                struc.sourceAirportCode_vertex1 = v2[i][1];
-                struc.destAirportCode_vertex2 = v2[i][0];
+                struc.airportCode = v2[i][1];
                 struc.lonAndLatPoints.first = points[v2[i][1]].first;
                 struc.lonAndLatPoints.second = points[v2[i][1]].second;
-                struc.distance_weight = sourceToDestLongLatHelper(points[v2[i][0]].first, points[v2[i][0]].second, points[v2[i][1]].first, points[v2[i][1]].second);
+                struc.distance = sourceToDestLongLatHelper(points[v2[i][0]].first, points[v2[i][0]].second, points[v2[i][1]].first, points[v2[i][1]].second);
                 currVect.push_back(struc);
             }
         }
