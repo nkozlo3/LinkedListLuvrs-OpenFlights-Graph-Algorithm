@@ -5,6 +5,7 @@
 // #include <queue>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // // new functions:
 // int Dijkstras::minDist(std::vector<int> distances, std::vector<bool> visited)
 // {
@@ -68,6 +69,8 @@
 //     }
 // }
 =======
+=======
+>>>>>>> parent of 9f196b8 (.)
 //new functions:
 int Dijkstras::minDist(std::vector<int> distances, std::vector<bool> visited) {
     int min = INT_MAX;
@@ -121,4 +124,7 @@ void Dijkstras::dijkstra(std::vector<std::vector<int>> graph, int startVertex) {
     }
 }
 
+<<<<<<< HEAD
+>>>>>>> parent of 9f196b8 (.)
+=======
 >>>>>>> parent of 9f196b8 (.)
