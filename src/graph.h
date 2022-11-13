@@ -45,8 +45,14 @@ public:
     struct edge
     {
         std::pair<double, double> lonAndLatPoints;
-        std::string airportCode;
+        std::string sourceAirportCode_sourceVertex;
+        std::string destAirportCode_destVertex;
         double distance;
+
+        bool operator<(const edge &other) const
+        {
+            return distance < other.distance;
+        }
     };
 
     // gets a map of edges

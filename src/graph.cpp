@@ -135,7 +135,9 @@ std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::
         {
             if (v2[i][0] == currSource)
             {
-                struc.airportCode = v2[i][1];
+                struc.sourceAirportCode_sourceVertex = v2[i][1];
+                struc.destAirportCode_destVertex = v2[i][0];
+
                 struc.lonAndLatPoints.first = points[v2[i][1]].first;
                 struc.lonAndLatPoints.second = points[v2[i][1]].second;
                 struc.distance = sourceToDestLongLatHelper(points[v2[i][0]].first, points[v2[i][0]].second, points[v2[i][1]].first, points[v2[i][1]].second);
