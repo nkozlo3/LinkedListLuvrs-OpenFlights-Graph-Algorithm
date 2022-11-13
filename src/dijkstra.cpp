@@ -11,7 +11,7 @@ int Dijkstras::minDist(std::vector<int> distances, std::vector<bool> visited)
     int idx;
     for (size_t i = 0; i < distances.size(); i++)
     {
-        if (distances[i] <= min && !shortestPathSet[i])
+        if (distances[i] <= min && !visited[i])
         {
             min = distances[i];
             idx = i;
