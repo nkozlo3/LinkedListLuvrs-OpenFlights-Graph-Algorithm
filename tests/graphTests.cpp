@@ -115,28 +115,28 @@ TEST_CASE("Graph sourceToDestLongLat outputs correct data", "[weight=5][graph][7
             "VTE",
             "WNZ"};
 
-    REQUIRE(m[str[0]].at(0).airportCode == "AMD");
-    REQUIRE(m[str[0]].at(1).airportCode == "BLR");
-    REQUIRE(m[str[0]].at(2).airportCode == "BOM");
-    REQUIRE(m[str[0]].at(3).airportCode == "CCJ");
-    REQUIRE(m[str[0]].at(4).airportCode == "COK");
-    REQUIRE(m[str[0]].at(5).airportCode == "DEL");
-    REQUIRE(m[str[0]].at(6).airportCode == "DMM");
-    REQUIRE(m[str[0]].at(7).airportCode == "HYD");
-    REQUIRE(m[str[0]].at(8).airportCode == "KWI");
-    REQUIRE(m[str[0]].at(9).airportCode == "MAA");
-    REQUIRE(m[str[0]].at(10).airportCode == "TRV");
-    REQUIRE(m[str[0]].at(11).airportCode == "ATH");
-    REQUIRE(m[str[0]].at(12).airportCode == "CMB");
-    REQUIRE(m[str[0]].at(13).airportCode == "DUS");
+    REQUIRE(m[str[0]].at(0).sourceAirportCode_sourceVertex == "AMD");
+    REQUIRE(m[str[0]].at(1).sourceAirportCode_sourceVertex == "BLR");
+    REQUIRE(m[str[0]].at(2).sourceAirportCode_sourceVertex == "BOM");
+    REQUIRE(m[str[0]].at(3).sourceAirportCode_sourceVertex == "CCJ");
+    REQUIRE(m[str[0]].at(4).sourceAirportCode_sourceVertex == "COK");
+    REQUIRE(m[str[0]].at(5).sourceAirportCode_sourceVertex == "DEL");
+    REQUIRE(m[str[0]].at(6).sourceAirportCode_sourceVertex == "DMM");
+    REQUIRE(m[str[0]].at(7).sourceAirportCode_sourceVertex == "HYD");
+    REQUIRE(m[str[0]].at(8).sourceAirportCode_sourceVertex == "KWI");
+    REQUIRE(m[str[0]].at(9).sourceAirportCode_sourceVertex == "MAA");
+    REQUIRE(m[str[0]].at(10).sourceAirportCode_sourceVertex == "TRV");
+    REQUIRE(m[str[0]].at(11).sourceAirportCode_sourceVertex == "ATH");
+    REQUIRE(m[str[0]].at(12).sourceAirportCode_sourceVertex == "CMB");
+    REQUIRE(m[str[0]].at(13).sourceAirportCode_sourceVertex == "DUS");
 
     for (size_t i = 0; i < str.size(); i++)
     {
-        std::string dest = m[str[i]].at(0).airportCode;
+        std::string dest = m[str[i]].at(0).sourceAirportCode_sourceVertex;
 
         for (size_t j = 0; j < m[str[i]].size(); j++)
         {
-            std::string dest = m[str[i]].at(j).airportCode;
+            std::string dest = m[str[i]].at(j).sourceAirportCode_sourceVertex;
             REQUIRE(m[str[i]][j].lonAndLatPoints.first == m1[dest].first);
             REQUIRE(m[str[i]][j].lonAndLatPoints.second == m1[dest].second);
             REQUIRE(m[str[i]][j].distance == graph.sourceToDestLongLatHelper(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
