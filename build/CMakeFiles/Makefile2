@@ -77,6 +77,7 @@ preinstall: src/preinstall
 # The main recursive "clean" target.
 clean: CMakeFiles/test.dir/clean
 clean: CMakeFiles/main.dir/clean
+clean: CMakeFiles/install_graphviz.dir/clean
 clean: lib/clean
 clean: src/clean
 .PHONY : clean
@@ -168,6 +169,32 @@ main: CMakeFiles/main.dir/rule
 CMakeFiles/main.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
 .PHONY : CMakeFiles/main.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/install_graphviz.dir
+
+# All Build rule for target.
+CMakeFiles/install_graphviz.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/install_graphviz.dir/build.make CMakeFiles/install_graphviz.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/install_graphviz.dir/build.make CMakeFiles/install_graphviz.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num= "Built target install_graphviz"
+.PHONY : CMakeFiles/install_graphviz.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/install_graphviz.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/install_graphviz.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles 0
+.PHONY : CMakeFiles/install_graphviz.dir/rule
+
+# Convenience name for target.
+install_graphviz: CMakeFiles/install_graphviz.dir/rule
+.PHONY : install_graphviz
+
+# clean rule for target.
+CMakeFiles/install_graphviz.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/install_graphviz.dir/build.make CMakeFiles/install_graphviz.dir/clean
+.PHONY : CMakeFiles/install_graphviz.dir/clean
 
 #=============================================================================
 # Target rules for target lib/CMakeFiles/lodepng.dir

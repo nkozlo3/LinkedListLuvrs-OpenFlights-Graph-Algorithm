@@ -279,7 +279,8 @@ src/CMakeFiles/src.dir/graph.cpp.o: ../src/graph.cpp \
   /usr/include/c++/11/tr1/modified_bessel_func.tcc \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
-  /usr/include/c++/11/tr1/riemann_zeta.tcc
+  /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/stdlib.h
 
 src/CMakeFiles/src.dir/landalgo.cpp.o: ../src/landalgo.cpp \
   ../src/landalgo.h \
@@ -557,6 +558,7 @@ src/CMakeFiles/src.dir/landalgo.cpp.o: ../src/landalgo.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/stdlib.h \
   ../src/dfs.h
 
 src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
@@ -835,6 +837,7 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
   /usr/include/c++/11/tr1/poly_hermite.tcc \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
+  /usr/include/c++/11/stdlib.h \
   ../src/dfs.h
 
 
@@ -1021,6 +1024,8 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
 /usr/include/c++/11/debug/macros.h:
 
 ../src/dijkstra.cpp:
+
+/usr/include/c++/11/stdlib.h:
 
 /usr/include/c++/11/debug/formatter.h:
 

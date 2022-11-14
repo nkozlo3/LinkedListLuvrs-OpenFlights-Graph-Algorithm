@@ -6,22 +6,26 @@
 
 using namespace cs225;
 
-Graph::Graph(bool weighted)
+Graph::Graph(bool weighted, int picNum, std::string picName)
 {
     weighted_ = weighted;
     directed_ = true;
+    picNum_ = picNum;
+    picName_ = picName;
 
-    // populate adjacency_list
-    adjacency_list = populateAdjacencyList("routes.csv");
+    // populate adjacency_list_
+    adjacency_matrix_ = populateAdjacencyList("routes.csv");
 }
 
-Graph::Graph(bool weighted, bool directed)
+Graph::Graph(bool weighted, bool directed, int picNum, std::string picName)
 {
     weighted_ = weighted;
     directed_ = directed;
+    picNum_ = picNum;
+    picName_ = picName;
 
-    // populate adjacency_list
-    adjacency_list = populateAdjacencyList("routes.csv");
+    // populate adjacency_list_
+    adjacency_matrix_ = populateAdjacencyList("routes.csv");
 }
 
 std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::populateAdjacencyList(std::string txtFileName)
@@ -70,19 +74,19 @@ std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Gr
 
 std::unordered_map<std::string, Graph::edge> Graph::getAdjacencyListUnorderedMap(std::string sourceCode)
 {
-    return adjacency_list[sourceCode];
+    return adjacency_matrix_[sourceCode];
 }
 
 Graph::edge Graph::getAdjacencyListEdge(std::string sourceCode, std::string destCode)
 {
-    return adjacency_list[sourceCode][destCode];
+    return adjacency_matrix_[sourceCode][destCode];
 }
 
 std::vector<std::string> Graph::getVertices()
 {
     std::vector<std::string> vertices;
 
-    for (auto it = adjacency_list.begin(); it != adjacency_list.end(); it++)
+    for (auto it = adjacency_matrix_.begin(); it != adjacency_matrix_.end(); it++)
     {
         vertices.push_back(it->first);
     }
@@ -230,7 +234,6 @@ std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::
                 currVect.push_back(struc);
             }
         }
-
         m2[currSource] = currVect;
     }
     return m2;
@@ -250,4 +253,136 @@ double Graph::numberNormalized(double originalMinRange, double originalMaxRange,
     double invLerp = (position - originalMinRange) / (originalMaxRange - originalMinRange);
 
     return (1 - invLerp) * minRange + maxRange * invLerp;
+}
+
+int Graph::getPicNum()
+{
+    return picNum_;
+}
+
+std::string Graph::getPicName()
+{
+    return picName_;
+}
+
+/**
+ * Prints the graph to stdout
+ */
+void Graph::print()
+{
+    // for (auto it = adjacency_matrix_.begin(); it != adjacency_matrix_.end(); ++it)
+    // {
+    //     std::cout << it->first << std::endl;
+
+    //     for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2)
+    //     {
+    //         std::stringstream ss;
+    //         ss << it2->first;
+    //         std::string vertexColumn = "    => " + ss.str();
+    //         vertexColumn += " ";
+    //         std::cout << std::left << std::setw(26) << vertexColumn;
+    //         string edgeColumn = "edge label = \"" + it2->second.getLabel() + "\"";
+    //         std::cout << std::left << std::setw(26) << edgeColumn;
+    //         if (weighted)
+    //             std::cout << "weight = " << it2->second.getWeight();
+    //         std::cout << std::endl;
+    //     }
+    // }
+}
+
+void Graph::saveGraphAsPNG(std::string title)
+{
+    std::ofstream neatoFile;
+    std::string filename = title + ".dot";
+    neatoFile.open(filename.c_str());
+
+    if (!neatoFile.good())
+        std::cerr << "\033[1;31m[Graph Error]\033[0m "
+                  << "couldn't create" << filename << std::endl;
+
+    neatoFile
+        << "strict graph G {\n"
+        << "\toverlap=\"false\";\n"
+        << "\tdpi=\"1300\";\n"
+        << "\tsep=\"1.5\";\n"
+        << "\tnode [fixedsize=\"true\", shape=\"circle\", fontsize=\"7.0\"];\n"
+        << "\tedge [penwidth=\"1.5\", fontsize=\"7.0\"];\n";
+
+    std::vector<std::string> vertices = getVertices();
+
+    int xpos1 = 100;
+    int xpos2 = 100;
+    int xpos, ypos;
+
+    for (auto it : vertices)
+    {
+        std::string current = it;
+        neatoFile
+            << "\t\""
+            << current
+            << "\"";
+        if (current[1] == '1')
+        {
+            ypos = 100;
+            xpos = xpos1;
+            xpos1 += 100;
+        }
+        else
+        {
+            ypos = 200;
+            xpos = xpos2;
+            xpos2 += 100;
+        }
+        neatoFile << "[pos=\"" << xpos << "," << ypos << "\"]";
+        neatoFile << ";\n";
+    }
+
+    neatoFile << "\tedge [penwidth=\"1.5\", fontsize=\"7.0\"];\n";
+
+    size_t s = adjacency_matrix_.size();
+    int amnt = 2;
+
+    auto it1 = std::next(adjacency_matrix_.begin(), amnt);
+
+    for (auto it = adjacency_matrix_.begin(); it != it1; ++it)
+    {
+        size_t s1 = it->second.size();
+        int amnt1 = 1;
+
+        auto it21 = std::next(it->second.begin(), amnt1);
+
+        for (auto it2 = it->second.begin(); it2 != it21; ++it2)
+        {
+            std::string vertex1Text = it->first;
+            std::string vertex2Text = it2->first;
+
+            neatoFile << "\t\"";
+            neatoFile << vertex1Text;
+            neatoFile << "\" -- \"";
+            neatoFile << vertex2Text;
+            neatoFile << "\"";
+
+            neatoFile << "[color=\"green\"]";
+
+            if (weighted_)
+                neatoFile << "[label=\"" << it2->second.distance_edgeWeight << "\"]";
+
+            neatoFile << "[constraint = \"false\"]"
+                      << ";\n";
+        }
+    }
+
+    neatoFile << "}";
+    neatoFile.close();
+    std::string command = "neato -n -Tpng " + filename + " -o " + title + ".png 2> /dev/null";
+    int result = system(command.c_str());
+
+    if (result == 0)
+    {
+        std::cout << "Output graph saved as " << title << ".png" << std::endl;
+    }
+    else
+    {
+        std::cout << "Failed to generate visual output graph using `neato`" << std::endl;
+    }
 }

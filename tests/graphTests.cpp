@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
-Graph graph(1, 1);
+Graph graph(1, 1, 0, "testGraph");
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
 {
@@ -184,7 +184,7 @@ TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][
     REQUIRE(actual4 == expected4);
 }
 
-TEST_CASE("Graph constructor initializes adjacency_list properly", "[weight=5][graph][7]")
+TEST_CASE("Graph constructor populates adjacency_list properly", "[weight=5][graph][7]")
 {
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").destAirportCode_destVertex == "AMD");
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").sourceAirportCode_sourceVertex == "AUH");
@@ -193,4 +193,10 @@ TEST_CASE("Graph constructor initializes adjacency_list properly", "[weight=5][g
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsDest.first == 23.0771999359);
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsDest.second == 72.63469696039999);
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").distance_edgeWeight == graph.calculateDistance(23.0771999359, 72.63469696039999, 24.433000564575195, 54.651100158691406));
+}
+
+TEST_CASE("Graph print prints a graph to std::cout", "[weight=5][graph][9]")
+{
+    // graph.print();
+    graph.saveGraphAsPNG(graph.getPicName());
 }

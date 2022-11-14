@@ -13,10 +13,12 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
+#include <ostream>
 #include <map>
 #include <string>
 #include <math.h>
-
+#include <string>
+#include <stdlib.h>
 /**
  * airports.csv is formatted as:
  * "Airline ID", "Name of the airline", "Alias of the airline", "2-letter IATA code", "3 letter ICAO code", "Callsign", "Country", "Active or not"
@@ -59,35 +61,41 @@ public:
     };
     // constructors
     /**
-     * @CITE: I am basing this function off of the Graph constructor from CS225's lab_ml Graph class
-     *
-     *
      * Constructor to create an empty graph.
      * populates @private @var adjacency_list
      * @param weighted - specifies whether the graph is a weighted graph or
      *  not
      */
-    Graph(bool weighted);
+    Graph(bool weighted, int picNum, std::string picName);
 
     /**
-     * @CITE: I am basing this function off of the Graph constructor from CS225's lab_ml Graph class
-     *
-     *
      * Constructor to create an empty graph.
      * populates @private @var adjacency_list
      * @param weighted - specifies whether the graph is a weighted graph or
      *  not
      * @param directed - specifies whether the graph is directed
      */
-    Graph(bool weighted, bool directed);
+    Graph(bool weighted, bool directed, int picNum, std::string picName);
 
     /**
-     * @CITE: I am taking inspiration from the getVertices function in CS225's lab_ml graph class
-     *
+     * @cite inspired by cs225's, lab_ml, graph class, getVetices function
      * Gets all vertices in the graph.
      * @return a vector of all vertices in the graph
      */
     std::vector<std::string> getVertices();
+
+    /**
+     * @cite inspired by cs225's, lab_ml, graph class, print function
+     * Prints the graph to stdout
+     */
+    void print();
+
+    /**
+     * @cite inspired by cs225's, lab_ml, graph class, savePNG function
+     * Saves the graph as a PNG image.
+     * @param title - the filename of the PNG image
+     */
+    void saveGraphAsPNG(std::string title);
 
     // Populate adjacency_list
     std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> populateAdjacencyList(std::string textFileName);
@@ -147,12 +155,16 @@ public:
 
     Graph::edge getAdjacencyListEdge(std::string sourceCode, std::string destCode);
 
+    int getPicNum();
+
+    std::string getPicName();
+
 private:
     // adjacency_list at [sourceCode][destCode] = edge
-    mutable std::unordered_map<std::string, std::unordered_map<std::string, edge>> adjacency_list;
+    mutable std::unordered_map<std::string, std::unordered_map<std::string, edge>> adjacency_matrix_;
 
-    // int picNum;
-    // string picName;
+    int picNum_;
+    string picName_;
     bool weighted_;
     bool directed_;
 };
