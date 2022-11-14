@@ -5,10 +5,11 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
+Graph graph(1, 1, 0, "testGraph");
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
 {
-    Graph graph = Graph();
+
     std::vector<std::string> widthVect = graph.csvToVect("routes.csv")[0];
     std::vector<std::vector<std::string>> heightVect = graph.csvToVect("routes.csv");
 
@@ -21,7 +22,7 @@ TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[we
 
 TEST_CASE("Graph csvToVect properly maps vectors", "[weight=5][graph][7]")
 {
-    Graph graph = Graph();
+
     std::vector<std::vector<std::string>> vect = graph.csvToVect("routes.csv");
     std::vector<std::string> vectAtZero;
     vectAtZero.push_back("2B");
@@ -51,7 +52,7 @@ TEST_CASE("Graph csvToVect properly maps vectors", "[weight=5][graph][7]")
 
 TEST_CASE("Graph csvToVect properly maps vectors and only takes in the specified columns", "[weight=5][graph][7]")
 {
-    Graph graph = Graph();
+
     std::vector<std::vector<std::string>> vect = graph.csvToVect("airports.csv", {6, 7});
     std::vector<std::string> vectAtZero;
     vectAtZero.push_back("-6.081689834590001");
@@ -75,7 +76,6 @@ TEST_CASE("Graph csvToVect properly maps vectors and only takes in the specified
 
 TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][graph][7]")
 {
-    Graph graph = Graph();
 
     double actual = graph.numberNormalized(-180, 180, 0, 500, 0);
 
@@ -88,7 +88,6 @@ TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][
 
 TEST_CASE("Graph sourceToDestLongLat outputs correct data", "[weight=5][graph][7]")
 {
-    Graph graph = Graph();
 
     std::map<std::string, std::vector<Graph::edge>> m = graph.sourceToDestLongLat("routes.csv");
 
@@ -115,42 +114,56 @@ TEST_CASE("Graph sourceToDestLongLat outputs correct data", "[weight=5][graph][7
             "VTE",
             "WNZ"};
 
-    REQUIRE(m[str[0]].at(0).sourceAirportCode_sourceVertex == "AMD");
-    REQUIRE(m[str[0]].at(1).sourceAirportCode_sourceVertex == "BLR");
-    REQUIRE(m[str[0]].at(2).sourceAirportCode_sourceVertex == "BOM");
-    REQUIRE(m[str[0]].at(3).sourceAirportCode_sourceVertex == "CCJ");
-    REQUIRE(m[str[0]].at(4).sourceAirportCode_sourceVertex == "COK");
-    REQUIRE(m[str[0]].at(5).sourceAirportCode_sourceVertex == "DEL");
-    REQUIRE(m[str[0]].at(6).sourceAirportCode_sourceVertex == "DMM");
-    REQUIRE(m[str[0]].at(7).sourceAirportCode_sourceVertex == "HYD");
-    REQUIRE(m[str[0]].at(8).sourceAirportCode_sourceVertex == "KWI");
-    REQUIRE(m[str[0]].at(9).sourceAirportCode_sourceVertex == "MAA");
-    REQUIRE(m[str[0]].at(10).sourceAirportCode_sourceVertex == "TRV");
-    REQUIRE(m[str[0]].at(11).sourceAirportCode_sourceVertex == "ATH");
-    REQUIRE(m[str[0]].at(12).sourceAirportCode_sourceVertex == "CMB");
-    REQUIRE(m[str[0]].at(13).sourceAirportCode_sourceVertex == "DUS");
+    REQUIRE(m[str[0]].at(0).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(1).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(2).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(3).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(4).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(5).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(6).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(7).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(8).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(9).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(10).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(11).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(12).sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(m[str[0]].at(13).sourceAirportCode_sourceVertex == "AUH");
+
+    REQUIRE(m[str[0]].at(0).destAirportCode_destVertex == "AMD");
+    REQUIRE(m[str[0]].at(1).destAirportCode_destVertex == "BLR");
+    REQUIRE(m[str[0]].at(2).destAirportCode_destVertex == "BOM");
+    REQUIRE(m[str[0]].at(3).destAirportCode_destVertex == "CCJ");
+    REQUIRE(m[str[0]].at(4).destAirportCode_destVertex == "COK");
+    REQUIRE(m[str[0]].at(5).destAirportCode_destVertex == "DEL");
+    REQUIRE(m[str[0]].at(6).destAirportCode_destVertex == "DMM");
+    REQUIRE(m[str[0]].at(7).destAirportCode_destVertex == "HYD");
+    REQUIRE(m[str[0]].at(8).destAirportCode_destVertex == "KWI");
+    REQUIRE(m[str[0]].at(9).destAirportCode_destVertex == "MAA");
+    REQUIRE(m[str[0]].at(10).destAirportCode_destVertex == "TRV");
+    REQUIRE(m[str[0]].at(11).destAirportCode_destVertex == "ATH");
+    REQUIRE(m[str[0]].at(12).destAirportCode_destVertex == "CMB");
+    REQUIRE(m[str[0]].at(13).destAirportCode_destVertex == "DUS");
 
     for (size_t i = 0; i < str.size(); i++)
     {
-        std::string dest = m[str[i]].at(0).sourceAirportCode_sourceVertex;
+        std::string dest = m[str[i]].at(0).destAirportCode_destVertex;
 
         for (size_t j = 0; j < m[str[i]].size(); j++)
         {
-            std::string dest = m[str[i]].at(j).sourceAirportCode_sourceVertex;
-            REQUIRE(m[str[i]][j].lonAndLatPoints.first == m1[dest].first);
-            REQUIRE(m[str[i]][j].lonAndLatPoints.second == m1[dest].second);
-            REQUIRE(m[str[i]][j].distance == graph.sourceToDestLongLatHelper(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
+            std::string dest = m[str[i]].at(j).destAirportCode_destVertex;
+            REQUIRE(m[str[i]][j].lonAndLatPointsDest.first == m1[dest].first);
+            REQUIRE(m[str[i]][j].lonAndLatPointsDest.second == m1[dest].second);
+            REQUIRE(m[str[i]][j].distance_edgeWeight == graph.calculateDistance(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
         }
 
-        REQUIRE(m[str[i]].at(0).lonAndLatPoints.first == m1[dest].first);
-        REQUIRE(m[str[i]].at(0).lonAndLatPoints.second == m1[dest].second);
-        REQUIRE(m[str[i]].at(0).distance == graph.sourceToDestLongLatHelper(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
+        REQUIRE(m[str[i]].at(0).lonAndLatPointsDest.first == m1[dest].first);
+        REQUIRE(m[str[i]].at(0).lonAndLatPointsDest.second == m1[dest].second);
+        REQUIRE(m[str[i]].at(0).distance_edgeWeight == graph.calculateDistance(m1[str[i]].first, m1[str[i]].second, m1[dest].first, m1[dest].second));
     }
 }
 
 TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][graph][7]")
 {
-    Graph graph = Graph();
 
     std::map<std::string, std::pair<double, double>> m = graph.codeToPosition("airports.csv");
 
@@ -169,4 +182,21 @@ TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][
     REQUIRE(actual2 == expected2);
     REQUIRE(actual3 == expected3);
     REQUIRE(actual4 == expected4);
+}
+
+TEST_CASE("Graph constructor populates adjacency_list properly", "[weight=5][graph][7]")
+{
+    REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").destAirportCode_destVertex == "AMD");
+    REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").sourceAirportCode_sourceVertex == "AUH");
+    REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsSource.first == 24.433000564575195);
+    REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsSource.second == 54.651100158691406);
+    REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsDest.first == 23.0771999359);
+    REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsDest.second == 72.63469696039999);
+    REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").distance_edgeWeight == graph.calculateDistance(23.0771999359, 72.63469696039999, 24.433000564575195, 54.651100158691406));
+}
+
+TEST_CASE("Graph print prints a graph to std::cout", "[weight=5][graph][9]")
+{
+    // graph.print();
+    graph.saveGraphAsPNG(graph.getPicName());
 }

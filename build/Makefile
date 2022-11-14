@@ -144,6 +144,19 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
+# Target rules for targets named install_graphviz
+
+# Build rule for target.
+install_graphviz: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install_graphviz
+.PHONY : install_graphviz
+
+# fast build rule for target.
+install_graphviz/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/install_graphviz.dir/build.make CMakeFiles/install_graphviz.dir/build
+.PHONY : install_graphviz/fast
+
+#=============================================================================
 # Target rules for targets named lodepng
 
 # Build rule for target.
@@ -286,6 +299,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... install_graphviz"
 	@echo "... cs225"
 	@echo "... lodepng"
 	@echo "... main"
