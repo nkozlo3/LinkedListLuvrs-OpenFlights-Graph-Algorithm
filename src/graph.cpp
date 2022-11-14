@@ -72,6 +72,37 @@ std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Gr
     return m2;
 }
 
+bool Graph::vertexExists(Vertex v) const
+{
+    return assertVertexExists(v, "");
+}
+
+void Graph::insertVertex(Vertex v)
+{
+    // will overwrite if old stuff was there
+   // removeVertex(v);
+    // make it empty again
+    adjacency_list[v] = unordered_map<Vertex, Edge>();
+}
+
+std::vector<Vertex> Graph::getAdjacent(Vertex source) const {
+    auto lookup = adjacency_matrix_.find(source);
+
+    if(lookup == adjacency_matrix_.end())
+        return vector<Vertex>();
+
+    else
+    {
+        std::vector<Vertex> vertex_list;
+        std::unordered_map <Vertex, Edge> & map = adjacency_matrix_[source];
+        for (auto it = map.begin(); it != map.end(); it++)
+        {
+            vertex_list.push_back(it->first);
+        }
+        return vertex_list;
+    }
+}
+
 std::unordered_map<std::string, Graph::edge> Graph::getAdjacencyListUnorderedMap(std::string sourceCode)
 {
     return adjacency_matrix_[sourceCode];
@@ -385,4 +416,40 @@ void Graph::saveGraphAsPNG(std::string title)
     {
         std::cout << "Failed to generate visual output graph using `neato`" << std::endl;
     }
+}
+
+bool Graph::assertEdgeExists(Vertex source, Vertex destination, string functionName) const
+{
+    if(assertVertexExists(source,functionName) == false)
+        return false;
+    if(adjacency_matrix_[source].find(destination)== adjacency_matrix_[source].end())
+    {
+        if (functionName != "")
+            error(functionName + " called on nonexistent edge " + source + " -> " + destination);
+        return false;
+    }
+
+    if(!directed)
+    {
+        if (assertVertexExists(destination,functionName) == false)
+            return false;
+        if(adjacency_matrix_[destination].find(source)== adjacency_matrix_[destination].end())
+        {
+            if (functionName != "")
+                error(functionName + " called on nonexistent edge " + destination + " -> " + source);
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Graph::assertVertexExists(Vertex v, string functionName) const
+{
+    if (adjacency_matrix_.find(v) == adjacency_matrix_.end())
+    {
+        if (functionName != "")
+            error(functionName + " called on nonexistent vertices");
+        return false;
+    }
+    return true;
 }

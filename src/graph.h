@@ -41,6 +41,7 @@
  * Stops	Number of stops on this flight ("0" for direct)
  * Equipment	3-letter codes for plane type(s) generally used on this flight, separated by spaces
  */
+typedef string Vertex;
 
 class Graph
 {
@@ -158,6 +159,13 @@ public:
     int getPicNum();
 
     std::string getPicName();
+
+    void insertVertex(Vertex v);
+
+    bool vertexExists (Vertex v) const; 
+    
+    bool assertEdgeExists(Vertex source, Vertex destination, string functionName) const;
+    bool assertVertexExists(Vertex v, string functionName) const;
 
 private:
     // adjacency_list at [sourceCode][destCode] = edge
