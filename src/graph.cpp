@@ -6,15 +6,98 @@
 
 using namespace cs225;
 
+Graph::Graph(bool weighted)
+{
+    weighted_ = weighted;
+    directed_ = true;
+
+    // populate adjacency_list
+    adjacency_list = populateAdjacencyList("routes.csv");
+}
+
+Graph::Graph(bool weighted, bool directed)
+{
+    weighted_ = weighted;
+    directed_ = directed;
+
+    // populate adjacency_list
+    adjacency_list = populateAdjacencyList("routes.csv");
+}
+
+std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::populateAdjacencyList(std::string txtFileName)
+{
+    std::vector<std::vector<std::string>> v2 = csvToVect(txtFileName, {2, 4});
+    std::map<std::string, std::pair<double, double>> points = codeToPosition("airports.csv");
+
+    std::unordered_map<std::string, std::unordered_map<std::string, edge>> m2;
+
+    std::string currSource = "";
+
+    std::unordered_map<std::string, edge> currUnorderedMap;
+
+    for (size_t i = 0; i < v2.size(); i++)
+    {
+        edge struc;
+        if (!currUnorderedMap.empty())
+            currUnorderedMap.clear();
+
+        if (m2.find(v2[i][0]) == m2.end())
+            currSource = v2[i][0];
+        else
+            continue;
+
+        for (size_t i = 0; i < v2.size(); i++)
+        {
+            if (v2[i][0] == currSource)
+            {
+                struc.sourceAirportCode_sourceVertex = v2[i][0];
+                struc.destAirportCode_destVertex = v2[i][1];
+
+                struc.lonAndLatPointsSource.first = points[v2[i][0]].first;
+                struc.lonAndLatPointsSource.second = points[v2[i][0]].second;
+                struc.lonAndLatPointsDest.first = points[v2[i][1]].first;
+                struc.lonAndLatPointsDest.second = points[v2[i][1]].second;
+
+                struc.distance_edgeWeight = calculateDistance(points[v2[i][0]].first, points[v2[i][0]].second, points[v2[i][1]].first, points[v2[i][1]].second);
+                currUnorderedMap[v2[i][1]] = struc;
+            }
+        }
+
+        m2[currSource] = currUnorderedMap;
+    }
+    return m2;
+}
+
+std::unordered_map<std::string, Graph::edge> Graph::getAdjacencyListUnorderedMap(std::string sourceCode)
+{
+    return adjacency_list[sourceCode];
+}
+
+Graph::edge Graph::getAdjacencyListEdge(std::string sourceCode, std::string destCode)
+{
+    return adjacency_list[sourceCode][destCode];
+}
+
+std::vector<std::string> Graph::getVertices()
+{
+    std::vector<std::string> vertices;
+
+    for (auto it = adjacency_list.begin(); it != adjacency_list.end(); it++)
+    {
+        vertices.push_back(it->first);
+    }
+    return vertices;
+}
+
 double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
 {
     std::map<std::pair<std::string, std::string>, double> m;
     std::map<std::string, std::vector<Graph::edge>> pairs = sourceToDestLongLat("routes.csv");
-    double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.first - pairs[destAirpCode][0].lonAndLatPoints.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPoints.second - pairs[destAirpCode][0].lonAndLatPoints.second, 2));
+    double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.first - pairs[destAirpCode][0].lonAndLatPointsSource.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.second - pairs[destAirpCode][0].lonAndLatPointsSource.second, 2));
     return distance;
 }
 
-double Graph::sourceToDestLongLatHelper(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon)
+double Graph::calculateDistance(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon)
 {
     double distance = sqrt(std::pow(sourceAirpLat - destAirpLat, 2) + std::pow(sourceAirpLon - destAirLon, 2));
     return distance;
@@ -135,12 +218,15 @@ std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::
         {
             if (v2[i][0] == currSource)
             {
-                struc.sourceAirportCode_sourceVertex = v2[i][1];
-                struc.destAirportCode_destVertex = v2[i][0];
+                struc.sourceAirportCode_sourceVertex = v2[i][0];
+                struc.destAirportCode_destVertex = v2[i][1];
 
-                struc.lonAndLatPoints.first = points[v2[i][1]].first;
-                struc.lonAndLatPoints.second = points[v2[i][1]].second;
-                struc.distance = sourceToDestLongLatHelper(points[v2[i][0]].first, points[v2[i][0]].second, points[v2[i][1]].first, points[v2[i][1]].second);
+                struc.lonAndLatPointsSource.first = points[v2[i][0]].first;
+                struc.lonAndLatPointsSource.second = points[v2[i][0]].second;
+                struc.lonAndLatPointsDest.first = points[v2[i][1]].first;
+                struc.lonAndLatPointsDest.second = points[v2[i][1]].second;
+
+                struc.distance_edgeWeight = calculateDistance(points[v2[i][0]].first, points[v2[i][0]].second, points[v2[i][1]].first, points[v2[i][1]].second);
                 currVect.push_back(struc);
             }
         }
