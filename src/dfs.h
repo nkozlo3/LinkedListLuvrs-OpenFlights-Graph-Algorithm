@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "graph.h"
-class DFS
+class DFS : public Graph
 {
 public:
     DFS();                  // TODO:

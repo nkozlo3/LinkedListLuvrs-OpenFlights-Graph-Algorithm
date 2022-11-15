@@ -6,26 +6,57 @@
 
 using namespace cs225;
 
-Graph::Graph(bool weighted, int picNum, std::string picName)
+Graph::Graph(bool weighted, int picNum, std::string picName, std::string filename)
 {
     weighted_ = weighted;
     directed_ = true;
     picNum_ = picNum;
     picName_ = picName;
+    png_.readFromFile(filename);
 
     // populate adjacency_list_
     adjacency_matrix_ = populateAdjacencyList("routes.csv");
+
+    // populate node_positions
+    node_positions_ = codeToPosition("airports.csv");
+
+    // populate pixel_points_
+    pixel_points_ = populatePixelPoints();
 }
 
-Graph::Graph(bool weighted, bool directed, int picNum, std::string picName)
+Graph::Graph(bool weighted, bool directed, int picNum, std::string picName, std::string filename)
 {
     weighted_ = weighted;
     directed_ = directed;
     picNum_ = picNum;
     picName_ = picName;
+    png_.readFromFile(filename);
 
     // populate adjacency_list_
     adjacency_matrix_ = populateAdjacencyList("routes.csv");
+
+    // populate node_positions
+    node_positions_ = codeToPosition("airports.csv");
+
+    // populate pixel_points_
+    pixel_points_ = populatePixelPoints();
+}
+
+std::map<std::string, std::pair<double, double>> Graph::populatePixelPoints()
+{
+    std::map<std::string, std::pair<double, double>> pixelPoints;
+
+    // populate pixel_points_
+    for (auto it : node_positions_)
+    {
+        std::string current = it.first;
+        std::pair<double, double> temp = it.second;
+
+        std::pair<double, double> points = latitudeToXAndYPos(temp.first, temp.second, png_.width(), png_.height());
+        pixelPoints[current] = points;
+    }
+
+    return pixelPoints;
 }
 
 std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::populateAdjacencyList(std::string txtFileName)
@@ -72,37 +103,6 @@ std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Gr
     return m2;
 }
 
-bool Graph::vertexExists(Vertex v) const
-{
-    return assertVertexExists(v, "");
-}
-
-void Graph::insertVertex(Vertex v)
-{
-    // will overwrite if old stuff was there
-   // removeVertex(v);
-    // make it empty again
-    adjacency_list[v] = unordered_map<Vertex, Edge>();
-}
-
-std::vector<Vertex> Graph::getAdjacent(Vertex source) const {
-    auto lookup = adjacency_matrix_.find(source);
-
-    if(lookup == adjacency_matrix_.end())
-        return vector<Vertex>();
-
-    else
-    {
-        std::vector<Vertex> vertex_list;
-        std::unordered_map <Vertex, Edge> & map = adjacency_matrix_[source];
-        for (auto it = map.begin(); it != map.end(); it++)
-        {
-            vertex_list.push_back(it->first);
-        }
-        return vertex_list;
-    }
-}
-
 std::unordered_map<std::string, Graph::edge> Graph::getAdjacencyListUnorderedMap(std::string sourceCode)
 {
     return adjacency_matrix_[sourceCode];
@@ -130,6 +130,24 @@ double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
     std::map<std::string, std::vector<Graph::edge>> pairs = sourceToDestLongLat("routes.csv");
     double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.first - pairs[destAirpCode][0].lonAndLatPointsSource.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.second - pairs[destAirpCode][0].lonAndLatPointsSource.second, 2));
     return distance;
+}
+
+PNG Graph::getPng()
+{
+    return png_;
+}
+
+std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::getAdjacanceMatrix()
+{
+    return adjacency_matrix_;
+}
+std::map<std::string, std::pair<double, double>> Graph::getNodePositions()
+{
+    return node_positions_;
+}
+std::map<std::string, std::pair<double, double>> Graph::getPixelPoints()
+{
+    return pixel_points_;
 }
 
 double Graph::calculateDistance(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon)
@@ -187,6 +205,7 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName, std
     return v;
 }
 
+// LATITUDE IS MAPPED TO FIRST LONGITITUDE TO SECOND
 std::map<std::string, std::pair<double, double>> Graph::codeToPosition(std::string txtFileName)
 {
     std::map<std::string, std::pair<double, double>> m;
@@ -211,6 +230,16 @@ std::map<std::string, std::pair<double, double>> Graph::codeToPosition(std::stri
             v[i][4].erase(0, 1);
             v[i][4].erase(v[i][4].end() - 1);
             m[v[i][4]] = w;
+        }
+        else if (v[i][5] != "\\N")
+        {
+            double lat = std::strtod(v[i][6].c_str(), nullptr);
+            double lon = std::strtod(v[i][7].c_str(), nullptr);
+            w.first = lat;
+            w.second = lon;
+            v[i][5].erase(0, 1);
+            v[i][5].erase(v[i][5].end() - 1);
+            m[v[i][5]] = w;
         }
         // else don't add it to the map
     }
@@ -286,6 +315,20 @@ double Graph::numberNormalized(double originalMinRange, double originalMaxRange,
     return (1 - invLerp) * minRange + maxRange * invLerp;
 }
 
+std::pair<double, double> Graph::latitudeToXAndYPos(double longitude, double latitude, double width, double height)
+{
+    double x = numberNormalized(-180, 180, 0, width, longitude);
+    double num = 3.1313;
+    latitude = degToRadian(latitude);
+    double top = (std::log(std::tan((M_PI / 4) + (-latitude / 2)))) + num;
+    double y = (height * ((top) / (6.2626)));
+
+    std::pair<double, double> ret;
+    ret.first = x;
+    ret.second = y;
+    return ret;
+}
+
 int Graph::getPicNum()
 {
     return picNum_;
@@ -296,160 +339,82 @@ std::string Graph::getPicName()
     return picName_;
 }
 
-/**
- * Prints the graph to stdout
- */
-void Graph::print()
+double Graph::degToRadian(double degrees)
 {
-    // for (auto it = adjacency_matrix_.begin(); it != adjacency_matrix_.end(); ++it)
-    // {
-    //     std::cout << it->first << std::endl;
-
-    //     for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2)
-    //     {
-    //         std::stringstream ss;
-    //         ss << it2->first;
-    //         std::string vertexColumn = "    => " + ss.str();
-    //         vertexColumn += " ";
-    //         std::cout << std::left << std::setw(26) << vertexColumn;
-    //         string edgeColumn = "edge label = \"" + it2->second.getLabel() + "\"";
-    //         std::cout << std::left << std::setw(26) << edgeColumn;
-    //         if (weighted)
-    //             std::cout << "weight = " << it2->second.getWeight();
-    //         std::cout << std::endl;
-    //     }
-    // }
+    return (2 * (M_PI)) * (degrees / 360);
 }
 
-void Graph::saveGraphAsPNG(std::string title)
+void Graph::drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize)
 {
-    std::ofstream neatoFile;
-    std::string filename = title + ".dot";
-    neatoFile.open(filename.c_str());
-
-    if (!neatoFile.good())
-        std::cerr << "\033[1;31m[Graph Error]\033[0m "
-                  << "couldn't create" << filename << std::endl;
-
-    neatoFile
-        << "strict graph G {\n"
-        << "\toverlap=\"false\";\n"
-        << "\tdpi=\"1300\";\n"
-        << "\tsep=\"1.5\";\n"
-        << "\tnode [fixedsize=\"true\", shape=\"circle\", fontsize=\"7.0\"];\n"
-        << "\tedge [penwidth=\"1.5\", fontsize=\"7.0\"];\n";
-
+    std::map<std::string, std::pair<double, double>> m = codeToPosition("airports.csv");
     std::vector<std::string> vertices = getVertices();
-
-    int xpos1 = 100;
-    int xpos2 = 100;
-    int xpos, ypos;
 
     for (auto it : vertices)
     {
         std::string current = it;
-        neatoFile
-            << "\t\""
-            << current
-            << "\"";
-        if (current[1] == '1')
+        std::pair<double, double> points;
+        try
         {
-            ypos = 100;
-            xpos = xpos1;
-            xpos1 += 100;
+            points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png_.width(), png_.height());
         }
-        else
+        catch (const std::exception &e)
         {
-            ypos = 200;
-            xpos = xpos2;
-            xpos2 += 100;
+            // std::cerr << e.what() << '\n';
+            continue;
         }
-        neatoFile << "[pos=\"" << xpos << "," << ypos << "\"]";
-        neatoFile << ";\n";
-    }
 
-    neatoFile << "\tedge [penwidth=\"1.5\", fontsize=\"7.0\"];\n";
-
-    size_t s = adjacency_matrix_.size();
-    int amnt = 2;
-
-    auto it1 = std::next(adjacency_matrix_.begin(), amnt);
-
-    for (auto it = adjacency_matrix_.begin(); it != it1; ++it)
-    {
-        size_t s1 = it->second.size();
-        int amnt1 = 1;
-
-        auto it21 = std::next(it->second.begin(), amnt1);
-
-        for (auto it2 = it->second.begin(); it2 != it21; ++it2)
-        {
-            std::string vertex1Text = it->first;
-            std::string vertex2Text = it2->first;
-
-            neatoFile << "\t\"";
-            neatoFile << vertex1Text;
-            neatoFile << "\" -- \"";
-            neatoFile << vertex2Text;
-            neatoFile << "\"";
-
-            neatoFile << "[color=\"green\"]";
-
-            if (weighted_)
-                neatoFile << "[label=\"" << it2->second.distance_edgeWeight << "\"]";
-
-            neatoFile << "[constraint = \"false\"]"
-                      << ";\n";
-        }
-    }
-
-    neatoFile << "}";
-    neatoFile.close();
-    std::string command = "neato -n -Tpng " + filename + " -o " + title + ".png 2> /dev/null";
-    int result = system(command.c_str());
-
-    if (result == 0)
-    {
-        std::cout << "Output graph saved as " << title << ".png" << std::endl;
-    }
-    else
-    {
-        std::cout << "Failed to generate visual output graph using `neato`" << std::endl;
+        png_.drawCircle((size_t)points.first, (size_t)points.second, h, s, l, xSize, ySize);
     }
 }
 
-bool Graph::assertEdgeExists(Vertex source, Vertex destination, string functionName) const
+void Graph::drawVerticesOfGraphOnPNG(double h, double s, double l)
 {
-    if(assertVertexExists(source,functionName) == false)
-        return false;
-    if(adjacency_matrix_[source].find(destination)== adjacency_matrix_[source].end())
-    {
-        if (functionName != "")
-            error(functionName + " called on nonexistent edge " + source + " -> " + destination);
-        return false;
-    }
+    std::vector<std::string> vertices = getVertices();
+    std::pair<double, double> destPoints;
+    std::pair<double, double> sourcePoints;
 
-    if(!directed)
+    for (auto it = adjacency_matrix_.begin(); it != adjacency_matrix_.end(); ++it)
     {
-        if (assertVertexExists(destination,functionName) == false)
-            return false;
-        if(adjacency_matrix_[destination].find(source)== adjacency_matrix_[destination].end())
+        for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2)
         {
-            if (functionName != "")
-                error(functionName + " called on nonexistent edge " + destination + " -> " + source);
-            return false;
+            try
+            {
+                sourcePoints = std::make_pair(pixel_points_.at(it2->second.sourceAirportCode_sourceVertex).first, pixel_points_.at(it2->second.sourceAirportCode_sourceVertex).second);
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << e.what() << '\n';
+                continue;
+            }
+            try
+            {
+                destPoints = std::make_pair(pixel_points_.at(it2->second.destAirportCode_destVertex).first, pixel_points_.at(it2->second.destAirportCode_destVertex).second);
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << e.what() << '\n';
+                continue;
+            }
+
+            png_.drawLine(sourcePoints.first, sourcePoints.second, destPoints.first, destPoints.second, h, s, l);
         }
     }
-    return true;
 }
 
-bool Graph::assertVertexExists(Vertex v, string functionName) const
+void Graph::drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2,
+                           std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices)
 {
-    if (adjacency_matrix_.find(v) == adjacency_matrix_.end())
+    if (nodes)
+        drawNodesOfGraphOnPNG(h1h2.first, s1s2.first, l1l2.first, xNodeSize, yNodeSize);
+    if (vertices)
+        drawVerticesOfGraphOnPNG(h1h2.second, s1s2.second, l1l2.second);
+
+    png_.writeToFile(newFileName + ".png");
+
+    while (newFileName.front() == '.' || newFileName.front() == '/')
     {
-        if (functionName != "")
-            error(functionName + " called on nonexistent vertices");
-        return false;
+        newFileName.erase(0, 1);
     }
-    return true;
+
+    std::cout << "Image saved as: " << newFileName << ".png" << std::endl;
 }

@@ -101,7 +101,12 @@ foreach(entrypoint IN LISTS assignment_entrypoints)
 endforeach()
 
 add_custom_target(
-    install_graphviz
-    COMMAND apt update
-    COMMAND apt install -y graphviz
+    tests
+    COMMAND make
+    COMMAND ./test
+)
+add_custom_target(
+    mains
+    COMMAND make
+    COMMAND ./main
 )

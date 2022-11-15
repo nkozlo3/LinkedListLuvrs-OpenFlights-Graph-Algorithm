@@ -5,7 +5,8 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
-Graph graph(1, 1, 0, "testGraph");
+PNG png;
+Graph graph(1, 1, 0, "testGraph", "mercator🤠.png");
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
 {
@@ -198,5 +199,5 @@ TEST_CASE("Graph constructor populates adjacency_list properly", "[weight=5][gra
 TEST_CASE("Graph print prints a graph to std::cout", "[weight=5][graph][9]")
 {
     // graph.print();
-    graph.saveGraphAsPNG(graph.getPicName());
+    // graph.drawGraphOnPNG(graph.getPicName());
 }
