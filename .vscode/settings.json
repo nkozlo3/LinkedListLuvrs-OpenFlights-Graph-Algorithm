@@ -52,7 +52,9 @@
     "ratio": "cpp",
     "variant": "cpp",
     "map": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "set": "cpp",
+    "iomanip": "cpp"
   },
   "todo-tree.tree.scanMode": "workspace",
   "C_Cpp.errorSquiggles": "Disabled"

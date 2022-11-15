@@ -15,6 +15,9 @@ Graph::Graph(bool weighted, int picNum, std::string picName)
 
     // populate adjacency_list_
     adjacency_matrix_ = populateAdjacencyList("routes.csv");
+
+    // populate node_positions
+    node_positions_ = codeToPosition("airports.csv");
 }
 
 Graph::Graph(bool weighted, bool directed, int picNum, std::string picName)
@@ -26,6 +29,9 @@ Graph::Graph(bool weighted, bool directed, int picNum, std::string picName)
 
     // populate adjacency_list_
     adjacency_matrix_ = populateAdjacencyList("routes.csv");
+
+    // populate node_positions
+    node_positions_ = codeToPosition("airports.csv");
 }
 
 std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::populateAdjacencyList(std::string txtFileName)
@@ -156,6 +162,7 @@ std::vector<std::vector<std::string>> Graph::csvToVect(std::string fileName, std
     return v;
 }
 
+// LATITUDE IS MAPPED TO FIRST LONGITITUDE TO SECOND
 std::map<std::string, std::pair<double, double>> Graph::codeToPosition(std::string txtFileName)
 {
     std::map<std::string, std::pair<double, double>> m;
@@ -255,6 +262,20 @@ double Graph::numberNormalized(double originalMinRange, double originalMaxRange,
     return (1 - invLerp) * minRange + maxRange * invLerp;
 }
 
+std::pair<double, double> Graph::latitudeToXAndYPos(double longitude, double latitude, double width, double height)
+{
+    double x = numberNormalized(-180, 180, 0, width, longitude);
+    double num = 3.1313;
+    latitude = degToRadian(latitude);
+    double top = (std::log(std::tan((M_PI / 4) + (-latitude / 2)))) + num;
+    double y = (height * ((top) / (6.2626)));
+
+    std::pair<double, double> ret;
+    ret.first = x;
+    ret.second = y;
+    return ret;
+}
+
 int Graph::getPicNum()
 {
     return picNum_;
@@ -265,124 +286,37 @@ std::string Graph::getPicName()
     return picName_;
 }
 
-/**
- * Prints the graph to stdout
- */
-void Graph::print()
+double Graph::degToRadian(double degrees)
 {
-    // for (auto it = adjacency_matrix_.begin(); it != adjacency_matrix_.end(); ++it)
-    // {
-    //     std::cout << it->first << std::endl;
-
-    //     for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2)
-    //     {
-    //         std::stringstream ss;
-    //         ss << it2->first;
-    //         std::string vertexColumn = "    => " + ss.str();
-    //         vertexColumn += " ";
-    //         std::cout << std::left << std::setw(26) << vertexColumn;
-    //         string edgeColumn = "edge label = \"" + it2->second.getLabel() + "\"";
-    //         std::cout << std::left << std::setw(26) << edgeColumn;
-    //         if (weighted)
-    //             std::cout << "weight = " << it2->second.getWeight();
-    //         std::cout << std::endl;
-    //     }
-    // }
+    return (2 * (M_PI)) * (degrees / 360);
 }
 
-void Graph::saveGraphAsPNG(std::string title)
+void Graph::drawGraphOnPNG(std::string filename, PNG png, double h, double s, double l, int xSize, int ySize, std::string newFileName)
 {
-    std::ofstream neatoFile;
-    std::string filename = title + ".dot";
-    neatoFile.open(filename.c_str());
+    png.readFromFile(filename + ".png");
 
-    if (!neatoFile.good())
-        std::cerr << "\033[1;31m[Graph Error]\033[0m "
-                  << "couldn't create" << filename << std::endl;
-
-    neatoFile
-        << "strict graph G {\n"
-        << "\toverlap=\"false\";\n"
-        << "\tdpi=\"1300\";\n"
-        << "\tsep=\"1.5\";\n"
-        << "\tnode [fixedsize=\"true\", shape=\"circle\", fontsize=\"7.0\"];\n"
-        << "\tedge [penwidth=\"1.5\", fontsize=\"7.0\"];\n";
-
+    std::map<std::string, std::pair<double, double>> m = codeToPosition("airports.csv");
     std::vector<std::string> vertices = getVertices();
-
-    int xpos1 = 100;
-    int xpos2 = 100;
-    int xpos, ypos;
 
     for (auto it : vertices)
     {
         std::string current = it;
-        neatoFile
-            << "\t\""
-            << current
-            << "\"";
-        if (current[1] == '1')
+        std::pair<double, double> points;
+        try
         {
-            ypos = 100;
-            xpos = xpos1;
-            xpos1 += 100;
+            points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png.width(), png.height());
         }
-        else
+        catch(const std::exception& e)
         {
-            ypos = 200;
-            xpos = xpos2;
-            xpos2 += 100;
+            std::cerr << e.what() << '\n';
+            continue;
         }
-        neatoFile << "[pos=\"" << xpos << "," << ypos << "\"]";
-        neatoFile << ";\n";
+        
+        // std::pair<double, double> points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png.width(), png.height());
+
+        png.drawCircle((size_t)points.first, (size_t)points.second, h, s, l, xSize, ySize);
     }
+    png.writeToFile(newFileName + ".png");
 
-    neatoFile << "\tedge [penwidth=\"1.5\", fontsize=\"7.0\"];\n";
-
-    size_t s = adjacency_matrix_.size();
-    int amnt = 2;
-
-    auto it1 = std::next(adjacency_matrix_.begin(), amnt);
-
-    for (auto it = adjacency_matrix_.begin(); it != it1; ++it)
-    {
-        size_t s1 = it->second.size();
-        int amnt1 = 1;
-
-        auto it21 = std::next(it->second.begin(), amnt1);
-
-        for (auto it2 = it->second.begin(); it2 != it21; ++it2)
-        {
-            std::string vertex1Text = it->first;
-            std::string vertex2Text = it2->first;
-
-            neatoFile << "\t\"";
-            neatoFile << vertex1Text;
-            neatoFile << "\" -- \"";
-            neatoFile << vertex2Text;
-            neatoFile << "\"";
-
-            neatoFile << "[color=\"green\"]";
-
-            if (weighted_)
-                neatoFile << "[label=\"" << it2->second.distance_edgeWeight << "\"]";
-
-            neatoFile << "[constraint = \"false\"]"
-                      << ";\n";
-        }
-    }
-
-    neatoFile << "}";
-    neatoFile.close();
-    std::string command = "neato -n -Tpng " + filename + " -o " + title + ".png 2> /dev/null";
-    int result = system(command.c_str());
-
-    if (result == 0)
-    {
-        std::cout << "Output graph saved as " << title << ".png" << std::endl;
-    }
-    else
-    {
-        std::cout << "Failed to generate visual output graph using `neato`" << std::endl;
-    }
+    std::cout << "Image saved as: " << newFileName << ".png" << std::endl;
 }

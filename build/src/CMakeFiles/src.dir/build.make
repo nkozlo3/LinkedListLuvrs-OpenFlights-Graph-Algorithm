@@ -139,13 +139,28 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/stronglyconnected.cpp.s"
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/stronglyconnected.cpp -o CMakeFiles/src.dir/stronglyconnected.cpp.s
 
+src/CMakeFiles/src.dir/vector2.cpp.o: src/CMakeFiles/src.dir/flags.make
+src/CMakeFiles/src.dir/vector2.cpp.o: ../src/vector2.cpp
+src/CMakeFiles/src.dir/vector2.cpp.o: src/CMakeFiles/src.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/src.dir/vector2.cpp.o"
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/src.dir/vector2.cpp.o -MF CMakeFiles/src.dir/vector2.cpp.o.d -o CMakeFiles/src.dir/vector2.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/vector2.cpp
+
+src/CMakeFiles/src.dir/vector2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/src.dir/vector2.cpp.i"
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/vector2.cpp > CMakeFiles/src.dir/vector2.cpp.i
+
+src/CMakeFiles/src.dir/vector2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/src.dir/vector2.cpp.s"
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/vector2.cpp -o CMakeFiles/src.dir/vector2.cpp.s
+
 # Object files for target src
 src_OBJECTS = \
 "CMakeFiles/src.dir/dfs.cpp.o" \
 "CMakeFiles/src.dir/dijkstra.cpp.o" \
 "CMakeFiles/src.dir/graph.cpp.o" \
 "CMakeFiles/src.dir/landalgo.cpp.o" \
-"CMakeFiles/src.dir/stronglyconnected.cpp.o"
+"CMakeFiles/src.dir/stronglyconnected.cpp.o" \
+"CMakeFiles/src.dir/vector2.cpp.o"
 
 # External object files for target src
 src_EXTERNAL_OBJECTS =
@@ -155,9 +170,10 @@ src/libsrc.a: src/CMakeFiles/src.dir/dijkstra.cpp.o
 src/libsrc.a: src/CMakeFiles/src.dir/graph.cpp.o
 src/libsrc.a: src/CMakeFiles/src.dir/landalgo.cpp.o
 src/libsrc.a: src/CMakeFiles/src.dir/stronglyconnected.cpp.o
+src/libsrc.a: src/CMakeFiles/src.dir/vector2.cpp.o
 src/libsrc.a: src/CMakeFiles/src.dir/build.make
 src/libsrc.a: src/CMakeFiles/src.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libsrc.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libsrc.a"
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src && $(CMAKE_COMMAND) -P CMakeFiles/src.dir/cmake_clean_target.cmake
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/src.dir/link.txt --verbose=$(VERBOSE)
 

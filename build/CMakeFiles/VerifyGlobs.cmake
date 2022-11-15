@@ -41,6 +41,7 @@ set(OLD_GLOB
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/graph.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/landalgo.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/stronglyconnected.cpp"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/vector2.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

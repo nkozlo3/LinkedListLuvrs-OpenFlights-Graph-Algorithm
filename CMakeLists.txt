@@ -100,8 +100,14 @@ foreach(entrypoint IN LISTS assignment_entrypoints)
     target_link_libraries(${entrypoint} PRIVATE libs src)
 endforeach()
 
+
 add_custom_target(
-    install_graphviz
-    COMMAND apt update
-    COMMAND apt install -y graphviz
+    tests
+    COMMAND make
+    COMMAND ./test
+)
+add_custom_target(
+    mains
+    COMMAND make
+    COMMAND ./main
 )

@@ -198,5 +198,5 @@ TEST_CASE("Graph constructor populates adjacency_list properly", "[weight=5][gra
 TEST_CASE("Graph print prints a graph to std::cout", "[weight=5][graph][9]")
 {
     // graph.print();
-    graph.saveGraphAsPNG(graph.getPicName());
+    // graph.drawGraphOnPNG(graph.getPicName());
 }

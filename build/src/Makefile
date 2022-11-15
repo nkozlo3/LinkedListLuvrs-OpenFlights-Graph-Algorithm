@@ -251,6 +251,30 @@ stronglyconnected.cpp.s:
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/stronglyconnected.cpp.s
 .PHONY : stronglyconnected.cpp.s
 
+vector2.o: vector2.cpp.o
+.PHONY : vector2.o
+
+# target to build an object file
+vector2.cpp.o:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/vector2.cpp.o
+.PHONY : vector2.cpp.o
+
+vector2.i: vector2.cpp.i
+.PHONY : vector2.i
+
+# target to preprocess a source file
+vector2.cpp.i:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/vector2.cpp.i
+.PHONY : vector2.cpp.i
+
+vector2.s: vector2.cpp.s
+.PHONY : vector2.s
+
+# target to generate assembly for a file
+vector2.cpp.s:
+	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/vector2.cpp.s
+.PHONY : vector2.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -275,6 +299,9 @@ help:
 	@echo "... stronglyconnected.o"
 	@echo "... stronglyconnected.i"
 	@echo "... stronglyconnected.s"
+	@echo "... vector2.o"
+	@echo "... vector2.i"
+	@echo "... vector2.s"
 .PHONY : help
 
 

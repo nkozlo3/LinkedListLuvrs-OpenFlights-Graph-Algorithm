@@ -19,6 +19,9 @@
 #include <math.h>
 #include <string>
 #include <stdlib.h>
+#include <numbers>
+
+using namespace cs225;
 /**
  * airports.csv is formatted as:
  * "Airline ID", "Name of the airline", "Alias of the airline", "2-letter IATA code", "3 letter ICAO code", "Callsign", "Country", "Active or not"
@@ -85,17 +88,10 @@ public:
     std::vector<std::string> getVertices();
 
     /**
-     * @cite inspired by cs225's, lab_ml, graph class, print function
-     * Prints the graph to stdout
-     */
-    void print(); // TODO:
-
-    /**
-     * @cite inspired by cs225's, lab_ml, graph class, savePNG function
-     * Saves the graph as a PNG image.
+     * Saves the graph on a PNG image.
      * @param title - the filename of the PNG image
      */
-    void saveGraphAsPNG(std::string title); // TODO:
+    void drawGraphOnPNG(std::string filename, PNG png, double h, double s, double l, int xSize, int ySize, std::string newFileName); // TODO:
 
     // Populate adjacency_list
     std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> populateAdjacencyList(std::string textFileName);
@@ -134,6 +130,9 @@ public:
     std::vector<std::vector<std::string>> csvToVect(std::string filename, std::vector<int> columns = {-1});
 
     /**
+     *
+     * LATITUDE IS MAPPED TO FIRST LONGITITUDE TO SECOND
+     *
      * This function returns a map where the key is the airport code and the value is the longitude and latitude of the airport in a pair
      * @param txtFileName - the name of the text file to be read
      * @return a map where the key is the airport code and the value is the longitude and latitude of the airport in a pair
@@ -151,6 +150,8 @@ public:
      */
     double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 
+    std::pair<double, double> latitudeToXAndYPos(double longitude, double latitude, double width, double height);
+
     std::unordered_map<std::string, Graph::edge> getAdjacencyListUnorderedMap(std::string sourceCode);
 
     Graph::edge getAdjacencyListEdge(std::string sourceCode, std::string destCode);
@@ -159,9 +160,13 @@ public:
 
     std::string getPicName();
 
+    double degToRadian(double degrees);
+
 private:
     // adjacency_list at [sourceCode][destCode] = edge
     mutable std::unordered_map<std::string, std::unordered_map<std::string, edge>> adjacency_matrix_;
+    // map of node positions where [airportCode] maps to pair<lon, lat>
+    mutable std::map<std::string, std::pair<double, double>> node_positions_;
 
     int picNum_;
     string picName_;
