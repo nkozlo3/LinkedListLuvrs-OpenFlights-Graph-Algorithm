@@ -146,6 +146,19 @@ PNG Graph::getPng()
     return png_;
 }
 
+std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::getAdjacanceMatrix()
+{
+    return adjacency_matrix_;
+}
+std::map<std::string, std::pair<double, double>> Graph::getNodePositions()
+{
+    return node_positions_;
+}
+std::map<std::string, std::pair<double, double>> Graph::getPixelPoints()
+{
+    return pixel_points_;
+}
+
 double Graph::calculateDistance(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon)
 {
     double distance = sqrt(std::pow(sourceAirpLat - destAirpLat, 2) + std::pow(sourceAirpLon - destAirLon, 2));

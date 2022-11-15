@@ -170,6 +170,10 @@ public:
 
     PNG getPng();
 
+    std::unordered_map<std::string, std::unordered_map<std::string, edge>> getAdjacanceMatrix();
+    std::map<std::string, std::pair<double, double>> getNodePositions();
+    std::map<std::string, std::pair<double, double>> getPixelPoints();
+
 private:
     // adjacency_list at [sourceCode][destCode] = edge
     mutable std::unordered_map<std::string, std::unordered_map<std::string, edge>> adjacency_matrix_;
