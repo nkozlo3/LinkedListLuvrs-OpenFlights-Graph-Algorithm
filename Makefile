@@ -241,7 +241,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cs225"
-    @echo "... lodepng"
+	@echo "... lodepng"
 	@echo "... main"
 	@echo "... src"
 	@echo "... test"

@@ -100,7 +100,6 @@ foreach(entrypoint IN LISTS assignment_entrypoints)
     target_link_libraries(${entrypoint} PRIVATE libs src)
 endforeach()
 
-
 add_custom_target(
     tests
     COMMAND make

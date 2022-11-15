@@ -6,32 +6,66 @@
 
 using namespace cs225;
 
-Graph::Graph(bool weighted, int picNum, std::string picName)
+Graph::Graph(bool weighted, int picNum, std::string picName, std::string filename)
 {
     weighted_ = weighted;
     directed_ = true;
     picNum_ = picNum;
     picName_ = picName;
+    png_.readFromFile(filename);
 
     // populate adjacency_list_
     adjacency_matrix_ = populateAdjacencyList("routes.csv");
 
     // populate node_positions
     node_positions_ = codeToPosition("airports.csv");
+
+    // populate pixel_points_
+    pixel_points_ = populatePixelPoints();
 }
 
-Graph::Graph(bool weighted, bool directed, int picNum, std::string picName)
+Graph::Graph(bool weighted, bool directed, int picNum, std::string picName, std::string filename)
 {
     weighted_ = weighted;
     directed_ = directed;
     picNum_ = picNum;
     picName_ = picName;
+    png_.readFromFile(filename);
 
     // populate adjacency_list_
     adjacency_matrix_ = populateAdjacencyList("routes.csv");
 
     // populate node_positions
     node_positions_ = codeToPosition("airports.csv");
+
+    // populate pixel_points_
+    pixel_points_ = populatePixelPoints();
+}
+
+std::map<std::string, std::pair<double, double>> Graph::populatePixelPoints()
+{
+    std::map<std::string, std::pair<double, double>> pixelPoints;
+    std::vector<std::string> vector = getVertices();
+    std::map<std::string, std::pair<double, double>> m = codeToPosition("airports.csv");
+
+    // populate pixel_points_
+    for (auto it : vector)
+    {
+        std::string current = it;
+        std::pair<double, double> points;
+        try
+        {
+            points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png_.width(), png_.height());
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << e.what() << '\n';
+            continue;
+        }
+        pixelPoints[current] = points;
+    }
+
+    return pixelPoints;
 }
 
 std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::populateAdjacencyList(std::string txtFileName)
@@ -105,6 +139,11 @@ double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
     std::map<std::string, std::vector<Graph::edge>> pairs = sourceToDestLongLat("routes.csv");
     double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.first - pairs[destAirpCode][0].lonAndLatPointsSource.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.second - pairs[destAirpCode][0].lonAndLatPointsSource.second, 2));
     return distance;
+}
+
+PNG Graph::getPng()
+{
+    return png_;
 }
 
 double Graph::calculateDistance(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon)
@@ -187,6 +226,16 @@ std::map<std::string, std::pair<double, double>> Graph::codeToPosition(std::stri
             v[i][4].erase(0, 1);
             v[i][4].erase(v[i][4].end() - 1);
             m[v[i][4]] = w;
+        }
+        else if (v[i][5] != "\\N")
+        {
+            double lat = std::strtod(v[i][6].c_str(), nullptr);
+            double lon = std::strtod(v[i][7].c_str(), nullptr);
+            w.first = lat;
+            w.second = lon;
+            v[i][5].erase(0, 1);
+            v[i][5].erase(v[i][5].end() - 1);
+            m[v[i][5]] = w;
         }
         // else don't add it to the map
     }
@@ -291,10 +340,8 @@ double Graph::degToRadian(double degrees)
     return (2 * (M_PI)) * (degrees / 360);
 }
 
-void Graph::drawGraphOnPNG(std::string filename, PNG png, double h, double s, double l, int xSize, int ySize, std::string newFileName)
+void Graph::drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize)
 {
-    png.readFromFile(filename + ".png");
-
     std::map<std::string, std::pair<double, double>> m = codeToPosition("airports.csv");
     std::vector<std::string> vertices = getVertices();
 
@@ -304,19 +351,66 @@ void Graph::drawGraphOnPNG(std::string filename, PNG png, double h, double s, do
         std::pair<double, double> points;
         try
         {
-            points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png.width(), png.height());
+            points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png_.width(), png_.height());
         }
-        catch(const std::exception& e)
+        catch (const std::exception &e)
         {
-            std::cerr << e.what() << '\n';
+            // std::cerr << e.what() << '\n';
             continue;
         }
-        
-        // std::pair<double, double> points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png.width(), png.height());
 
-        png.drawCircle((size_t)points.first, (size_t)points.second, h, s, l, xSize, ySize);
+        png_.drawCircle((size_t)points.first, (size_t)points.second, h, s, l, xSize, ySize);
     }
-    png.writeToFile(newFileName + ".png");
+}
+
+void Graph::drawVerticesOfGraphOnPNG(double h, double s, double l)
+{
+    std::vector<std::string> vertices = getVertices();
+    std::pair<double, double> destPoints;
+    std::pair<double, double> sourcePoints;
+
+    for (auto it = adjacency_matrix_.begin(); it != adjacency_matrix_.end(); ++it)
+    {
+        for (auto it2 = it->second.begin(); it2 != it->second.end(); ++it2)
+        {
+            try
+            {
+                sourcePoints = std::make_pair(pixel_points_.at(it2->second.sourceAirportCode_sourceVertex).first, pixel_points_.at(it2->second.sourceAirportCode_sourceVertex).second);
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << e.what() << '\n';
+                continue;
+            }
+            try
+            {
+                destPoints = std::make_pair(pixel_points_.at(it2->second.destAirportCode_destVertex).first, pixel_points_.at(it2->second.destAirportCode_destVertex).second);
+            }
+            catch (const std::exception &e)
+            {
+                std::cerr << e.what() << '\n';
+                continue;
+            }
+
+            png_.drawLine(sourcePoints.first, sourcePoints.second, destPoints.first, destPoints.second, h, s, l);
+        }
+    }
+}
+
+void Graph::drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2,
+                           std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices)
+{
+    if (nodes)
+        drawNodesOfGraphOnPNG(h1h2.first, s1s2.first, l1l2.first, xNodeSize, yNodeSize);
+    if (vertices)
+        drawVerticesOfGraphOnPNG(h1h2.second, s1s2.second, l1l2.second);
+
+    png_.writeToFile(newFileName + ".png");
+
+    while (newFileName.front() == '.' || newFileName.front() == '/')
+    {
+        newFileName.erase(0, 1);
+    }
 
     std::cout << "Image saved as: " << newFileName << ".png" << std::endl;
 }

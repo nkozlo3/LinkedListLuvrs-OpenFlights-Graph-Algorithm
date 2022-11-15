@@ -5,7 +5,8 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
-Graph graph(1, 1, 0, "testGraph");
+PNG png;
+Graph graph(1, 1, 0, "testGraph", "mercator🤠.png");
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
 {

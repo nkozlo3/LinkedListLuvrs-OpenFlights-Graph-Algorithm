@@ -69,7 +69,7 @@ public:
      * @param weighted - specifies whether the graph is a weighted graph or
      *  not
      */
-    Graph(bool weighted, int picNum, std::string picName);
+    Graph(bool weighted, int picNum, std::string picName, std::string imageName);
 
     /**
      * Constructor to create an empty graph.
@@ -78,7 +78,7 @@ public:
      *  not
      * @param directed - specifies whether the graph is directed
      */
-    Graph(bool weighted, bool directed, int picNum, std::string picName);
+    Graph(bool weighted, bool directed, int picNum, std::string picName, std::string imageName);
 
     /**
      * @cite inspired by cs225's, lab_ml, graph class, getVetices function
@@ -91,7 +91,11 @@ public:
      * Saves the graph on a PNG image.
      * @param title - the filename of the PNG image
      */
-    void drawGraphOnPNG(std::string filename, PNG png, double h, double s, double l, int xSize, int ySize, std::string newFileName); // TODO:
+    void drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2,
+                        std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices);
+
+    void drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize);
+    void drawVerticesOfGraphOnPNG(double h, double s, double l);
 
     // Populate adjacency_list
     std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> populateAdjacencyList(std::string textFileName);
@@ -156,20 +160,27 @@ public:
 
     Graph::edge getAdjacencyListEdge(std::string sourceCode, std::string destCode);
 
+    std::map<std::string, std::pair<double, double>> populatePixelPoints();
+
     int getPicNum();
 
     std::string getPicName();
 
     double degToRadian(double degrees);
 
+    PNG getPng();
+
 private:
     // adjacency_list at [sourceCode][destCode] = edge
     mutable std::unordered_map<std::string, std::unordered_map<std::string, edge>> adjacency_matrix_;
     // map of node positions where [airportCode] maps to pair<lon, lat>
     mutable std::map<std::string, std::pair<double, double>> node_positions_;
+    // lonLatcoordinates converted to xy points
+    mutable std::map<std::string, std::pair<double, double>> pixel_points_;
 
     int picNum_;
     string picName_;
     bool weighted_;
     bool directed_;
+    PNG png_;
 };
