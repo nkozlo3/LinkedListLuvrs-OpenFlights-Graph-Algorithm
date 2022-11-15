@@ -9,18 +9,8 @@ int main()
 
     std::cout << "Howdy World! 🤠 " << std::endl;
 
-    Graph g(1, 1, 1, "mainGraph", "mercator🤠.png");
+    // Graph g(1, 1, 1, "mainGraph", "mercator🤠.png");
     Graph g1(1, 1, 1, "mainGraph", "mercator🤠.png");
-
-    int newWidth = g.getPng().width() * 3;
-    int newHeight = g.getPng().height() * 3;
-
-    g.getPng().resize(newWidth, newHeight);
-
-    int newWidth1 = g1.getPng().width() * 3;
-    int newHeight1 = g1.getPng().height() * 3;
-
-    g1.getPng().resize(newWidth1, newHeight1);
 
     std::pair<double, double> h1h2 = std::make_pair(0, 300);
     std::pair<double, double> s1s2 = std::make_pair(1, 1);
@@ -30,8 +20,20 @@ int main()
     std::string newFileNameBoth = "../sad";
     std::string newFileNameNodes = "../baby";
 
-    g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileNameBoth, true, true);
+    // g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileNameBoth, true, true);
     g1.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileNameNodes, true, false);
+
+    std::pair<double, double> points0 = g1.getPixelPoints().at("BTI");
+
+    std::pair<double, double> points1 = g1.getPixelPoints().at("GRY");
+    std::cout << points1.first << "  " <<  points1.second << std::endl;
+
+    PNG png;
+    png.readFromFile("../baby.png");
+
+    png.drawLine(points0.first, points0.second, points1.first, points1.second, h1h2.first, s1s2.first, s1s2.first);
+
+    png.writeToFile("../lineHopefully.png");
 
     return 0;
 }

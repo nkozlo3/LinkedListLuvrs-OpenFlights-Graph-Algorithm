@@ -45,23 +45,14 @@ Graph::Graph(bool weighted, bool directed, int picNum, std::string picName, std:
 std::map<std::string, std::pair<double, double>> Graph::populatePixelPoints()
 {
     std::map<std::string, std::pair<double, double>> pixelPoints;
-    std::vector<std::string> vector = getVertices();
-    std::map<std::string, std::pair<double, double>> m = codeToPosition("airports.csv");
 
     // populate pixel_points_
-    for (auto it : vector)
+    for (auto it : node_positions_)
     {
-        std::string current = it;
-        std::pair<double, double> points;
-        try
-        {
-            points = latitudeToXAndYPos(m.at(current).second, m.at(current).first, png_.width(), png_.height());
-        }
-        catch (const std::exception &e)
-        {
-            std::cerr << e.what() << '\n';
-            continue;
-        }
+        std::string current = it.first;
+        std::pair<double, double> temp = it.second;
+
+        std::pair<double, double> points = latitudeToXAndYPos(temp.first, temp.second, png_.width(), png_.height());
         pixelPoints[current] = points;
     }
 
