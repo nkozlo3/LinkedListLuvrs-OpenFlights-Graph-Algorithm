@@ -1,10 +1,10 @@
-// #include "dijkstra.h"
+#include "dijkstra.h"
 
-// #include <iostream>
-// #include <vector>
-// #include <queue>
+#include <iostream>
+#include <vector>
+#include <queue>
 
-// // new functions:
+// new functions:
 // int Dijkstras::minDist(std::vector<int> distances, std::vector<bool> visited)
 // {
 //     int min = __INT_MAX__;
@@ -20,49 +20,40 @@
 //     return idx;
 // }
 
-// void Dijkstras::dijkstra(std::vector<std::vector<int>> graph, int startVertex)
-// {
-//     std::vector<bool> visited;  // keep track of visited vertices
-//     std::vector<int> distances; // min distances for each node
+void Dijkstras::dijkstra(std::vector<std::vector<int>> graph, int startVertex)
+{
+    std::vector<int> distances(verteces_.size(), INT_MAX); // min distances for each node
 
-//     distances[startVertex] = 0;  // dist of start vertex to itself = 0
-//     visited[startVertex] = true; // set current vertex as visited
-//     std::queue<std::pair<int, int>> priorityQ;
+    distances[startVertex] = 0;  // dist of start vertex to itself = 0
 
-//     // queue of pairs: pair { vertex, weight }
+    std::priority_queue<std::pair<int, Vertex>> priorityQ;
+    // queue of pairs: pair { weight, vertex }
 
-//     std::vector<int> prevs; // stores previous verteces from a vertex
+    std::vector<int> shortestPath(verteces_.size(), 0); // stores previous verteces from a vertex
 
-//     for (int i = 0; i < verteces_.size(); i++)
-//     { // for each vertex in graph
-//         if (verticies_[i] != startVertex)
-//         {
-//             distances[i] = __INT_MAX__; // dist of all verticies from start = infinity
-//             prevs[i] = -1;
-//             visited[i] = false;
-//         }
-//     }
-//     // priority_queue.buildHeap(graph.verticies());
-//     priorityQ.push(std::make_pair(distances[startVertex], startVertex));
+    priorityQ.push(std::make_pair(0, startVertex));
+    
+    Graph visited;
 
-//     while (!priorityQ.empty())
-//     {
-//         int curr = priorityQ.top().second; // gets the next vertex in the queue
-//         priorityQ.pop();
+    while (!priorityQ.empty()) {
+        Vertex curr = priorityQ.top().second; // gets the next vertex in the queue
+        priorityQ.pop();
+        visited.insertVertex(curr);
 
-//         // for neighbors of curr not already visited:
-//         for (auto pair : adj[curr])
-//         {
-//             if (!visited[curr])
-//             {
-//                 if (distances[pair.first] > distances[curr] + pair.second)
-//                 {
-//                     distances[pair.first] = distances[curr] + pair.second;
-//                     // priorityQ.push(std::make_pair(distances[pair.first], pair.first));
-//                     prevs[pair.second] = curr;
-//                 }
-//             }
-//         }
-//         visited[curr] = true;
-//     }
-// }
+        std::vector<Vertex> adj = getAdjacent(curr);
+        // for neighbors of curr not already visited:
+        for (int i = 0; i < adj.size(); i++) {
+            if (!visited.vertexExists(adj[i])) {
+                int v = adj[i];
+                int weight = adj[i]
+                if (distances[v] > distances[curr] + weight)
+                {
+                    distances[v] = distances[curr] + weight;
+                    priorityQ.push(std::make_pair(distances[v], v));
+                    shortestPath[v] = curr;
+                }
+            }
+        }
+    }
+    return shortestPath;
+}
