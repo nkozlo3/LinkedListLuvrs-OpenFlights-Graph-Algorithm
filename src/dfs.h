@@ -5,9 +5,11 @@
 class DFS : public Graph
 {
 public:
-    DFS();                  // TODO:
-    ~DFS();                 // TODO:
-    DFS(const DFS &object); // TODO:
+    void DFS();                          // TODO:
+    void DFS(std::string airport);  // TODO:
+    ~DFS();                         // TODO:
+    std::vector<std::string> flight_path;
+    std::set<std::string> visited;
 
 private:
 };
