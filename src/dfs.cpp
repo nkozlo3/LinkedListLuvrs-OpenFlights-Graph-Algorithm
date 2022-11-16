@@ -1,4 +1,4 @@
-void DFS::DFS() {
+void DFS::dfs() {
     flight_path.clear();
     visited.clear();
     std::unordered_map<std::string, std::unordered_map<std::string, edge>> graph = getAdjacanceMatrix();
@@ -7,7 +7,7 @@ void DFS::DFS() {
     }
 }
 
-void DFS::DFS(std::string airport) {
+void DFS::dfs(std::string airport) {
     std::vector<std::string> end_airport;
     if (visited.find(airport) != visited.end()) {
         return;
