@@ -52,7 +52,7 @@ std::map<std::string, std::pair<double, double>> Graph::populatePixelPoints()
         std::string current = it.first;
         std::pair<double, double> temp = it.second;
 
-        std::pair<double, double> points = latitudeToXAndYPos(temp.first, temp.second, png_.width(), png_.height());
+        std::pair<double, double> points = latitudeToXAndYPos(temp.second, temp.first, png_.width(), png_.height());
         pixelPoints[current] = points;
     }
 
@@ -73,6 +73,7 @@ std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Gr
     for (size_t i = 0; i < v2.size(); i++)
     {
         edge struc;
+
         if (!currUnorderedMap.empty())
             currUnorderedMap.clear();
 
@@ -317,10 +318,22 @@ double Graph::numberNormalized(double originalMinRange, double originalMaxRange,
 
 std::pair<double, double> Graph::latitudeToXAndYPos(double longitude, double latitude, double width, double height)
 {
+    // points1 first: 359.546  points1 second: 289.307
+    // points0 first: 364.779  points0 second: -nan
+    // nodes1 first: 66.5458  nodes1 second: -18.0173
+
+    // TODO: SWITCH LATITUDE AND LONGITUDE 😒
+
+    // nodes0 first: 70.134  nodes0 second: -143.582
+
     double x = numberNormalized(-180, 180, 0, width, longitude);
     double num = 3.1313;
     latitude = degToRadian(latitude);
-    double top = (std::log(std::tan((M_PI / 4) + (-latitude / 2)))) + num;
+    double piO4 = (M_PI / 4);
+    double latO2 = (-latitude / 2);
+    double insideTang = piO4 + latO2;
+    double asa = std::tan(insideTang);
+    double top = (std::log(std::tan(insideTang))) + num; // TODO: std::log(std::tan(num)) has numbers that are not defined. i.e. num = 2.038. Need to fix that.
     double y = (height * ((top) / (6.2626)));
 
     std::pair<double, double> ret;
@@ -415,6 +428,5 @@ void Graph::drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, dou
     {
         newFileName.erase(0, 1);
     }
-
     std::cout << "Image saved as: " << newFileName << ".png" << std::endl;
 }

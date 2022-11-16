@@ -185,7 +185,7 @@ TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][
     REQUIRE(actual4 == expected4);
 }
 
-TEST_CASE("Graph constructor populates adjacency_list properly", "[weight=5][graph][7]")
+TEST_CASE("Graph constructor populates adjacency_matrix_ properly", "[weight=5][graph][7]")
 {
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").destAirportCode_destVertex == "AMD");
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").sourceAirportCode_sourceVertex == "AUH");
@@ -196,8 +196,15 @@ TEST_CASE("Graph constructor populates adjacency_list properly", "[weight=5][gra
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").distance_edgeWeight == graph.calculateDistance(23.0771999359, 72.63469696039999, 24.433000564575195, 54.651100158691406));
 }
 
-TEST_CASE("Graph print prints a graph to std::cout", "[weight=5][graph][9]")
+TEST_CASE("Graph constructor populates node_positions_ properly", "[weight=5][graph][9]")
 {
-    // graph.print();
-    // graph.drawGraphOnPNG(graph.getPicName());
+    REQUIRE(graph.getNodePositions().at("THU").first == 76.5311965942);
+    REQUIRE(graph.getNodePositions().at("SFJ").first == 67.0122218992);
+    REQUIRE(graph.getNodePositions().at("GOH").first == 64.19090271);
+    REQUIRE(graph.getNodePositions().at("UAK").first == 61.1604995728);
+    REQUIRE(graph.getNodePositions().at("WWK").first == -3.58383011818);
+    REQUIRE(graph.getNodePositions().at("POM").second == 147.22000122070312);
+    REQUIRE(graph.getNodePositions().at("LAE").second == 146.725977);
+    REQUIRE(graph.getNodePositions().at("HGU").second == 144.29600524902344);
+    REQUIRE(graph.getNodePositions().at("GKA").second == 145.391998291);
 }
