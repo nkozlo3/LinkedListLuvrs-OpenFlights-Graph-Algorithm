@@ -1,7 +1,10 @@
 void DFS::DFS() {
     flight_path.clear();
     visited.clear();
-
+    std::unordered_map<std::string, std::unordered_map<std::string, edge>> graph = getAdjacanceMatrix();
+    for (auto i : graph) {
+        dfs(i.first);
+    }
 }
 
 void DFS::DFS(std::string airport) {
