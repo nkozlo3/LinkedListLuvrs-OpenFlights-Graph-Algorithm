@@ -491,6 +491,7 @@ lib/CMakeFiles/lodepng.dir/lodepng/lodepng.cpp.o: ../lib/lodepng/lodepng.cpp \
 /usr/include/c++/11/bits/nested_exception.h:
 
 /usr/include/aarch64-linux-gnu/bits/types/struct_tm.h:
+<<<<<<< Updated upstream
 
 /usr/include/c++/11/bits/stl_algobase.h:
 
@@ -542,6 +543,59 @@ lib/CMakeFiles/lodepng.dir/lodepng/lodepng.cpp.o: ../lib/lodepng/lodepng.cpp \
 
 /usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
 
+=======
+
+/usr/include/c++/11/bits/stl_algobase.h:
+
+/usr/include/c++/11/cwchar:
+
+/usr/include/aarch64-linux-gnu/c++/11/bits/gthr.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/time_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_timespec.h:
+
+/usr/include/aarch64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/11/debug/functions.h:
+
+/usr/include/aarch64-linux-gnu/bits/cpu-set.h:
+
+/usr/include/time.h:
+
+/usr/include/aarch64-linux-gnu/bits/timex.h:
+
+/usr/include/c++/11/bits/cxxabi_init_exception.h:
+
+/usr/include/wchar.h:
+
+/usr/include/c++/11/pstl/pstl_config.h:
+
+/usr/include/c++/11/bits/allocator.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/clockid_t.h:
+
+/usr/include/c++/11/clocale:
+
+/usr/include/aarch64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/struct_itimerspec.h:
+
+/usr/include/aarch64-linux-gnu/bits/pthreadtypes-arch.h:
+
+/usr/include/aarch64-linux-gnu/bits/pthread_stack_min-dynamic.h:
+
+/usr/include/aarch64-linux-gnu/bits/struct_rwlock.h:
+
+/usr/include/aarch64-linux-gnu/bits/types.h:
+
+/usr/include/aarch64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/aarch64-linux-gnu/bits/setjmp.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/__sigset_t.h:
+
+>>>>>>> Stashed changes
 /usr/include/aarch64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/c++/11/debug/safe_container.h:
@@ -559,6 +613,7 @@ lib/CMakeFiles/lodepng.dir/lodepng/lodepng.cpp.o: ../lib/lodepng/lodepng.cpp \
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/aarch64-linux-gnu/bits/wordsize.h:
+<<<<<<< Updated upstream
 
 /usr/include/c++/11/bits/char_traits.h:
 
@@ -583,5 +638,22 @@ lib/CMakeFiles/lodepng.dir/lodepng/lodepng.cpp.o: ../lib/lodepng/lodepng.cpp \
 >>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
 >>>>>>> Stashed changes
 =======
+>>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
+>>>>>>> Stashed changes
+=======
+
+/usr/include/c++/11/bits/char_traits.h:
+
+/usr/include/c++/11/bits/postypes.h:
+
+/usr/include/aarch64-linux-gnu/bits/wchar.h:
+
+/usr/include/c++/11/bits/charconv.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/__FILE.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/FILE.h:
 >>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
 >>>>>>> Stashed changes
