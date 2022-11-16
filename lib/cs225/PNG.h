@@ -16,12 +16,12 @@ namespace cs225
   class PNG
   {
   public:
-    void drawLine(double x0, double y0, double x1, double y1, double h, double s, double l);
+    void drawLine(int x0, int y0, int x1, int y1, double h, double s, double l);
 
     // draw line helper functions // based off bresenhams line algorithm 
 
-    void plotLineHigh(double x0, double y0, double x1, double y1, double h, double s, double l);
-    void plotLineLow(double x0, double y0, double x1, double y1, double h, double s, double l);
+    void plotLineHigh(int x0, int y0, int x1, int y1, double h, double s, double l);
+    void plotLineLow(int x0, int y0, int x1, int y1, double h, double s, double l);
 
     void drawCircle(size_t x, size_t y, double h, double s, double l, size_t lenX, size_t lenY);
 

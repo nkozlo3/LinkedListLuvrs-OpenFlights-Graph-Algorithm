@@ -380,7 +380,7 @@ void Graph::drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int y
     }
 }
 
-void Graph::drawVerticesOfGraphOnPNG(double h, double s, double l)
+void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l)
 {
     std::vector<std::string> vertices = getVertices();
     std::pair<double, double> destPoints;
@@ -420,7 +420,7 @@ void Graph::drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, dou
     if (nodes)
         drawNodesOfGraphOnPNG(h1h2.first, s1s2.first, l1l2.first, xNodeSize, yNodeSize);
     if (vertices)
-        drawVerticesOfGraphOnPNG(h1h2.second, s1s2.second, l1l2.second);
+        drawEdgesOfGraphOnPNG(h1h2.second, s1s2.second, l1l2.second);
 
     png_.writeToFile(newFileName + ".png");
 

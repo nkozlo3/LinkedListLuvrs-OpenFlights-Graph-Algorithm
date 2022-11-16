@@ -79,10 +79,10 @@ namespace cs225
     }
   }
 
-  void PNG::drawLine(double x0, double y0, double x1, double y1, double h, double s, double l)
+  void PNG::drawLine(int x0, int y0, int x1, int y1, double h, double s, double l)
   {
-    double abs1 = y1 - y0;
-    double abs2 = x1 - x0;
+    int abs1 = y1 - y0;
+    int abs2 = x1 - x0;
     if (std::abs(abs1) < std::abs(abs2))
     {
       if (x0 > x1)
@@ -107,20 +107,20 @@ namespace cs225
     }
   }
 
-  void PNG::plotLineLow(double x0, double y0, double x1, double y1, double h, double s, double l)
+  void PNG::plotLineLow(int x0, int y0, int x1, int y1, double h, double s, double l)
   {
-    double dx = x1 - x0;
-    double dy = y1 - y0;
-    double yi = 1;
+    int dx = x1 - x0;
+    int dy = y1 - y0;
+    int yi = 1;
     if (dy < 0)
     {
       yi = -1;
       dy = -dy;
     }
-    double D = 2 * dy - dx;
-    double y = y0;
+    int D = 2 * dy - dx;
+    int y = y0;
 
-    for (double x = x0; x <= x1; x++)
+    for (int x = x0; x <= x1; x++)
     {
       HSLAPixel &pixel = getPixel(x, y);
       pixel.h = h;
@@ -137,20 +137,20 @@ namespace cs225
       }
     }
   }
-  void PNG::plotLineHigh(double x0, double y0, double x1, double y1, double h, double s, double l)
+  void PNG::plotLineHigh(int x0, int y0, int x1, int y1, double h, double s, double l)
   {
-    double dx = x1 - x0;
-    double dy = y1 - y0;
-    double xi = 1;
+    int dx = x1 - x0;
+    int dy = y1 - y0;
+    int xi = 1;
     if (dx < 0)
     {
       xi = -1;
       dx = -dx;
     }
-    double D = 2 * dx - dy;
-    double x = x0;
+    int D = 2 * dx - dy;
+    int x = x0;
 
-    for (double y = y0; y <= y1; y++)
+    for (int y = y0; y <= y1; y++)
     {
       HSLAPixel &pixel = getPixel(x, y);
       pixel.h = h;

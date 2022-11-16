@@ -95,7 +95,7 @@ public:
                         std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices);
 
     void drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize);
-    void drawVerticesOfGraphOnPNG(double h, double s, double l);
+    void drawEdgesOfGraphOnPNG(double h, double s, double l);
 
     // Populate adjacency_list
     std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> populateAdjacencyList(std::string textFileName);
@@ -154,10 +154,9 @@ public:
      */
     double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 
-
     /**
-     * 
-    */
+     *
+     */
     std::pair<double, double> latitudeToXAndYPos(double longitude, double latitude, double width, double height);
 
     std::unordered_map<std::string, Graph::edge> getAdjacencyListUnorderedMap(std::string sourceCode);
