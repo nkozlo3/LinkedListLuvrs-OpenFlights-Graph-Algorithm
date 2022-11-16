@@ -574,6 +574,10 @@ lib/CMakeFiles/lodepng.dir/lodepng/lodepng.cpp.o: ../lib/lodepng/lodepng.cpp \
 
 /usr/include/aarch64-linux-gnu/bits/types/FILE.h:
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
+>>>>>>> Stashed changes
 =======
 >>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
 >>>>>>> Stashed changes
