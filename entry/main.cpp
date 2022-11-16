@@ -21,7 +21,7 @@ int main()
     std::string newFileNameNodes = "../baby";
 
     // g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileNameBoth, true, true);
-    g1.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileNameNodes, true, false);
+    g1.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileNameNodes, true, true);
 
     std::pair<double, double> points0 = g1.getPixelPoints().at("BTI");
     std::pair<double, double> points1 = g1.getPixelPoints().at("GRY");
@@ -45,6 +45,7 @@ int main()
     png.readFromFile("../baby.png");
 
     png.drawLine(png.width() / 2, png.height() / 2, points1.first, points1.second, h1h2.second, s1s2.second, l1l2.second);
+    png.drawLine((int) points0.first, (int) points0.second, (int) points1.first, (int) points1.second, h1h2.second, s1s2.second, l1l2.second);
 
     png.writeToFile("../lineHopefully.png");
 

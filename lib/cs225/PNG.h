@@ -18,7 +18,7 @@ namespace cs225
   public:
     void drawLine(double x0, double y0, double x1, double y1, double h, double s, double l);
 
-    // draw line helper functions // based off bresenhams line algorithm
+    // draw line helper functions // based off bresenhams line algorithm 
 
     void plotLineHigh(double x0, double y0, double x1, double y1, double h, double s, double l);
     void plotLineLow(double x0, double y0, double x1, double y1, double h, double s, double l);

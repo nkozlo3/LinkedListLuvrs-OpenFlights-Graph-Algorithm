@@ -333,7 +333,7 @@ std::pair<double, double> Graph::latitudeToXAndYPos(double longitude, double lat
     double latO2 = (-latitude / 2);
     double insideTang = piO4 + latO2;
     double asa = std::tan(insideTang);
-    double top = (std::log(std::tan(insideTang))) + num; // TODO: std::log(std::tan(num)) has numbers that are not defined. i.e. num = 2.038. Need to fix that.
+    double top = (std::log(std::tan(insideTang))) + num;
     double y = (height * ((top) / (6.2626)));
 
     std::pair<double, double> ret;

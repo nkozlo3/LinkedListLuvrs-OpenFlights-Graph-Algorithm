@@ -154,6 +154,10 @@ public:
      */
     double numberNormalized(double originalMinRange, double originalMaxRange, double minRange, double maxRange, double position);
 
+
+    /**
+     * 
+    */
     std::pair<double, double> latitudeToXAndYPos(double longitude, double latitude, double width, double height);
 
     std::unordered_map<std::string, Graph::edge> getAdjacencyListUnorderedMap(std::string sourceCode);

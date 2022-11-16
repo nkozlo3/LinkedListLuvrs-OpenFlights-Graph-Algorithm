@@ -120,7 +120,7 @@ namespace cs225
     double D = 2 * dy - dx;
     double y = y0;
 
-    for (double x = 0; x < x1; x++)
+    for (double x = x0; x <= x1; x++)
     {
       HSLAPixel &pixel = getPixel(x, y);
       pixel.h = h;
@@ -129,7 +129,7 @@ namespace cs225
       if (D > 0)
       {
         y = y + yi;
-        D = D - 2 * dx;
+        D = D + (2 * dy - dx);
       }
       else
       {
@@ -150,7 +150,7 @@ namespace cs225
     double D = 2 * dx - dy;
     double x = x0;
 
-    for (double y = 0; y < y1; y++)
+    for (double y = y0; y <= y1; y++)
     {
       HSLAPixel &pixel = getPixel(x, y);
       pixel.h = h;
@@ -159,7 +159,7 @@ namespace cs225
       if (D > 0)
       {
         x = x + xi;
-        D = D - 2 * dy;
+        D = D + (2 * (dx - dy));
       }
       else
       {
