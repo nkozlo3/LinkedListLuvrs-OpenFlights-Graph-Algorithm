@@ -94,7 +94,7 @@ public:
     void drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2,
                         std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices);
 
-    void drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize);
+    std::vector<std::pair<double, double>> drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize);
     void drawEdgesOfGraphOnPNG(double h, double s, double l);
 
     // Populate adjacency_list
@@ -184,6 +184,9 @@ private:
     mutable std::map<std::string, std::pair<double, double>> node_positions_;
     // lonLatcoordinates converted to xy points
     mutable std::map<std::string, std::pair<double, double>> pixel_points_;
+    // Nodes that exist on our map
+    std::vector<std::pair<double, double>> existingNodes_;
+
 
     int picNum_;
     string picName_;

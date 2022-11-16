@@ -30,7 +30,7 @@ namespace cs225
     // Clear self
     delete[] imageData_;
 
-    // Copy `other` to self
+    // Copy `ot\workspaces\LinkedListLuvrs-OpenFlights-Graph-Algorithm\lineHopefully.pngher` to self
     width_ = other.width_;
     height_ = other.height_;
     imageData_ = new HSLAPixel[width_ * height_];
@@ -129,7 +129,7 @@ namespace cs225
       if (D > 0)
       {
         y = y + yi;
-        D = D + (2 * dy - dx);
+        D = D + (2 * (dy - dx));
       }
       else
       {

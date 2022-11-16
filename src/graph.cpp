@@ -357,7 +357,7 @@ double Graph::degToRadian(double degrees)
     return (2 * (M_PI)) * (degrees / 360);
 }
 
-void Graph::drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize)
+std::vector<std::pair<double, double>> Graph::drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize)
 {
     std::map<std::string, std::pair<double, double>> m = codeToPosition("airports.csv");
     std::vector<std::string> vertices = getVertices();
@@ -376,8 +376,10 @@ void Graph::drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int y
             continue;
         }
 
+        existingNodes_.push_back(std::make_pair(points.first, points.second));
         png_.drawCircle((size_t)points.first, (size_t)points.second, h, s, l, xSize, ySize);
     }
+    return existingNodes_;
 }
 
 void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l)
@@ -409,6 +411,16 @@ void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l)
                 continue;
             }
 
+            if (std::find(existingNodes_.begin(), existingNodes_.end(), std::make_pair(sourcePoints.first, sourcePoints.second)) == existingNodes_.end())
+            {
+                continue;
+            }
+            if (std::find(existingNodes_.begin(), existingNodes_.end(), std::make_pair(destPoints.first, destPoints.second)) == existingNodes_.end())
+            {
+                
+                continue;
+            }
+            
             png_.drawLine(sourcePoints.first, sourcePoints.second, destPoints.first, destPoints.second, h, s, l);
         }
     }
@@ -419,6 +431,7 @@ void Graph::drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, dou
 {
     if (nodes)
         drawNodesOfGraphOnPNG(h1h2.first, s1s2.first, l1l2.first, xNodeSize, yNodeSize);
+
     if (vertices)
         drawEdgesOfGraphOnPNG(h1h2.second, s1s2.second, l1l2.second);
 
