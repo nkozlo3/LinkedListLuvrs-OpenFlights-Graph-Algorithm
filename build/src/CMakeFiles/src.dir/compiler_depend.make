@@ -1479,6 +1479,7 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
 /usr/include/aarch64-linux-gnu/gnu/stubs.h:
 
 /usr/include/aarch64-linux-gnu/bits/math-vector.h:
+<<<<<<< Updated upstream
 
 /usr/include/c++/11/bits/exception_ptr.h:
 
@@ -1502,6 +1503,31 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
 
 /usr/include/endian.h:
 
+=======
+
+/usr/include/c++/11/bits/exception_ptr.h:
+
+/usr/include/aarch64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/c++/11/bits/stl_construct.h:
+
+/usr/include/c++/11/string_view:
+
+/usr/include/c++/11/bits/functional_hash.h:
+
+/usr/include/aarch64-linux-gnu/bits/waitflags.h:
+
+/usr/include/aarch64-linux-gnu/sys/types.h:
+
+/usr/include/c++/11/bits/erase_if.h:
+
+/usr/include/c++/11/bits/ptr_traits.h:
+
+/usr/include/stdint.h:
+
+/usr/include/endian.h:
+
+>>>>>>> Stashed changes
 /usr/include/c++/11/ext/aligned_buffer.h:
 
 /usr/include/aarch64-linux-gnu/bits/uintn-identity.h:
@@ -1689,6 +1715,7 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
 /usr/include/c++/11/bits/stl_map.h:
 
 /usr/include/c++/11/debug/map:
+<<<<<<< Updated upstream
 
 /usr/include/c++/11/debug/map.h:
 
@@ -1709,5 +1736,22 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
 >>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
 >>>>>>> Stashed changes
 =======
+>>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
+>>>>>>> Stashed changes
+=======
+
+/usr/include/c++/11/debug/map.h:
+
+/usr/include/c++/11/bits/allocator.h:
+
+/usr/include/c++/11/cmath:
+
+/usr/include/math.h:
+
+/usr/include/locale.h:
+
+/usr/include/aarch64-linux-gnu/bits/types/wint_t.h:
+
+/usr/include/aarch64-linux-gnu/bits/flt-eval-method.h:
 >>>>>>> 2abc33d18cb5435ad743ce6a9feeb6321920d60f
 >>>>>>> Stashed changes
