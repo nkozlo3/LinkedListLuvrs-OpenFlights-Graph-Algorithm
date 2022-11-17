@@ -21,6 +21,8 @@ void DFS::dfs(std::string airport) {
         end_airport.push_back(i.first);
     }
     for (size_t i = 0; i < graph[airport].size(); i++) {
-        dfs(end_airport[i]);
+        if (visited.find(end_airport[i]) == visited.end()) {
+            dfs(end_airport[i]);
+        }
     }
 }
