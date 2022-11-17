@@ -6,6 +6,12 @@
 
 using namespace cs225;
 
+Graph::Graph() { //default constructor
+    weighted_ = 0;
+    directed_ = false;
+    picNum_ = 1;
+}
+
 Graph::Graph(bool weighted, int picNum, std::string picName, std::string filename)
 {
     weighted_ = weighted;
