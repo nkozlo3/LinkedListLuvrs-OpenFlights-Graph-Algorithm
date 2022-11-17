@@ -62,6 +62,8 @@ public:
             return distance_edgeWeight < other.distance_edgeWeight;
         }
     };
+
+    Graph();
     // constructors
     /**
      * Constructor to create an empty graph.
@@ -85,6 +87,7 @@ public:
      * Gets all vertices in the graph.
      * @return a vector of all vertices in the graph
      */
+     ////returns a vector of strings of airport codes
     std::vector<std::string> getVertices();
 
     /**
@@ -94,7 +97,7 @@ public:
     void drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2,
                         std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices);
 
-    void drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize);
+    std::vector<std::pair<double, double>> drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize);
     void drawEdgesOfGraphOnPNG(double h, double s, double l);
 
     // Populate adjacency_list
@@ -172,18 +175,25 @@ public:
     double degToRadian(double degrees);
 
     PNG getPng();
-
+    //maps a source airport to a map of all it's destination airports. 
+    //second map is the adjacency list of the first (adj nodes)
     std::unordered_map<std::string, std::unordered_map<std::string, edge>> getAdjacanceMatrix();
     std::map<std::string, std::pair<double, double>> getNodePositions();
     std::map<std::string, std::pair<double, double>> getPixelPoints();
 
 private:
     // adjacency_list at [sourceCode][destCode] = edge
+
+    //map from airport to a map of destinations from that airport 
+
     mutable std::unordered_map<std::string, std::unordered_map<std::string, edge>> adjacency_matrix_;
     // map of node positions where [airportCode] maps to pair<lon, lat>
     mutable std::map<std::string, std::pair<double, double>> node_positions_;
     // lonLatcoordinates converted to xy points
     mutable std::map<std::string, std::pair<double, double>> pixel_points_;
+    // Nodes that exist on our map
+    std::vector<std::pair<double, double>> existingNodes_;
+
 
     int picNum_;
     string picName_;
