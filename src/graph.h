@@ -49,7 +49,7 @@ class Graph
 {
 
 public:
-    struct edge
+    struct pairOfAirports
     {
         std::pair<double, double> lonAndLatPointsSource;
         std::pair<double, double> lonAndLatPointsDest;
@@ -57,7 +57,7 @@ public:
         std::string destAirportCode_destVertex;
         double distance_edgeWeight;
 
-        bool operator<(const edge &other) const
+        bool operator<(const pairOfAirports &other) const
         {
             return distance_edgeWeight < other.distance_edgeWeight;
         }
@@ -87,7 +87,7 @@ public:
      * Gets all vertices in the graph.
      * @return a vector of all vertices in the graph
      */
-     ////returns a vector of strings of airport codes
+    ////returns a vector of strings of airport codes
     std::vector<std::string> getVertices();
 
     /**
@@ -101,7 +101,7 @@ public:
     void drawEdgesOfGraphOnPNG(double h, double s, double l);
 
     // Populate adjacency_list
-    std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> populateAdjacencyList(std::string textFileName);
+    std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyList(std::string textFileName);
 
     // helper functions:
 
@@ -116,7 +116,7 @@ public:
      * @param txtFileName - the name of the text file to be read
      * @return a map of edges
      */
-    std::map<std::string, std::vector<edge>> sourceToDestLongLat(std::string txtFileName);
+    std::map<std::string, std::vector<pairOfAirports>> sourceToDestLongLat(std::string txtFileName);
 
     /**
      * This function returns the distance between two points
@@ -162,9 +162,9 @@ public:
      */
     std::pair<double, double> latitudeToXAndYPos(double longitude, double latitude, double width, double height);
 
-    std::unordered_map<std::string, Graph::edge> getAdjacencyListUnorderedMap(std::string sourceCode);
+    std::unordered_map<std::string, Graph::pairOfAirports> getAdjacencyListUnorderedMap(std::string sourceCode);
 
-    Graph::edge getAdjacencyListEdge(std::string sourceCode, std::string destCode);
+    Graph::pairOfAirports getAdjacencyListEdge(std::string sourceCode, std::string destCode);
 
     std::map<std::string, std::pair<double, double>> populatePixelPoints();
 
@@ -175,25 +175,24 @@ public:
     double degToRadian(double degrees);
 
     PNG getPng();
-    //maps a source airport to a map of all it's destination airports. 
-    //second map is the adjacency list of the first (adj nodes)
-    std::unordered_map<std::string, std::unordered_map<std::string, edge>> getAdjacanceMatrix();
+    // maps a source airport to a map of all it's destination airports.
+    // second map is the adjacency list of the first (adj nodes)
+    std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> getAdjacanceMatrix();
     std::map<std::string, std::pair<double, double>> getNodePositions();
     std::map<std::string, std::pair<double, double>> getPixelPoints();
 
 private:
     // adjacency_list at [sourceCode][destCode] = edge
 
-    //map from airport to a map of destinations from that airport 
+    // map from airport to a map of destinations from that airport
 
-    mutable std::unordered_map<std::string, std::unordered_map<std::string, edge>> adjacency_matrix_;
+    mutable std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> adjacency_matrix_;
     // map of node positions where [airportCode] maps to pair<lon, lat>
     mutable std::map<std::string, std::pair<double, double>> node_positions_;
     // lonLatcoordinates converted to xy points
     mutable std::map<std::string, std::pair<double, double>> pixel_points_;
     // Nodes that exist on our map
     std::vector<std::pair<double, double>> existingNodes_;
-
 
     int picNum_;
     string picName_;

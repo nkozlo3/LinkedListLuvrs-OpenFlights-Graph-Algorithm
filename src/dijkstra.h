@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "graph.h"
+#include <queue>
 class Dijkstras
 {
 public:

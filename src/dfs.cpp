@@ -1,27 +1,34 @@
 #include "dfs.h"
 
-void DFS::dfs() {
+void DFS::dfs()
+{
     flight_path.clear();
     visited.clear();
-    std::unordered_map<std::string, std::unordered_map<std::string, edge>> graph = getAdjacanceMatrix();
-    for (auto i : graph) {
+    std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> graph = getAdjacanceMatrix();
+    for (auto i : graph)
+    {
         dfs(i.first);
     }
 }
 
-void DFS::dfs(std::string airport) {
+void DFS::dfs(std::string airport)
+{
     std::vector<std::string> end_airport;
-    if (visited.find(airport) != visited.end()) {
+    if (visited.find(airport) != visited.end())
+    {
         return;
     }
     flight_path.push_back(airport);
     visited.insert(airport);
-    std::unordered_map<std::string, std::unordered_map<std::string, edge>> graph = getAdjacanceMatrix();
-    for (auto i : graph[airport]) {
+    std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> graph = getAdjacanceMatrix();
+    for (auto i : graph[airport])
+    {
         end_airport.push_back(i.first);
     }
-    for (size_t i = 0; i < graph[airport].size(); i++) {
-        if (visited.find(end_airport[i]) == visited.end()) {
+    for (size_t i = 0; i < graph[airport].size(); i++)
+    {
+        if (visited.find(end_airport[i]) == visited.end())
+        {
             dfs(end_airport[i]);
         }
     }

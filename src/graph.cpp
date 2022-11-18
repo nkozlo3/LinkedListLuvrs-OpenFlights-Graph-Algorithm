@@ -6,7 +6,8 @@
 
 using namespace cs225;
 
-Graph::Graph() { //default constructor
+Graph::Graph()
+{ // default constructor
     weighted_ = 0;
     directed_ = false;
     picNum_ = 1;
@@ -65,20 +66,20 @@ std::map<std::string, std::pair<double, double>> Graph::populatePixelPoints()
     return pixelPoints;
 }
 
-std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::populateAdjacencyList(std::string txtFileName)
+std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> Graph::populateAdjacencyList(std::string txtFileName)
 {
     std::vector<std::vector<std::string>> v2 = csvToVect(txtFileName, {2, 4});
     std::map<std::string, std::pair<double, double>> points = codeToPosition("airports.csv");
 
-    std::unordered_map<std::string, std::unordered_map<std::string, edge>> m2;
+    std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> m2;
 
     std::string currSource = "";
 
-    std::unordered_map<std::string, edge> currUnorderedMap;
+    std::unordered_map<std::string, pairOfAirports> currUnorderedMap;
 
     for (size_t i = 0; i < v2.size(); i++)
     {
-        edge struc;
+        pairOfAirports struc;
 
         if (!currUnorderedMap.empty())
             currUnorderedMap.clear();
@@ -110,12 +111,12 @@ std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Gr
     return m2;
 }
 
-std::unordered_map<std::string, Graph::edge> Graph::getAdjacencyListUnorderedMap(std::string sourceCode)
+std::unordered_map<std::string, Graph::pairOfAirports> Graph::getAdjacencyListUnorderedMap(std::string sourceCode)
 {
     return adjacency_matrix_[sourceCode];
 }
 
-Graph::edge Graph::getAdjacencyListEdge(std::string sourceCode, std::string destCode)
+Graph::pairOfAirports Graph::getAdjacencyListEdge(std::string sourceCode, std::string destCode)
 {
     return adjacency_matrix_[sourceCode][destCode];
 }
@@ -134,7 +135,7 @@ std::vector<std::string> Graph::getVertices()
 double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
 {
     std::map<std::pair<std::string, std::string>, double> m;
-    std::map<std::string, std::vector<Graph::edge>> pairs = sourceToDestLongLat("routes.csv");
+    std::map<std::string, std::vector<Graph::pairOfAirports>> pairs = sourceToDestLongLat("routes.csv");
     double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.first - pairs[destAirpCode][0].lonAndLatPointsSource.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.second - pairs[destAirpCode][0].lonAndLatPointsSource.second, 2));
     return distance;
 }
@@ -144,7 +145,7 @@ PNG Graph::getPng()
     return png_;
 }
 
-std::unordered_map<std::string, std::unordered_map<std::string, Graph::edge>> Graph::getAdjacanceMatrix()
+std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> Graph::getAdjacanceMatrix()
 {
     return adjacency_matrix_;
 }
@@ -258,7 +259,7 @@ std::map<std::string, std::pair<double, double>> Graph::codeToPosition(std::stri
  * @param txtFileName The name of the txt file (in our case, Codes.txt)
  * @return map of edges
  */
-std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::string txtFileName)
+std::map<std::string, std::vector<Graph::pairOfAirports>> Graph::sourceToDestLongLat(std::string txtFileName)
 {
     // Now we need to compile a map of every destination that each individual airport has
     // we have a routes file that has the source and destination IATA codes
@@ -268,15 +269,15 @@ std::map<std::string, std::vector<Graph::edge>> Graph::sourceToDestLongLat(std::
     std::vector<std::vector<std::string>> v2 = csvToVect(txtFileName, {2, 4});
     std::map<std::string, std::pair<double, double>> points = codeToPosition("airports.csv");
 
-    std::map<std::string, std::vector<edge>> m2;
+    std::map<std::string, std::vector<pairOfAirports>> m2;
 
     std::string currSource = "";
 
-    std::vector<edge> currVect;
+    std::vector<pairOfAirports> currVect;
 
     for (size_t i = 0; i < v2.size(); i++)
     {
-        edge struc;
+        pairOfAirports struc;
         if (!currVect.empty())
             currVect.clear();
 
@@ -423,10 +424,10 @@ void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l)
             }
             if (std::find(existingNodes_.begin(), existingNodes_.end(), std::make_pair(destPoints.first, destPoints.second)) == existingNodes_.end())
             {
-                
+
                 continue;
             }
-            
+
             png_.drawLine(sourcePoints.first, sourcePoints.second, destPoints.first, destPoints.second, h, s, l);
         }
     }

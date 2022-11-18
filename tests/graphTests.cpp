@@ -90,7 +90,7 @@ TEST_CASE("Graph numberNormalized normalizes the numbers properly", "[weight=5][
 TEST_CASE("Graph sourceToDestLongLat outputs correct data", "[weight=5][graph][7]")
 {
 
-    std::map<std::string, std::vector<Graph::edge>> m = graph.sourceToDestLongLat("routes.csv");
+    std::map<std::string, std::vector<Graph::pairOfAirports>> m = graph.sourceToDestLongLat("routes.csv");
 
     std::map<std::string, std::pair<double, double>> m1 = graph.codeToPosition("airports.csv");
 
