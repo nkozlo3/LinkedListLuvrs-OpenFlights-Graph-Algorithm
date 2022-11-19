@@ -196,7 +196,7 @@ TEST_CASE("Graph constructor populates adjacency_matrix_ properly", "[weight=5][
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").distance_edgeWeight == graph.calculateDistance(23.0771999359, 72.63469696039999, 24.433000564575195, 54.651100158691406));
 }
 
-TEST_CASE("Graph constructor populates node_positions_ properly", "[weight=5][graph][9]")
+TEST_CASE("Graph constructor populates node_positions_ properly", "[weight=5][graph][7]")
 {
     REQUIRE(graph.getNodePositions().at("THU").first == 76.5311965942);
     REQUIRE(graph.getNodePositions().at("SFJ").first == 67.0122218992);
@@ -207,4 +207,24 @@ TEST_CASE("Graph constructor populates node_positions_ properly", "[weight=5][gr
     REQUIRE(graph.getNodePositions().at("LAE").second == 146.725977);
     REQUIRE(graph.getNodePositions().at("HGU").second == 144.29600524902344);
     REQUIRE(graph.getNodePositions().at("GKA").second == 145.391998291);
+}
+
+TEST_CASE("Graph getAdjacencyListEdge gets the correct edges", "[weight=5][graph][9]")
+{
+
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").destAirportCode_destVertex == "AKL");
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").lonAndLatPointsDest.first == -37.008098602299995);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").lonAndLatPointsDest.second == 174.792007446);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").lonAndLatPointsSource.first == 23.39240074157715);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").lonAndLatPointsSource.second == 113.29900360107422);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").sourceAirportCode_sourceVertex == "CAN");
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").distance_edgeWeight == graph.calculateDistance(23.39240074157715, 113.29900360107422, -37.008098602299995, 174.792007446));
+
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").destAirportCode_destVertex == "//N");
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsDest.first == (double)__INT_MAX__);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsDest.second == (double)__INT_MAX__);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsSource.first == (double)__INT_MAX__);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsSource.second == (double)__INT_MAX__);
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").sourceAirportCode_sourceVertex == "//N");
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").distance_edgeWeight == (double)__INT_MAX__);
 }

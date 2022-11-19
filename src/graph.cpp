@@ -118,6 +118,18 @@ std::unordered_map<std::string, Graph::pairOfAirports> Graph::getAdjacencyListUn
 
 Graph::pairOfAirports Graph::getAdjacencyListEdge(std::string sourceCode, std::string destCode)
 {
+    if (adjacency_matrix_[sourceCode].find(destCode) == adjacency_matrix_[sourceCode].end())
+    {
+        pairOfAirports bad;
+        bad.destAirportCode_destVertex = "//N";
+        bad.distance_edgeWeight = (double)__INT_MAX__;
+        bad.lonAndLatPointsDest = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
+        bad.lonAndLatPointsSource = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
+        bad.sourceAirportCode_sourceVertex = "//N";
+        return bad;
+    }
+
+
     return adjacency_matrix_[sourceCode][destCode];
 }
 

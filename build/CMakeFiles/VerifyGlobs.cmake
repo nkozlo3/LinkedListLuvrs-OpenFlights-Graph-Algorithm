@@ -39,7 +39,6 @@ set(OLD_GLOB
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/dfs.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/dijkstra.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/graph.cpp"
-  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/landalgo.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/src/stronglyconnected.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

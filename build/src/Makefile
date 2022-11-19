@@ -203,30 +203,6 @@ graph.cpp.s:
 	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/graph.cpp.s
 .PHONY : graph.cpp.s
 
-landalgo.o: landalgo.cpp.o
-.PHONY : landalgo.o
-
-# target to build an object file
-landalgo.cpp.o:
-	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/landalgo.cpp.o
-.PHONY : landalgo.cpp.o
-
-landalgo.i: landalgo.cpp.i
-.PHONY : landalgo.i
-
-# target to preprocess a source file
-landalgo.cpp.i:
-	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/landalgo.cpp.i
-.PHONY : landalgo.cpp.i
-
-landalgo.s: landalgo.cpp.s
-.PHONY : landalgo.s
-
-# target to generate assembly for a file
-landalgo.cpp.s:
-	cd /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/src.dir/build.make src/CMakeFiles/src.dir/landalgo.cpp.s
-.PHONY : landalgo.cpp.s
-
 stronglyconnected.o: stronglyconnected.cpp.o
 .PHONY : stronglyconnected.o
 
@@ -269,9 +245,6 @@ help:
 	@echo "... graph.o"
 	@echo "... graph.i"
 	@echo "... graph.s"
-	@echo "... landalgo.o"
-	@echo "... landalgo.i"
-	@echo "... landalgo.s"
 	@echo "... stronglyconnected.o"
 	@echo "... stronglyconnected.i"
 	@echo "... stronglyconnected.s"

@@ -16,7 +16,7 @@ int main()
     std::pair<double, double> l1l2 = std::make_pair(.5, .5);
     int xNodeSize = 2;
     int yNodeSize = 2;
-    std::string newFileName = "../baby";
+    std::string newFileName = "../ybab";
 
     g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileName, true, true);
 
