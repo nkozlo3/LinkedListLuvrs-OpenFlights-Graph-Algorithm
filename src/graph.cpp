@@ -136,7 +136,8 @@ double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
 {
     std::map<std::pair<std::string, std::string>, double> m;
     std::map<std::string, std::vector<Graph::pairOfAirports>> pairs = sourceToDestLongLat("routes.csv");
-    double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.first - pairs[destAirpCode][0].lonAndLatPointsSource.first, 2) + std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.second - pairs[destAirpCode][0].lonAndLatPointsSource.second, 2));
+    double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.first - pairs[destAirpCode][0].lonAndLatPointsSource.first, 2) +
+                           std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.second - pairs[destAirpCode][0].lonAndLatPointsSource.second, 2));
     return distance;
 }
 
@@ -149,10 +150,12 @@ std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAir
 {
     return adjacency_matrix_;
 }
+
 std::map<std::string, std::pair<double, double>> Graph::getNodePositions()
 {
     return node_positions_;
 }
+
 std::map<std::string, std::pair<double, double>> Graph::getPixelPoints()
 {
     return pixel_points_;
@@ -328,8 +331,6 @@ std::pair<double, double> Graph::latitudeToXAndYPos(double longitude, double lat
     // points1 first: 359.546  points1 second: 289.307
     // points0 first: 364.779  points0 second: -nan
     // nodes1 first: 66.5458  nodes1 second: -18.0173
-
-    // TODO: SWITCH LATITUDE AND LONGITUDE 😒
 
     // nodes0 first: 70.134  nodes0 second: -143.582
 
