@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/test.dir/tests/correctOutputTests.cpp.o.d"
   "CMakeFiles/test.dir/tests/dfsTests.cpp.o"
   "CMakeFiles/test.dir/tests/dfsTests.cpp.o.d"
+  "CMakeFiles/test.dir/tests/dijkstraTests.cpp.o"
+  "CMakeFiles/test.dir/tests/dijkstraTests.cpp.o.d"
   "CMakeFiles/test.dir/tests/graphTests.cpp.o"
   "CMakeFiles/test.dir/tests/graphTests.cpp.o.d"
   "test"

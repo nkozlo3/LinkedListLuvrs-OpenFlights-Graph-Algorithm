@@ -6,10 +6,10 @@
 class Dijkstras
 {
 public:
-    Dijkstras();      // TODO:
+    Dijkstras(Graph g);      // TODO:
     Graph getGraph(); // TODO:
     int minDist(std::vector<int> distances, std::vector<bool> visited);
-    std::unordered_map<std::string, double> dijkstra(Graph graph, std::string startVertex);
+    std::vector<std::string> dijkstra(Graph graph, std::string start, std::string dest);
 
 private:
     Graph g_;

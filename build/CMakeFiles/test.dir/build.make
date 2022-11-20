@@ -97,10 +97,24 @@ CMakeFiles/test.dir/tests/dfsTests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/tests/dfsTests.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp -o CMakeFiles/test.dir/tests/dfsTests.cpp.s
 
+CMakeFiles/test.dir/tests/dijkstraTests.cpp.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/tests/dijkstraTests.cpp.o: ../tests/dijkstraTests.cpp
+CMakeFiles/test.dir/tests/dijkstraTests.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/tests/dijkstraTests.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/tests/dijkstraTests.cpp.o -MF CMakeFiles/test.dir/tests/dijkstraTests.cpp.o.d -o CMakeFiles/test.dir/tests/dijkstraTests.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dijkstraTests.cpp
+
+CMakeFiles/test.dir/tests/dijkstraTests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/tests/dijkstraTests.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dijkstraTests.cpp > CMakeFiles/test.dir/tests/dijkstraTests.cpp.i
+
+CMakeFiles/test.dir/tests/dijkstraTests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/tests/dijkstraTests.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dijkstraTests.cpp -o CMakeFiles/test.dir/tests/dijkstraTests.cpp.s
+
 CMakeFiles/test.dir/tests/graphTests.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/tests/graphTests.cpp.o: ../tests/graphTests.cpp
 CMakeFiles/test.dir/tests/graphTests.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/tests/graphTests.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.dir/tests/graphTests.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/tests/graphTests.cpp.o -MF CMakeFiles/test.dir/tests/graphTests.cpp.o.d -o CMakeFiles/test.dir/tests/graphTests.cpp.o -c /workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp
 
 CMakeFiles/test.dir/tests/graphTests.cpp.i: cmake_force
@@ -115,6 +129,7 @@ CMakeFiles/test.dir/tests/graphTests.cpp.s: cmake_force
 test_OBJECTS = \
 "CMakeFiles/test.dir/tests/correctOutputTests.cpp.o" \
 "CMakeFiles/test.dir/tests/dfsTests.cpp.o" \
+"CMakeFiles/test.dir/tests/dijkstraTests.cpp.o" \
 "CMakeFiles/test.dir/tests/graphTests.cpp.o"
 
 # External object files for target test
@@ -122,6 +137,7 @@ test_EXTERNAL_OBJECTS =
 
 test: CMakeFiles/test.dir/tests/correctOutputTests.cpp.o
 test: CMakeFiles/test.dir/tests/dfsTests.cpp.o
+test: CMakeFiles/test.dir/tests/dijkstraTests.cpp.o
 test: CMakeFiles/test.dir/tests/graphTests.cpp.o
 test: CMakeFiles/test.dir/build.make
 test: /usr/lib/libCatch2Main.a
@@ -130,7 +146,7 @@ test: /usr/lib/libCatch2.a
 test: lib/libcs225.a
 test: lib/liblodepng.a
 test: CMakeFiles/test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -D TEST_TARGET=test -D TEST_EXECUTABLE=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/test -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build -D TEST_SPEC= -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D TEST_LIST=test_TESTS -D TEST_REPORTER= -D TEST_OUTPUT_DIR= -D TEST_OUTPUT_PREFIX= -D TEST_OUTPUT_SUFFIX= -D TEST_DL_PATHS= -D CTEST_FILE=/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/build/test_tests-b12d07c.cmake -P /usr/lib/cmake/Catch2/CatchAddTests.cmake
 

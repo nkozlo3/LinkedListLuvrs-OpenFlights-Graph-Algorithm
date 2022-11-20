@@ -51,6 +51,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/workspaces/LinkedListLuvrs-O
 set(OLD_GLOB
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/correctOutputTests.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dijkstraTests.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

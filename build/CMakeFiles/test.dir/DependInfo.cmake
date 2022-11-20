@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/correctOutputTests.cpp" "CMakeFiles/test.dir/tests/correctOutputTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/correctOutputTests.cpp.o.d"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp" "CMakeFiles/test.dir/tests/dfsTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/dfsTests.cpp.o.d"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dijkstraTests.cpp" "CMakeFiles/test.dir/tests/dijkstraTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/dijkstraTests.cpp.o.d"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp" "CMakeFiles/test.dir/tests/graphTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/graphTests.cpp.o.d"
   )
 

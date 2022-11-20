@@ -187,6 +187,7 @@ private:
     // map from airport to a map of destinations from that airport
 
     mutable std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> adjacency_matrix_;
+    
     // map of node positions where [airportCode] maps to pair<lon, lat>
     mutable std::map<std::string, std::pair<double, double>> node_positions_;
     // lonLatcoordinates converted to xy points

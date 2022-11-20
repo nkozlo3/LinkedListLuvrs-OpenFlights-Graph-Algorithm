@@ -280,6 +280,30 @@ tests/dfsTests.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/dfsTests.cpp.s
 .PHONY : tests/dfsTests.cpp.s
 
+tests/dijkstraTests.o: tests/dijkstraTests.cpp.o
+.PHONY : tests/dijkstraTests.o
+
+# target to build an object file
+tests/dijkstraTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/dijkstraTests.cpp.o
+.PHONY : tests/dijkstraTests.cpp.o
+
+tests/dijkstraTests.i: tests/dijkstraTests.cpp.i
+.PHONY : tests/dijkstraTests.i
+
+# target to preprocess a source file
+tests/dijkstraTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/dijkstraTests.cpp.i
+.PHONY : tests/dijkstraTests.cpp.i
+
+tests/dijkstraTests.s: tests/dijkstraTests.cpp.s
+.PHONY : tests/dijkstraTests.s
+
+# target to generate assembly for a file
+tests/dijkstraTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/dijkstraTests.cpp.s
+.PHONY : tests/dijkstraTests.cpp.s
+
 tests/graphTests.o: tests/graphTests.cpp.o
 .PHONY : tests/graphTests.o
 
@@ -328,6 +352,9 @@ help:
 	@echo "... tests/dfsTests.o"
 	@echo "... tests/dfsTests.i"
 	@echo "... tests/dfsTests.s"
+	@echo "... tests/dijkstraTests.o"
+	@echo "... tests/dijkstraTests.i"
+	@echo "... tests/dijkstraTests.s"
 	@echo "... tests/graphTests.o"
 	@echo "... tests/graphTests.i"
 	@echo "... tests/graphTests.s"
