@@ -5,12 +5,10 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
-PNG png;
 Graph graph(1, 1, 0, "testGraph", "mercator🤠.png");
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
 {
-
     std::vector<std::string> widthVect = graph.csvToVect("routes.csv")[0];
     std::vector<std::vector<std::string>> heightVect = graph.csvToVect("routes.csv");
 
@@ -209,7 +207,7 @@ TEST_CASE("Graph constructor populates node_positions_ properly", "[weight=5][gr
     REQUIRE(graph.getNodePositions().at("GKA").second == 145.391998291);
 }
 
-TEST_CASE("Graph getAdjacencyListEdge gets the correct edges", "[weight=5][graph][9]")
+TEST_CASE("Graph getAdjacencyListEdge gets the correct edges", "[weight=5][graph][7]")
 {
 
     REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").destAirportCode_destVertex == "AKL");
@@ -220,11 +218,30 @@ TEST_CASE("Graph getAdjacencyListEdge gets the correct edges", "[weight=5][graph
     REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").sourceAirportCode_sourceVertex == "CAN");
     REQUIRE(graph.getAdjacencyListEdge("CAN", "AKL").distance_edgeWeight == graph.calculateDistance(23.39240074157715, 113.29900360107422, -37.008098602299995, 174.792007446));
 
-    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").destAirportCode_destVertex == "//N");
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").destAirportCode_destVertex == "\\N");
     REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsDest.first == (double)__INT_MAX__);
     REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsDest.second == (double)__INT_MAX__);
     REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsSource.first == (double)__INT_MAX__);
     REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").lonAndLatPointsSource.second == (double)__INT_MAX__);
-    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").sourceAirportCode_sourceVertex == "//N");
+    REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").sourceAirportCode_sourceVertex == "\\N");
     REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").distance_edgeWeight == (double)__INT_MAX__);
+}
+TEST_CASE("Graph getEdges gets the correct edges", "[weight=5][graph][9]")
+{
+    // TODO:
+}
+
+TEST_CASE("Graph populates airports_ properly", "[weight=5][graph][9]")
+{
+    // TODO:
+}
+
+TEST_CASE("Graph getAdjacentNodes works properly", "[weight=5][graph][9]")
+{
+    // TODO:
+}
+
+TEST_CASE("Graph populates airport_map_ properly", "[weight=5][graph][9]")
+{
+    // TODO:
 }

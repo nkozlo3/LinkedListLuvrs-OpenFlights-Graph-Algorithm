@@ -13,24 +13,6 @@ Graph::Graph()
     picNum_ = 1;
 }
 
-Graph::Graph(bool weighted, int picNum, std::string picName, std::string filename)
-{
-    weighted_ = weighted;
-    directed_ = true;
-    picNum_ = picNum;
-    picName_ = picName;
-    png_.readFromFile(filename);
-
-    // populate adjacency_list_
-    adjacency_matrix_ = populateAdjacencyList("routes.csv");
-
-    // populate node_positions
-    node_positions_ = codeToPosition("airports.csv");
-
-    // populate pixel_points_
-    pixel_points_ = populatePixelPoints();
-}
-
 Graph::Graph(bool weighted, bool directed, int picNum, std::string picName, std::string filename)
 {
     weighted_ = weighted;
@@ -47,6 +29,16 @@ Graph::Graph(bool weighted, bool directed, int picNum, std::string picName, std:
 
     // populate pixel_points_
     pixel_points_ = populatePixelPoints();
+
+    // populate airports_
+    airports_ = populateAirports();
+
+    std::map<std::string, Graph::airport> airportsMap;
+    for (size_t i = 0; i < airports_.size(); i++)
+    {
+        airportsMap[airports_.at(i).airportCode] = airports_.at(i);
+    }
+    airports_map_ = airportsMap;
 }
 
 std::map<std::string, std::pair<double, double>> Graph::populatePixelPoints()
@@ -111,9 +103,67 @@ std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAir
     return m2;
 }
 
-std::unordered_map<std::string, Graph::pairOfAirports> Graph::getAdjacencyListUnorderedMap(std::string sourceCode)
+std::vector<Graph::airport> Graph::populateAirports()
 {
-    return adjacency_matrix_[sourceCode];
+    std::vector<std::vector<std::string>> listOfAirports = csvToVect("airports.csv"); // getting list of airports
+
+    std::vector<Graph::airport> ret;
+    std::vector<std::string> visitedAirports;
+
+    std::string currSource = "";
+
+    for (size_t i = 0; i < listOfAirports.size(); i++)
+    {
+        if (listOfAirports.at(i).at(4) != "\\N")
+        {
+            listOfAirports[i][4].erase(0, 1);
+            listOfAirports[i][4].erase(listOfAirports[i][4].end() - 1);
+            currSource = listOfAirports.at(i).at(4);
+        }
+        else if (listOfAirports.at(i).at(5) != "\\N")
+        {
+            listOfAirports[i][5].erase(0, 1);
+            listOfAirports[i][5].erase(listOfAirports[i][5].end() - 1);
+
+            currSource = listOfAirports.at(i).at(5);
+        }
+        else
+            continue;
+
+        airport struc;
+        if ((std::find(visitedAirports.begin(), visitedAirports.end(), currSource) == visitedAirports.end()) && currSource != "\\N")
+        {
+            visitedAirports.push_back(currSource);
+            struc.airportCode = currSource;
+            struc.index = -1;
+            struc.lowLink = -1;
+            struc.onStack = false;
+
+            double lat = std::strtod(listOfAirports[i][6].c_str(), nullptr);
+            double lon = std::strtod(listOfAirports[i][7].c_str(), nullptr);
+
+            struc.lonAndLatPoints.first = lat;
+            struc.lonAndLatPoints.second = lon;
+        }
+        else
+            continue;
+        ret.push_back(struc);
+    }
+    return ret;
+}
+
+// get the list of nodes that sourceCode is connected to
+std::vector<std::string> Graph::getAdjacentNodes(std::string airpCode)
+{
+    std::unordered_map<std::string, pairOfAirports> temp = adjacency_matrix_[airpCode];
+    std::vector<std::string> v;
+
+    for (auto it : temp)
+    {
+        v.push_back(it.first);
+    }
+
+    return v;
 }
 
 Graph::pairOfAirports Graph::getAdjacencyListEdge(std::string sourceCode, std::string destCode)
@@ -121,14 +171,13 @@ Graph::pairOfAirports Graph::getAdjacencyListEdge(std::string sourceCode, std::s
     if (adjacency_matrix_[sourceCode].find(destCode) == adjacency_matrix_[sourceCode].end())
     {
         pairOfAirports bad;
-        bad.destAirportCode_destVertex = "//N";
+        bad.destAirportCode_destVertex = "\\N";
         bad.distance_edgeWeight = (double)__INT_MAX__;
         bad.lonAndLatPointsDest = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
         bad.lonAndLatPointsSource = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
-        bad.sourceAirportCode_sourceVertex = "//N";
+        bad.sourceAirportCode_sourceVertex = "\\N";
         return bad;
     }
-
 
     return adjacency_matrix_[sourceCode][destCode];
 }
@@ -144,18 +193,32 @@ std::vector<std::string> Graph::getVertices()
     return vertices;
 }
 
-double Graph::getEdges(std::string sourceAirpCode, std::string destAirpCode)
+std::vector<Graph::pairOfAirports> Graph::getEdges()
 {
-    std::map<std::pair<std::string, std::string>, double> m;
-    std::map<std::string, std::vector<Graph::pairOfAirports>> pairs = sourceToDestLongLat("routes.csv");
-    double distance = sqrt(std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.first - pairs[destAirpCode][0].lonAndLatPointsSource.first, 2) +
-                           std::pow(pairs[sourceAirpCode][0].lonAndLatPointsSource.second - pairs[destAirpCode][0].lonAndLatPointsSource.second, 2));
-    return distance;
+    std::vector<pairOfAirports> edges;
+
+    for (auto it = adjacency_matrix_.begin(); it != adjacency_matrix_.end(); it++)
+    {
+        for (auto it2 = it->second.begin(); it2 != it->second.end(); it2++)
+        {
+            edges.push_back(it2->second);
+        }
+    }
+    return edges;
 }
 
 PNG Graph::getPng()
 {
     return png_;
+}
+
+std::vector<Graph::airport> Graph::getAirports()
+{
+    return airports_;
+}
+std::map<std::string, Graph::airport> Graph::getAirportsMap()
+{
+    return airports_map_;
 }
 
 std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> Graph::getAdjacanceMatrix()
@@ -171,6 +234,11 @@ std::map<std::string, std::pair<double, double>> Graph::getNodePositions()
 std::map<std::string, std::pair<double, double>> Graph::getPixelPoints()
 {
     return pixel_points_;
+}
+
+std::unordered_map<std::string, Graph::pairOfAirports> Graph::getAdjacentMap(std::string sourceCode)
+{
+    return adjacency_matrix_[sourceCode];
 }
 
 double Graph::calculateDistance(double sourceAirpLat, double sourceAirpLon, double destAirpLat, double destAirLon)

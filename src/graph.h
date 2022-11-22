@@ -22,6 +22,7 @@
 #include <numbers>
 
 using namespace cs225;
+
 /**
  * airports.csv is formatted as:
  * "Airline ID", "Name of the airline", "Alias of the airline", "2-letter IATA code", "3 letter ICAO code", "Callsign", "Country", "Active or not"
@@ -60,6 +61,23 @@ public:
         bool operator<(const pairOfAirports &other) const
         {
             return distance_edgeWeight < other.distance_edgeWeight;
+        }
+    };
+    struct airport
+    {
+        std::pair<double, double> lonAndLatPoints;
+        std::string airportCode;
+        int index;    // this index will be useful in our stronglyConnected class
+        int lowLink;  // this will also be useful for our stronglyConnected class
+        bool onStack; // this will be used to check if we are on the stack in stronglyconnected class
+
+        bool operator==(const airport &other) const
+        {
+            return airportCode == other.airportCode;
+        }
+        bool operator!=(const airport &other) const
+        {
+            return airportCode != other.airportCode;
         }
     };
 
@@ -106,10 +124,15 @@ public:
     // helper functions:
 
     /**
-     * This function returns a map of edges
-     * @return a map of edges
+     * This function returns a vector of every edge
+     * @return a vector of edges
      */
-    double getEdges(std::string airpCode1, std::string airpCode2);
+    std::vector<Graph::pairOfAirports> getEdges();
+
+    /**
+     * @return the coresponding map of adjacancyMatrix[sourceCode]
+     */
+    std::unordered_map<std::string, Graph::pairOfAirports> getAdjacentMap(std::string sourceCode);
 
     /**
      * This function returns a map of edges
@@ -162,11 +185,17 @@ public:
      */
     std::pair<double, double> latitudeToXAndYPos(double longitude, double latitude, double width, double height);
 
-    std::unordered_map<std::string, Graph::pairOfAirports> getAdjacencyListUnorderedMap(std::string sourceCode);
-
     Graph::pairOfAirports getAdjacencyListEdge(std::string sourceCode, std::string destCode);
 
+    std::vector<std::string> getAdjacentNodes(std::string airpCode);
+
     std::map<std::string, std::pair<double, double>> populatePixelPoints();
+
+    std::vector<Graph::airport> populateAirports();
+
+    std::vector<Graph::airport> getAirports();
+
+    std::map<std::string, airport> getAirportsMap();
 
     int getPicNum();
 
@@ -182,18 +211,20 @@ public:
     std::map<std::string, std::pair<double, double>> getPixelPoints();
 
 private:
-    // adjacency_list at [sourceCode][destCode] = edge
-
     // map from airport to a map of destinations from that airport
-
     mutable std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> adjacency_matrix_;
     
     // map of node positions where [airportCode] maps to pair<lon, lat>
     mutable std::map<std::string, std::pair<double, double>> node_positions_;
     // lonLatcoordinates converted to xy points
     mutable std::map<std::string, std::pair<double, double>> pixel_points_;
+    // a map from an airport code to it's airport struct
+    mutable std::map<std::string, airport> airports_map_;
+
     // Nodes that exist on our map
     std::vector<std::pair<double, double>> existingNodes_;
+    // a list of airport structs
+    std::vector<airport> airports_;
 
     int picNum_;
     string picName_;

@@ -101,11 +101,39 @@ foreach(entrypoint IN LISTS assignment_entrypoints)
 endforeach()
 add_custom_target(
     tests
-    COMMAND make
+    COMMAND make -j ./test
     COMMAND ./test
 )
 add_custom_target(
     mains
     COMMAND make
     COMMAND ./main
+)
+
+add_custom_target(
+    nine
+    COMMAND make -j ./test
+    COMMAND ./test [9]
+)
+add_custom_target(
+    seven
+    COMMAND make -j ./test
+    COMMAND ./test [7]
+)
+
+add_custom_target(
+    graph
+    COMMAND make -j ./test
+    COMMAND ./test [graph]
+)
+add_custom_target(
+    ssc
+    COMMAND make -j ./test
+    COMMAND ./test [ssc]
+)
+
+add_custom_target(
+    gdbssc
+    COMMAND make -j ./test
+    COMMAND gdb --args ./test [ssc]
 )
