@@ -9,7 +9,7 @@
 //PNG png;
 
 
-TEST_CASE("Dijkstra's returns a correct shortes path", "[weight=1][graph][7]")
+TEST_CASE("Dijkstra's returns a correct shortes path", "[weight=1][dijkstra][9]")
 {
     Graph graph(1, 1, 0, "testGraph", "mercator🤠.png");
     Dijkstras d = Dijkstras(graph);

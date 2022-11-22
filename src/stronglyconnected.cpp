@@ -7,30 +7,20 @@ StronglyConnected::StronglyConnected(Graph graph)
     vertices_ = g_.getAirports();
 }
 
-std::vector<Graph::airport> StronglyConnected::getVertices()
+void StronglyConnected::tarjan()
 {
-    return vertices_;
-}
-
-std::vector<std::vector<Graph::airport>> StronglyConnected::tarjan()
-{
-    std::vector<std::vector<Graph::airport>> connectedComponents;
     for (size_t i = 0; i < vertices_.size(); i++)
     {
         std::vector<Graph::airport> tempVect;
         if (vertices_.at(i).index == -1)
         {
-            tempVect = directConnect(vertices_[i]);
+            directConnect(vertices_[i]);
         }
-        connectedComponents.push_back(tempVect);
     }
-    return connectedComponents;
 }
 
-std::vector<Graph::airport> StronglyConnected::directConnect(Graph::airport vertex)
+void StronglyConnected::directConnect(Graph::airport vertex)
 {
-    // the vector of components strongly connected to vertex
-    std::vector<Graph::airport> currScc;
     // set the depth index for vertex to the smallest unused index
     vertex.index = index_;
     vertex.lowLink = index_;
@@ -61,14 +51,25 @@ std::vector<Graph::airport> StronglyConnected::directConnect(Graph::airport vert
         // If v is a root node, pop the stack and generate an SCC
         if (vertex.lowLink == vertex.index)
         {
+            std::vector<Graph::airport> currScc;
             while (vertexSuccessor != vertex)
             {
-                currScc.push_back(vertexSuccessor);
                 vertexSuccessor = stack_.top();
                 stack_.pop();
+                currScc.push_back(vertexSuccessor);
                 vertexSuccessor.onStack = false;
             }
+            connected_components_.push_back(currScc);
         }
     }
-    return currScc;
+}
+
+std::vector<Graph::airport> StronglyConnected::getVertices()
+{
+    return vertices_;
+}
+
+std::vector<std::vector<Graph::airport>> StronglyConnected::getConnectedComponents()
+{
+    return connected_components_;
 }
