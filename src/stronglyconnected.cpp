@@ -12,7 +12,7 @@ void StronglyConnected::tarjan()
     for (size_t i = 0; i < vertices_.size(); i++)
     {
         std::vector<Graph::airport> tempVect;
-        if (vertices_.at(i).index == -1)
+        if (!vertices_.at(i).visited)
         {
             directConnect(vertices_[i]);
         }
@@ -27,6 +27,7 @@ void StronglyConnected::directConnect(Graph::airport vertex)
     index_++;
     stack_.push(vertex);
     vertex.onStack = true;
+    vertex.visited = true;
 
     std::vector<std::string> adjNodes = g_.getAdjacentNodes(vertex.airportCode); // get connected nodes
     std::map<std::string, Graph::airport> airpMap = g_.getAirportsMap();         // getting map from airport code to airport struct
@@ -36,7 +37,7 @@ void StronglyConnected::directConnect(Graph::airport vertex)
     {
         Graph::airport vertexSuccessor = airpMap[adjNodes.at(i)];
 
-        if (vertexSuccessor.index == -1)
+        if (!vertexSuccessor.visited)
         {
             // Successor w has not yet been visited; recurse on
             directConnect(vertexSuccessor);

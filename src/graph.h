@@ -70,6 +70,7 @@ public:
         int index;    // this index will be useful in our stronglyConnected class
         int lowLink;  // this will also be useful for our stronglyConnected class
         bool onStack; // this will be used to check if we are on the stack in stronglyconnected class
+        bool visited; // used to see if we have visited this node in stronglyconnected class
 
         bool operator==(const airport &other) const
         {

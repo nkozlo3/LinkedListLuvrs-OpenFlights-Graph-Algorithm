@@ -138,6 +138,7 @@ std::vector<Graph::airport> Graph::populateAirports()
             struc.index = -1;
             struc.lowLink = -1;
             struc.onStack = false;
+            struc.visited = false;
 
             double lat = std::strtod(listOfAirports[i][6].c_str(), nullptr);
             double lon = std::strtod(listOfAirports[i][7].c_str(), nullptr);
