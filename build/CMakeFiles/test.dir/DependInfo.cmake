@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp" "CMakeFiles/test.dir/tests/dfsTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/dfsTests.cpp.o.d"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dijkstraTests.cpp" "CMakeFiles/test.dir/tests/dijkstraTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/dijkstraTests.cpp.o.d"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp" "CMakeFiles/test.dir/tests/graphTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/graphTests.cpp.o.d"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/sscTests.cpp" "CMakeFiles/test.dir/tests/sscTests.cpp.o" "gcc" "CMakeFiles/test.dir/tests/sscTests.cpp.o.d"
   )
 
 # Targets to which this target links.

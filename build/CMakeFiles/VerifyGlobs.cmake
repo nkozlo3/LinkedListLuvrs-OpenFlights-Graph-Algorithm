@@ -53,6 +53,7 @@ set(OLD_GLOB
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dfsTests.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/dijkstraTests.cpp"
   "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/graphTests.cpp"
+  "/workspaces/LinkedListLuvrs-OpenFlights-Graph-Algorithm/tests/sscTests.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

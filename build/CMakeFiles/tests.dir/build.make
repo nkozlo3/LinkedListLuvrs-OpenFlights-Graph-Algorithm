@@ -67,7 +67,7 @@ include CMakeFiles/tests.dir/compiler_depend.make
 include CMakeFiles/tests.dir/progress.make
 
 CMakeFiles/tests:
-	make
+	make -j ./test
 	./test
 
 tests: CMakeFiles/tests

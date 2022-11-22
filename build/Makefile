@@ -170,6 +170,71 @@ mains/fast:
 .PHONY : mains/fast
 
 #=============================================================================
+# Target rules for targets named nine
+
+# Build rule for target.
+nine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 nine
+.PHONY : nine
+
+# fast build rule for target.
+nine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/nine.dir/build.make CMakeFiles/nine.dir/build
+.PHONY : nine/fast
+
+#=============================================================================
+# Target rules for targets named seven
+
+# Build rule for target.
+seven: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 seven
+.PHONY : seven
+
+# fast build rule for target.
+seven/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/seven.dir/build.make CMakeFiles/seven.dir/build
+.PHONY : seven/fast
+
+#=============================================================================
+# Target rules for targets named graph
+
+# Build rule for target.
+graph: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 graph
+.PHONY : graph
+
+# fast build rule for target.
+graph/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graph.dir/build.make CMakeFiles/graph.dir/build
+.PHONY : graph/fast
+
+#=============================================================================
+# Target rules for targets named ssc
+
+# Build rule for target.
+ssc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ssc
+.PHONY : ssc
+
+# fast build rule for target.
+ssc/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ssc.dir/build.make CMakeFiles/ssc.dir/build
+.PHONY : ssc/fast
+
+#=============================================================================
+# Target rules for targets named gdbssc
+
+# Build rule for target.
+gdbssc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gdbssc
+.PHONY : gdbssc
+
+# fast build rule for target.
+gdbssc/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gdbssc.dir/build.make CMakeFiles/gdbssc.dir/build
+.PHONY : gdbssc/fast
+
+#=============================================================================
 # Target rules for targets named lodepng
 
 # Build rule for target.
@@ -328,6 +393,30 @@ tests/graphTests.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/graphTests.cpp.s
 .PHONY : tests/graphTests.cpp.s
 
+tests/sscTests.o: tests/sscTests.cpp.o
+.PHONY : tests/sscTests.o
+
+# target to build an object file
+tests/sscTests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/sscTests.cpp.o
+.PHONY : tests/sscTests.cpp.o
+
+tests/sscTests.i: tests/sscTests.cpp.i
+.PHONY : tests/sscTests.i
+
+# target to preprocess a source file
+tests/sscTests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/sscTests.cpp.i
+.PHONY : tests/sscTests.cpp.i
+
+tests/sscTests.s: tests/sscTests.cpp.s
+.PHONY : tests/sscTests.s
+
+# target to generate assembly for a file
+tests/sscTests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/tests/sscTests.cpp.s
+.PHONY : tests/sscTests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -336,7 +425,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... gdbssc"
+	@echo "... graph"
 	@echo "... mains"
+	@echo "... nine"
+	@echo "... seven"
+	@echo "... ssc"
 	@echo "... tests"
 	@echo "... cs225"
 	@echo "... lodepng"
@@ -358,6 +452,9 @@ help:
 	@echo "... tests/graphTests.o"
 	@echo "... tests/graphTests.i"
 	@echo "... tests/graphTests.s"
+	@echo "... tests/sscTests.o"
+	@echo "... tests/sscTests.i"
+	@echo "... tests/sscTests.s"
 .PHONY : help
 
 

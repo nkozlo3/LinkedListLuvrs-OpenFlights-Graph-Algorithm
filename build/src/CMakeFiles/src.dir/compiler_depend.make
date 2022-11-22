@@ -1133,8 +1133,18 @@ src/CMakeFiles/src.dir/stronglyconnected.cpp.o: ../src/stronglyconnected.cpp \
   /usr/include/c++/11/bits/stl_multiset.h \
   /usr/include/c++/11/debug/set \
   /usr/include/c++/11/debug/set.h \
-  /usr/include/c++/11/debug/multiset.h
+  /usr/include/c++/11/debug/multiset.h \
+  /usr/include/c++/11/stack \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/debug/deque \
+  /usr/include/c++/11/bits/stl_stack.h
 
+
+/usr/include/c++/11/bits/stl_stack.h:
+
+/usr/include/c++/11/stack:
 
 ../src/graph.cpp:
 

@@ -67,7 +67,7 @@ std::vector<std::string> Dijkstras::dijkstra(Graph graph, std::string start, std
         }
         // adj is a map of curr's adj nodes -> distance from curr to each one.
         if (distances[curr] < __INT_MAX__) {
-            std::unordered_map<std::string, Graph::pairOfAirports> adj = graph.getAdjacencyListUnorderedMap(curr);
+            std::unordered_map<std::string, Graph::pairOfAirports> adj = graph.getAdjacentMap(curr);
             // for neighbors of curr...
             for (auto it = adj.begin(); it != adj.end(); ++it)
             {
