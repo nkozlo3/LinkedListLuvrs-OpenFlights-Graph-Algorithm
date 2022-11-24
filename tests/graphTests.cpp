@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <cctype>
 #include <string>
-Graph graph(1, 1, 0, "testGraph", "mercator🤠.png");
+Graph graph(1, 1, "mercator🤠.png");
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
 {
@@ -226,22 +226,49 @@ TEST_CASE("Graph getAdjacencyListEdge gets the correct edges", "[weight=5][graph
     REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").sourceAirportCode_sourceVertex == "\\N");
     REQUIRE(graph.getAdjacencyListEdge("CAN", "MCT").distance_edgeWeight == (double)__INT_MAX__);
 }
-TEST_CASE("Graph getEdges gets the correct edges", "[weight=5][graph][9]")
+TEST_CASE("Graph getEdges gets the correct edges and therefore populates airports_ properly", "[weight=5][graph][7]")
 {
-    // TODO:
+    std::vector<Graph::airport> a = graph.getAirports();
+
+    REQUIRE(a.size() == 7685);
+    REQUIRE(a.at(4).airportCode == "POM");
+    REQUIRE(a.at(126).lonAndLatPoints.first == 74.7169036865);
+    REQUIRE(a.at(1200).index == -1);
 }
 
-TEST_CASE("Graph populates airports_ properly", "[weight=5][graph][9]")
+TEST_CASE("Graph getEdges gets the correct edges", "[weight=5][graph][7]")
 {
-    // TODO:
+    std::vector<Graph::pairOfAirports> e = graph.getEdges();
+
+    REQUIRE(e.size() == 37595);
 }
 
-TEST_CASE("Graph getAdjacentNodes works properly", "[weight=5][graph][9]")
+TEST_CASE("Graph getAdjacentNodes works properly", "[weight=5][graph][7]")
 {
-    // TODO:
+    std::vector<Graph::airport> adjN = graph.getAdjacentNodes("MIM");
+
+    std::vector<std::string> testV;
+    for (size_t i = 0; i < adjN.size(); i++)
+    {
+        testV.push_back(adjN.at(i).airportCode);
+    }
+
+    REQUIRE(std::find(testV.begin(), testV.end(), "MEL") != testV.end());
+    REQUIRE(std::find(testV.begin(), testV.end(), "MYA") != testV.end());
+    REQUIRE(std::find(testV.begin(), testV.end(), "SYD") != testV.end());
 }
 
-TEST_CASE("Graph populates airport_map_ properly", "[weight=5][graph][9]")
+TEST_CASE("Graph populates airport_map_ properly", "[weight=5][graph][7]")
 {
-    // TODO:
+    std::map<std::string, Graph::airport> m = graph.getAirportsMap();
+
+    Graph::airport airp = m.at("SYD");
+
+    REQUIRE(airp.airportCode == "SYD");
+    REQUIRE(airp.index == -1);
+    REQUIRE(airp.lowLink == -1);
+    REQUIRE(airp.lonAndLatPoints.first == -33.94609832763672);
+    REQUIRE(airp.lonAndLatPoints.second == 151.177001953125);
+    REQUIRE(airp.onStack == false);
+    REQUIRE(airp.visited == false);
 }

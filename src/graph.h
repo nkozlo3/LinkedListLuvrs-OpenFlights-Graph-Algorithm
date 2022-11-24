@@ -83,14 +83,6 @@ public:
     };
 
     Graph();
-    // constructors
-    /**
-     * Constructor to create an empty graph.
-     * populates @private @var adjacency_list
-     * @param weighted - specifies whether the graph is a weighted graph or
-     *  not
-     */
-    Graph(bool weighted, int picNum, std::string picName, std::string imageName);
 
     /**
      * Constructor to create an empty graph.
@@ -99,7 +91,7 @@ public:
      *  not
      * @param directed - specifies whether the graph is directed
      */
-    Graph(bool weighted, bool directed, int picNum, std::string picName, std::string imageName);
+    Graph(bool weighted, bool directed, std::string imageName);
 
     /**
      * @cite inspired by cs225's, lab_ml, graph class, getVetices function
@@ -188,7 +180,7 @@ public:
 
     Graph::pairOfAirports getAdjacencyListEdge(std::string sourceCode, std::string destCode);
 
-    std::vector<std::string> getAdjacentNodes(std::string airpCode);
+    std::vector<Graph::airport> getAdjacentNodes(std::string airpCode);
 
     std::map<std::string, std::pair<double, double>> populatePixelPoints();
 
@@ -197,10 +189,6 @@ public:
     std::vector<Graph::airport> getAirports();
 
     std::map<std::string, airport> getAirportsMap();
-
-    int getPicNum();
-
-    std::string getPicName();
 
     double degToRadian(double degrees);
 
@@ -227,8 +215,6 @@ private:
     // a list of airport structs
     std::vector<airport> airports_;
 
-    int picNum_;
-    string picName_;
     bool weighted_;
     bool directed_;
     PNG png_;

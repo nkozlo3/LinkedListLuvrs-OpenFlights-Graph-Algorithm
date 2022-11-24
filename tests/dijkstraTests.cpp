@@ -11,7 +11,7 @@
 
 TEST_CASE("Dijkstra's returns a correct shortes path", "[weight=1][dijkstra][9]")
 {
-    Graph graph(1, 1, 0, "testGraph", "mercator🤠.png");
+    Graph graph(1, 1, "mercator🤠.png");
     Dijkstras d = Dijkstras(graph);
 
     std::vector<std::string> result = d.dijkstra(graph, "LAX", "SYD");

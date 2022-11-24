@@ -10,15 +10,12 @@ Graph::Graph()
 { // default constructor
     weighted_ = 0;
     directed_ = false;
-    picNum_ = 1;
 }
 
-Graph::Graph(bool weighted, bool directed, int picNum, std::string picName, std::string filename)
+Graph::Graph(bool weighted, bool directed, std::string filename)
 {
     weighted_ = weighted;
     directed_ = directed;
-    picNum_ = picNum;
-    picName_ = picName;
     png_.readFromFile(filename);
 
     // populate adjacency_list_
@@ -153,8 +150,8 @@ std::vector<Graph::airport> Graph::populateAirports()
     return ret;
 }
 
-// get the list of nodes that sourceCode is connected to
-std::vector<std::string> Graph::getAdjacentNodes(std::string airpCode)
+// get the list of nodes that sourceCode is connected to in the format of airport structs
+std::vector<Graph::airport> Graph::getAdjacentNodes(std::string airpCode)
 {
     std::unordered_map<std::string, pairOfAirports> temp = adjacency_matrix_[airpCode];
     std::vector<std::string> v;
@@ -163,8 +160,14 @@ std::vector<std::string> Graph::getAdjacentNodes(std::string airpCode)
     {
         v.push_back(it.first);
     }
+    // v now contains the list of nodes that sourceCode is connected to
+    std::vector<Graph::airport> ret;
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        ret.push_back(airports_map_[v[i]]);
+    }
 
-    return v;
+    return ret;
 }
 
 Graph::pairOfAirports Graph::getAdjacencyListEdge(std::string sourceCode, std::string destCode)
@@ -429,16 +432,6 @@ std::pair<double, double> Graph::latitudeToXAndYPos(double longitude, double lat
     ret.first = x;
     ret.second = y;
     return ret;
-}
-
-int Graph::getPicNum()
-{
-    return picNum_;
-}
-
-std::string Graph::getPicName()
-{
-    return picName_;
 }
 
 double Graph::degToRadian(double degrees)

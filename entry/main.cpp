@@ -9,7 +9,7 @@ int main()
 
     std::cout << "Howdy World! 🤠 " << std::endl;
 
-    Graph g(1, 1, 1, "mainGraph", "mercator🤠.png");
+    Graph g(1, 1, "mercator🤠.png");
 
     std::pair<double, double> h1h2 = std::make_pair(0, 300);
     std::pair<double, double> s1s2 = std::make_pair(1, 1);

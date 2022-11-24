@@ -1,6 +1,6 @@
 #include "stronglyconnected.h"
 
-StronglyConnected::StronglyConnected(Graph graph)
+StronglyConnected::StronglyConnected(Graph &graph)
 {
     index_ = 0;
     g_ = graph;
@@ -19,23 +19,23 @@ void StronglyConnected::tarjan()
     }
 }
 
-void StronglyConnected::directConnect(Graph::airport vertex)
+void StronglyConnected::directConnect(Graph::airport &vertex)
 {
     // set the depth index for vertex to the smallest unused index
     vertex.index = index_;
     vertex.lowLink = index_;
     index_++;
-    stack_.push(vertex);
     vertex.onStack = true;
     vertex.visited = true;
+    stack_.push(vertex);
 
-    std::vector<std::string> adjNodes = g_.getAdjacentNodes(vertex.airportCode); // get connected nodes
-    std::map<std::string, Graph::airport> airpMap = g_.getAirportsMap();         // getting map from airport code to airport struct
+    // TODO: RIGHT NOW WHENEVER WE GET THE ADJACENT NODES, WE ARE NOT GETTING THE UPDATED VERSION OF THE NODES. I.E. INSTEAD OF NODE.INDEX = 0, WE GET NODE.INDEX = -1 STILL
+    std::vector<Graph::airport> adjNodes = g_.getAdjacentNodes(vertex.airportCode); // get connected nodes
 
     // Consider successors of v
     for (size_t i = 0; i < adjNodes.size(); i++)
     {
-        Graph::airport vertexSuccessor = airpMap[adjNodes.at(i)];
+        Graph::airport vertexSuccessor = adjNodes.at(i);
 
         if (!vertexSuccessor.visited)
         {
