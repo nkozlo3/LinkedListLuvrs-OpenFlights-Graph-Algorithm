@@ -220,6 +220,15 @@ std::vector<Graph::airport> Graph::getAirports()
 {
     return airports_;
 }
+
+void Graph::setAirport(std::string airpCode, int index, int lowLink, bool onStack, bool visited)
+{
+    airports_map_[airpCode].index = index;
+    airports_map_[airpCode].lowLink = lowLink;
+    airports_map_[airpCode].onStack = onStack;
+    airports_map_[airpCode].visited = visited;
+}
+
 std::map<std::string, Graph::airport> Graph::getAirportsMap()
 {
     return airports_map_;

@@ -28,8 +28,10 @@ void StronglyConnected::directConnect(Graph::airport &vertex)
     vertex.onStack = true;
     vertex.visited = true;
     stack_.push(vertex);
+    
+    // set the airport at vertex.airportCode using the setAirport function from the graph class
+    g_.setAirport(vertex.airportCode, vertex.index, vertex.lowLink, vertex.onStack, vertex.visited);
 
-    // TODO: RIGHT NOW WHENEVER WE GET THE ADJACENT NODES, WE ARE NOT GETTING THE UPDATED VERSION OF THE NODES. I.E. INSTEAD OF NODE.INDEX = 0, WE GET NODE.INDEX = -1 STILL
     std::vector<Graph::airport> adjNodes = g_.getAdjacentNodes(vertex.airportCode); // get connected nodes
 
     // Consider successors of v

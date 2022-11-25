@@ -188,6 +188,8 @@ public:
 
     std::vector<Graph::airport> getAirports();
 
+    void setAirport(std::string airpCode, int index, int lowLink, bool onStack, bool visited);
+
     std::map<std::string, airport> getAirportsMap();
 
     double degToRadian(double degrees);
@@ -202,7 +204,7 @@ public:
 private:
     // map from airport to a map of destinations from that airport
     mutable std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> adjacency_matrix_;
-    
+
     // map of node positions where [airportCode] maps to pair<lon, lat>
     mutable std::map<std::string, std::pair<double, double>> node_positions_;
     // lonLatcoordinates converted to xy points
