@@ -14,6 +14,10 @@ void StronglyConnected::tarjan()
         std::vector<Graph::airport> tempVect;
         if (!vertices_.at(i).visited)
         {
+            vertices_.at(i).visited = true;
+            vertices_.at(i).onStack = true;
+            vertices_.at(i).index = index_;
+            vertices_.at(i).lowLink = index_;
             directConnect(vertices_[i]);
         }
     }
@@ -28,7 +32,7 @@ void StronglyConnected::directConnect(Graph::airport &vertex)
     vertex.onStack = true;
     vertex.visited = true;
     stack_.push(vertex);
-    
+
     // set the airport at vertex.airportCode using the setAirport function from the graph class
     g_.setAirport(vertex.airportCode, vertex.index, vertex.lowLink, vertex.onStack, vertex.visited);
 
@@ -59,7 +63,12 @@ void StronglyConnected::directConnect(Graph::airport &vertex)
             {
                 vertexSuccessor = stack_.top();
                 stack_.pop();
+                if (!vertexSuccessor.airportCode.empty())
+                {
+                    vertexSuccessor.airportCode = "self connection?"; // TODO: verify this
+                }
                 currScc.push_back(vertexSuccessor);
+
                 vertexSuccessor.onStack = false;
             }
             connected_components_.push_back(currScc);

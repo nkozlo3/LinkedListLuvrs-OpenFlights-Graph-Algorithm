@@ -79,7 +79,7 @@ namespace cs225
     }
   }
 
-  void PNG::drawLine(int x0, int y0, int x1, int y1, double h, double s, double l)
+  void PNG::drawLine(int x0, int y0, int x1, int y1, double h, double s, double l, double a)
   {
     int abs1 = y1 - y0;
     int abs2 = x1 - x0;
@@ -87,27 +87,27 @@ namespace cs225
     {
       if (x0 > x1)
       {
-        plotLineLow(x1, y1, x0, y0, h, s, l);
+        plotLineLow(x1, y1, x0, y0, h, s, l, a);
       }
       else
       {
-        plotLineLow(x0, y0, x1, y1, h, s, l);
+        plotLineLow(x0, y0, x1, y1, h, s, l, a);
       }
     }
     else
     {
       if (y0 > y1)
       {
-        plotLineHigh(x1, y1, x0, y0, h, s, l);
+        plotLineHigh(x1, y1, x0, y0, h, s, l, a);
       }
       else
       {
-        plotLineHigh(x0, y0, x1, y1, h, s, l);
+        plotLineHigh(x0, y0, x1, y1, h, s, l, a);
       }
     }
   }
 
-  void PNG::plotLineLow(int x0, int y0, int x1, int y1, double h, double s, double l)
+  void PNG::plotLineLow(int x0, int y0, int x1, int y1, double h, double s, double l, double a)
   {
     int dx = x1 - x0;
     int dy = y1 - y0;
@@ -126,6 +126,7 @@ namespace cs225
       pixel.h = h;
       pixel.s = s;
       pixel.l = l;
+      pixel.a = a;
       if (D > 0)
       {
         y = y + yi;
@@ -137,7 +138,7 @@ namespace cs225
       }
     }
   }
-  void PNG::plotLineHigh(int x0, int y0, int x1, int y1, double h, double s, double l)
+  void PNG::plotLineHigh(int x0, int y0, int x1, int y1, double h, double s, double l, double a)
   {
     int dx = x1 - x0;
     int dy = y1 - y0;
@@ -156,6 +157,7 @@ namespace cs225
       pixel.h = h;
       pixel.s = s;
       pixel.l = l;
+      pixel.a = a;
       if (D > 0)
       {
         x = x + xi;

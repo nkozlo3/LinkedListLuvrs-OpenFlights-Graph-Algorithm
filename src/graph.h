@@ -103,13 +103,21 @@ public:
 
     /**
      * Saves the graph on a PNG image.
-     * @param title - the filename of the PNG image
+     * @param h1h2 - the hue of the edges and nodes. h1h2.first is the nodes hue, h1h2.second is the edges hue
+     * @param s1s2 - the saturation of the edges and nodes. s1s2.first is the nodes saturation, s1s2.second is the edges saturation
+     * @param l1l2 - the lightness of the edges and nodes. l1l2.first is the nodes lightness, l1l2.second is the edges lightness
+     * @param a1a2 - the alpha value of the edges and nodes. a1a2.first is the nodes alpha value, a1a2.second is the edges alpha value. By default alpha value is 1
+     * @param newFileName - the filename of the new PNG image
+     * @param xNodeSize - the size across of nodes
+     * @param yNodeSize - the size diwn of nodes
+     * @param nodes - whether or not we are drawing nodes. Defaulted to true
+     * @param edges - whether or not we are drawing edges. Defaulted to true
      */
-    void drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2,
-                        std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices);
+    void drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2, std::pair<double, double> l1l2, int xNodeSize, int yNodeSize,
+                        std::string newFileName, std::pair<double, double> a1a2 = std::make_pair(1, 1), bool nodes = true, bool edges = true);
 
     std::vector<std::pair<double, double>> drawNodesOfGraphOnPNG(double h, double s, double l, int xSize, int ySize);
-    void drawEdgesOfGraphOnPNG(double h, double s, double l);
+    void drawEdgesOfGraphOnPNG(double h, double s, double l, double a);
 
     // Populate adjacency_list
     std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyList(std::string textFileName);

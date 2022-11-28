@@ -166,7 +166,6 @@ std::vector<Graph::airport> Graph::getAdjacentNodes(std::string airpCode)
     {
         ret.push_back(airports_map_[v[i]]);
     }
-
     return ret;
 }
 
@@ -180,10 +179,9 @@ Graph::pairOfAirports Graph::getAdjacencyListEdge(std::string sourceCode, std::s
         bad.lonAndLatPointsDest = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
         bad.lonAndLatPointsSource = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
         bad.sourceAirportCode_sourceVertex = "\\N";
-        std::cout<<"no existing edge"<<std::endl;
+        std::cout << "no existing edge" << std::endl;
         return bad;
     }
-
     return adjacency_matrix_[sourceCode][destCode];
 }
 
@@ -474,7 +472,7 @@ std::vector<std::pair<double, double>> Graph::drawNodesOfGraphOnPNG(double h, do
     return existingNodes_;
 }
 
-void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l)
+void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l, double a)
 {
     std::vector<std::string> vertices = getVertices();
     std::pair<double, double> destPoints;
@@ -513,19 +511,19 @@ void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l)
                 continue;
             }
 
-            png_.drawLine(sourcePoints.first, sourcePoints.second, destPoints.first, destPoints.second, h, s, l);
+            png_.drawLine(sourcePoints.first, sourcePoints.second, destPoints.first, destPoints.second, h, s, l, a);
         }
     }
 }
 
 void Graph::drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, double> s1s2,
-                           std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, bool nodes, bool vertices)
+                           std::pair<double, double> l1l2, int xNodeSize, int yNodeSize, std::string newFileName, std::pair<double, double> a1a2, bool nodes, bool vertices)
 {
     if (nodes)
         drawNodesOfGraphOnPNG(h1h2.first, s1s2.first, l1l2.first, xNodeSize, yNodeSize);
 
     if (vertices)
-        drawEdgesOfGraphOnPNG(h1h2.second, s1s2.second, l1l2.second);
+        drawEdgesOfGraphOnPNG(h1h2.second, s1s2.second, l1l2.second, a1a2.second);
 
     png_.writeToFile(newFileName + ".png");
 

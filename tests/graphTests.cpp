@@ -266,6 +266,7 @@ TEST_CASE("Graph getAdjacentNodes works properly", "[weight=5][graph][7]")
     REQUIRE(std::find(testV.begin(), testV.end(), "MEL") != testV.end());
     REQUIRE(std::find(testV.begin(), testV.end(), "MYA") != testV.end());
     REQUIRE(std::find(testV.begin(), testV.end(), "SYD") != testV.end());
+    REQUIRE(testV.size() == 3);
 }
 
 TEST_CASE("Graph populates airport_map_ properly", "[weight=5][graph][7]")
