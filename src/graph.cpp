@@ -180,6 +180,7 @@ Graph::pairOfAirports Graph::getAdjacencyListEdge(std::string sourceCode, std::s
         bad.lonAndLatPointsDest = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
         bad.lonAndLatPointsSource = std::make_pair((double)__INT_MAX__, (double)__INT_MAX__);
         bad.sourceAirportCode_sourceVertex = "\\N";
+        std::cout<<"no existing edge"<<std::endl;
         return bad;
     }
 

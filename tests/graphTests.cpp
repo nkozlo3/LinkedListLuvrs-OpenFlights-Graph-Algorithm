@@ -7,6 +7,16 @@
 #include <string>
 Graph graph(1, 1, "mercator🤠.png");
 
+TEST_CASE("get adjacentMap returns correct adjacency list", "[weight=1][graph][7]")
+{
+    std::unordered_map<std::string, Graph::pairOfAirports> m = graph.getAdjacentMap("CHI");
+    for (auto s : m) {
+        std::cout<< "source: "<<s.second.sourceAirportCode_sourceVertex <<std::endl;
+        std::cout<< "dest: " <<s.second.destAirportCode_destVertex <<std::endl;
+    }
+    REQUIRE(!m.empty());
+}
+
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
 {
     std::vector<std::string> widthVect = graph.csvToVect("routes.csv")[0];
@@ -251,6 +261,7 @@ TEST_CASE("Graph getAdjacentNodes works properly", "[weight=5][graph][7]")
     for (size_t i = 0; i < adjN.size(); i++)
     {
         testV.push_back(adjN.at(i).airportCode);
+        
     }
 
     REQUIRE(std::find(testV.begin(), testV.end(), "MEL") != testV.end());

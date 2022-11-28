@@ -8,14 +8,15 @@
 #include <string>
 //PNG png;
 
-
+Graph g(1, 1, "mercator🤠.png");
 TEST_CASE("Dijkstra's returns a correct shortes path", "[weight=1][dijkstra][9]")
 {
-    Graph graph(1, 1, "mercator🤠.png");
-    Dijkstras d = Dijkstras(graph);
-
-    std::vector<std::string> result = d.dijkstra(graph, "LAX", "SYD");
+    Dijkstras d = Dijkstras(g);
+    std::vector<std::string> result = d.dijkstra(g, "CHI", "SYD");
     
+    REQUIRE(result[0] == "CHI");
+    REQUIRE(result[result.size()-1] == "SYD");
+
     for (std::string s : result) {
         std::cout<< s <<std::endl;
     }
