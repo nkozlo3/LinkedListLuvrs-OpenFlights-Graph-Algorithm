@@ -9,10 +9,9 @@ Graph graph(1, 1, "mercator🤠.png");
 
 TEST_CASE("get adjacentMap returns correct adjacency list", "[weight=1][graph][7]")
 {
-    std::unordered_map<std::string, Graph::pairOfAirports> m = graph.getAdjacentMap("CHI");
+    std::unordered_map<std::string, Graph::pairOfAirports> m = graph.getAdjacentMap("TPE");
     for (auto s : m) {
-        std::cout<< "source: "<<s.second.sourceAirportCode_sourceVertex <<std::endl;
-        std::cout<< "dest: " <<s.second.destAirportCode_destVertex <<std::endl;
+        std::cout<< s.second.destAirportCode_destVertex <<std::endl;
     }
     REQUIRE(!m.empty());
 }

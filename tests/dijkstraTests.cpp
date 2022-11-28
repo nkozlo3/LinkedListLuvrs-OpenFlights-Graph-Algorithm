@@ -12,9 +12,9 @@ Graph g(1, 1, "mercator🤠.png");
 TEST_CASE("Dijkstra's returns a correct shortes path", "[weight=1][dijkstra][9]")
 {
     Dijkstras d = Dijkstras(g);
-    std::vector<std::string> result = d.dijkstra(g, "CHI", "SYD");
+    std::vector<std::string> result = d.dijkstra(g, "DBA", "SYD");
     
-    REQUIRE(result[0] == "CHI");
+    REQUIRE(result[0] == "DBA");
     REQUIRE(result[result.size()-1] == "SYD");
 
     for (std::string s : result) {
