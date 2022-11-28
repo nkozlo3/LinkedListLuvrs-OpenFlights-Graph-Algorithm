@@ -18,7 +18,7 @@ int main()
     int yNodeSize = 2;
     std::string newFileName = "../ybab";
 
-    g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileName, true, true);
+    g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileName);
 
     return 0;
 }
