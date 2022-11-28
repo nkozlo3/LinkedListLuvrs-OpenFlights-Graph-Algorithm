@@ -277,8 +277,23 @@ CMakeFiles/main.dir/entry/main.cpp.o: ../entry/main.cpp \
   /usr/include/c++/11/tr1/poly_laguerre.tcc \
   /usr/include/c++/11/tr1/riemann_zeta.tcc \
   /usr/include/c++/11/stdlib.h \
-  /usr/include/c++/11/numbers
+  /usr/include/c++/11/numbers \
+  ../src/dijkstra.h \
+  /usr/include/c++/11/queue \
+  /usr/include/c++/11/deque \
+  /usr/include/c++/11/bits/stl_deque.h \
+  /usr/include/c++/11/bits/deque.tcc \
+  /usr/include/c++/11/debug/deque \
+  /usr/include/c++/11/bits/stl_queue.h
 
+
+/usr/include/c++/11/debug/deque:
+
+/usr/include/c++/11/bits/deque.tcc:
+
+/usr/include/c++/11/deque:
+
+/usr/include/c++/11/queue:
 
 /usr/include/c++/11/numbers:
 
@@ -303,6 +318,8 @@ CMakeFiles/main.dir/entry/main.cpp.o: ../entry/main.cpp \
 /usr/include/c++/11/limits:
 
 /usr/include/c++/11/bits/specfun.h:
+
+../src/dijkstra.h:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
@@ -351,6 +368,8 @@ CMakeFiles/main.dir/entry/main.cpp.o: ../entry/main.cpp \
 /usr/include/c++/11/bits/ios_base.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
+
+/usr/include/c++/11/bits/stl_deque.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs.h:
 
@@ -561,6 +580,8 @@ CMakeFiles/main.dir/entry/main.cpp.o: ../entry/main.cpp \
 /usr/include/c++/11/bits/std_function.h:
 
 /usr/include/c++/11/bits/stl_tempbuf.h:
+
+/usr/include/c++/11/bits/stl_queue.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h:
 

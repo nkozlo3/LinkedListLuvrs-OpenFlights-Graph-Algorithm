@@ -1,5 +1,6 @@
 #include <iostream>
 #include "graph.h"
+#include "dijkstra.h"
 #include "cs225/PNG.h"
 
 using namespace cs225;
@@ -10,7 +11,9 @@ int main()
     std::cout << "Howdy World! 🤠 " << std::endl;
 
     Graph g(1, 1, "mercator🤠.png");
+    Dijkstras d(g);
 
+    // beginning of code to create graph
     std::pair<double, double> h1h2 = std::make_pair(0, 300);
     std::pair<double, double> s1s2 = std::make_pair(1, 1);
     std::pair<double, double> l1l2 = std::make_pair(.5, .5);
@@ -20,6 +23,43 @@ int main()
     std::string newFileName = "../ybab";
 
     g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileName, a1a2);
+    // end of code to create graph
+
+    // beginning of code to run dijkstras and check shortest distance between two airports
+    std::string sourceAirport = "";
+    std::string destAirport = "";
+    std::string shortestRoute = "";
+    std::cout << "You will now be asked to enter the source and destination airport code." << std::endl
+              << "If you want to choose two random airport codes enter 'RAND', 'RAND'" << std::endl;
+    std::cout << "Please enter source airport code: " << std::endl;
+    std::cin >> sourceAirport;
+    std::cout << "Please enter the destination airport code: " << std::endl;
+    std::cin >> destAirport;
+
+    if (sourceAirport == "RAND")
+    {
+        sourceAirport = g.getVertices().at(rand() % (int)g.getVertices().size());
+    }
+    if (destAirport == "RAND")
+    {
+        destAirport = g.getVertices().at(rand() % (int)g.getVertices().size());
+    }
+
+    std::vector<std::string> shortestDest = d.dijkstra(g, sourceAirport, destAirport);
+
+    for (size_t i = 0; i < shortestDest.size(); i++)
+    {
+        if (i == 0)
+            shortestRoute += "Shortest route between " + sourceAirport + " and " + destAirport + ": " + shortestDest.at(i) + ", ";
+        else if (i < shortestDest.size() - 1)
+            shortestRoute += shortestDest.at(i) + ", ";
+        else
+            shortestRoute += shortestDest.at(i);
+    }
+
+    std::cout << std::endl;
+    std::cout << shortestRoute << std::endl;
+    // end of code to run dijkstras and check shortest distance between two airports
 
     return 0;
 }

@@ -7,13 +7,13 @@
 #include <string>
 Graph graph(1, 1, "mercator🤠.png");
 
-TEST_CASE("get adjacentMap returns correct adjacency list", "[weight=1][graph][7]")
+TEST_CASE("get adjacentMap does not return an empty list where it should and vice versa", "[weight=1][graph][7]")
 {
     std::unordered_map<std::string, Graph::pairOfAirports> m = graph.getAdjacentMap("TPE");
-    for (auto s : m) {
-        std::cout<< s.second.destAirportCode_destVertex <<std::endl;
-    }
+    std::unordered_map<std::string, Graph::pairOfAirports> me = graph.getAdjacentMap("CHI");
+
     REQUIRE(!m.empty());
+    REQUIRE(me.empty());
 }
 
 TEST_CASE("Graph csvToVect returns a vector of the right width and length", "[weight=1][graph][7]")
