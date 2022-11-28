@@ -14,11 +14,12 @@ int main()
     std::pair<double, double> h1h2 = std::make_pair(0, 300);
     std::pair<double, double> s1s2 = std::make_pair(1, 1);
     std::pair<double, double> l1l2 = std::make_pair(.5, .5);
+    std::pair<double, double> a1a2 = std::make_pair(1, .4);
     int xNodeSize = 2;
     int yNodeSize = 2;
     std::string newFileName = "../ybab";
 
-    g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileName);
+    g.drawGraphOnPNG(h1h2, s1s2, l1l2, xNodeSize, yNodeSize, newFileName, a1a2);
 
     return 0;
 }
