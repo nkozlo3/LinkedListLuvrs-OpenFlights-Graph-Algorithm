@@ -29,21 +29,10 @@ int main()
     std::string sourceAirport = "";
     std::string destAirport = "";
     std::string shortestRoute = "";
-    std::cout << "You will now be asked to enter the source and destination airport code." << std::endl
-              << "If you want to choose two random airport codes enter 'RAND', 'RAND'" << std::endl;
     std::cout << "Please enter source airport code: " << std::endl;
     std::cin >> sourceAirport;
     std::cout << "Please enter the destination airport code: " << std::endl;
     std::cin >> destAirport;
-
-    if (sourceAirport == "RAND")
-    {
-        sourceAirport = g.getVertices().at(rand() % (int)g.getVertices().size());
-    }
-    if (destAirport == "RAND")
-    {
-        destAirport = g.getVertices().at(rand() % (int)g.getVertices().size());
-    }
 
     std::vector<std::string> shortestDest = d.dijkstra(g, sourceAirport, destAirport);
 
@@ -59,7 +48,6 @@ int main()
 
     std::cout << std::endl;
     std::cout << shortestRoute << std::endl;
-    // end of code to run dijkstras and check shortest distance between two airports
 
     return 0;
 }
