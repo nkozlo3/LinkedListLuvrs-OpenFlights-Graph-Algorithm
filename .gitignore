@@ -36,3 +36,5 @@ build/
 build/src/CMakeFiles/src.dir/compiler_depend.internal
 *.make
 *.cmake
+*.make
+*.internal
