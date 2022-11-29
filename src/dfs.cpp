@@ -42,6 +42,7 @@ void DFS::dfs(std::string airport)
 
 void DFS::dfsToFile() 
 {
+    // writing the flight path to file
     std::ofstream file("dfs_file.txt");
     for (auto i = flight_path.begin(); i != flight_path.end(); ++i) 
     {
