@@ -8,6 +8,7 @@ class DFS : public Graph
 public:
     void dfs();                          // TODO:
     void dfs(std::string airport);  // TODO:
+    void dfsToFile();
     ~DFS();                         // TODO:
     std::vector<std::string> flight_path;
     std::set<std::string> visited;
