@@ -14,6 +14,8 @@ Team Members: Collin Fox, Nora Batko, Neil Kozlowski, Nisha Ramanathan
   
   -DFS: This file will utilize a Depth First Search(DFS) to traverse through our datasets.
   
+  -Dijkstras: This file is utilized to find the shortest path from one airport to another aiport.
+  
   ## How To Test(work in progress):
  
  # Team Contract
