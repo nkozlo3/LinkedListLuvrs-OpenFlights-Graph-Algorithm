@@ -8,10 +8,13 @@
 // #include <string>
 
 // Graph g(1, 1, "mercator🤠.png");
+// DFS d();
 // TEST_CASE("DFS returns correct size", "[weight=1][dfs][11]") 
 // {
-//     size_t size = flight_path.size();
-//     size_t airport_size = graph.getAirports().size();
+//     size_t size = d.getFlightPath.size();
+    
+//     size_t airport_size = g.getAirports().size();
+
 
 //     REQUIRE(size == airport_size);
 // }
