@@ -1,5 +1,7 @@
 #include "stronglyconnected.h"
 
+// Tarjans algorithm wiki: https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
+
 StronglyConnected::StronglyConnected(Graph &graph)
 {
     index_ = 0;

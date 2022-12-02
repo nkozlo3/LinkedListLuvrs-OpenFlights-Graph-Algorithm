@@ -9,10 +9,23 @@ Graph Dijkstras::getGraph() {
     return g_;
 }
 
+bool Dijkstras::isDirectlyConnected(std::string airport1, std::string airport2) {
+    std::vector<Graph::airport> direct_connections = g_.getAdjacentNodes(airport1); //direct connetions of starting airport
+    for (Graph::airport a : direct_connections) {
+        if (a.airportCode == airport2) {
+            return true;
+        }
+    }
+    return false;
+}
 std::vector<std::string> Dijkstras::dijkstra(Graph graph, std::string start, std::string dest)
 {  //path we will return:
     std::vector<std::string> path;
-    
+    if (isDirectlyConnected(start, dest)) {
+        path.push_back(start);
+        path.push_back(dest);
+        return path;
+    }
     std::vector<std::string> verteces_ = graph.getVertices();  //vector of strings of airport codes
 
     std::unordered_map<std::string, double> distances(verteces_.size());
@@ -57,6 +70,10 @@ std::vector<std::string> Dijkstras::dijkstra(Graph graph, std::string start, std
             }  
         }
         visited.push_back(curr); //curr has now been visited
+    }
+    if (path.empty()) {
+        std::cout<<"No path between "<<start<<" and "<<dest<<" exists."<<std::endl;
+        return path;
     }
     std::string temp = dest;
     path.push_back(dest);
