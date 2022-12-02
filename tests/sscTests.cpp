@@ -13,4 +13,5 @@ StronglyConnected ssc(graph1);
 TEST_CASE("SSC directConnect returns a vector of nodes directly connected to the source", "[weight=1][ssc][9]")
 {
     ssc.tarjan();
+    
 }
