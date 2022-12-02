@@ -61,7 +61,7 @@ void StronglyConnected::directConnect(Graph::airport &vertex)
         if (vertex.lowLink == vertex.index)
         {
             std::vector<Graph::airport> currScc;
-            while (vertexSuccessor != vertex)
+            while (vertexSuccessor != vertex && !stack_.empty())
             {
                 vertexSuccessor = stack_.top();
                 stack_.pop();

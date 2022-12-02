@@ -194,6 +194,7 @@ TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][
 
 TEST_CASE("Graph constructor populates adjacency_matrix_ properly", "[weight=5][graph][7]")
 {
+    
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").destAirportCode_destVertex == "AMD");
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").sourceAirportCode_sourceVertex == "AUH");
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsSource.first == 24.433000564575195);

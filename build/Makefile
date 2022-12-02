@@ -209,6 +209,19 @@ graph/fast:
 .PHONY : graph/fast
 
 #=============================================================================
+# Target rules for targets named dfs
+
+# Build rule for target.
+dfs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dfs
+.PHONY : dfs
+
+# fast build rule for target.
+dfs/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dfs.dir/build.make CMakeFiles/dfs.dir/build
+.PHONY : dfs/fast
+
+#=============================================================================
 # Target rules for targets named ssc
 
 # Build rule for target.
@@ -425,6 +438,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... dfs"
 	@echo "... gdbssc"
 	@echo "... graph"
 	@echo "... mains"
