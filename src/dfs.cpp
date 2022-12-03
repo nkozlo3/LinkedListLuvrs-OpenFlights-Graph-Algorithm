@@ -7,20 +7,20 @@ void DFS::dfs()
     flight_path.clear();
     visited.clear();
 
-    std::cout << flight_path.size() << std::endl;
-    std::cout << visited.size() << std::endl;
+    // std::cout << flight_path.size() << std::endl;
+    // std::cout << visited.size() << std::endl;
 
     Graph g(1, 1, "mercator🤠.png");
     std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> graph = g.getAdjacanceMatrix();
-    std::cout << graph.size() << std::endl;
+    // std::cout << graph.size() << std::endl;
     
     for (auto i : graph)
     {
         dfs(i.first);
     }
 
-    std::cout << flight_path.size() << " end" << std::endl;
-    std::cout << visited.size() << " end" << std::endl;
+    // std::cout << flight_path.size() << " end" << std::endl;
+    // std::cout << visited.size() << " end" << std::endl;
 }
 
 void DFS::dfs(std::string airport)
@@ -62,7 +62,6 @@ void DFS::dfsToFile()
     {
         file << *i << std::endl;
     }
-    // file << "hi" << std::endl;
     file.close();
 }
 
