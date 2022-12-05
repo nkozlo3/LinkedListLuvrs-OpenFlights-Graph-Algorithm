@@ -10,10 +10,11 @@ class StronglyConnected
 {
 public:
     StronglyConnected(Graph &graph);            // TODO:
-    void tarjan();                             // TODO:
+    void tarjan();                              // TODO:
     void directConnect(Graph::airport &vertex); // TODO:
     std::vector<Graph::airport> getVertices();
     std::vector<std::vector<Graph::airport>> getConnectedComponents();
+    Graph getGraph();
 
 private:
     Graph g_;

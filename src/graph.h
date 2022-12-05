@@ -120,7 +120,7 @@ public:
     void drawEdgesOfGraphOnPNG(double h, double s, double l, double a);
 
     // Populate adjacency_list
-    std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyList(std::string textFileName);
+    std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyMatrix(std::string textFileName);
 
     // helper functions:
 

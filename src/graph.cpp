@@ -19,7 +19,7 @@ Graph::Graph(bool weighted, bool directed, std::string filename)
     png_.readFromFile(filename);
 
     // populate adjacency_list_
-    adjacency_matrix_ = populateAdjacencyList("routes.csv");
+    adjacency_matrix_ = populateAdjacencyMatrix("routes.csv");
 
     // populate node_positions
     node_positions_ = codeToPosition("airports.csv");
@@ -55,7 +55,7 @@ std::map<std::string, std::pair<double, double>> Graph::populatePixelPoints()
     return pixelPoints;
 }
 
-std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> Graph::populateAdjacencyList(std::string txtFileName)
+std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> Graph::populateAdjacencyMatrix(std::string txtFileName)
 {
     std::vector<std::vector<std::string>> v2 = csvToVect(txtFileName, {2, 4});
     std::map<std::string, std::pair<double, double>> points = codeToPosition("airports.csv");

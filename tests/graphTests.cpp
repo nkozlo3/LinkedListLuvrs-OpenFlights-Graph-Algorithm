@@ -194,7 +194,6 @@ TEST_CASE("Graph codeToPosition contains longitudes and latitudes", "[weight=5][
 
 TEST_CASE("Graph constructor populates adjacency_matrix_ properly", "[weight=5][graph][7]")
 {
-    
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").destAirportCode_destVertex == "AMD");
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").sourceAirportCode_sourceVertex == "AUH");
     REQUIRE(graph.getAdjacencyListEdge("AUH", "AMD").lonAndLatPointsSource.first == 24.433000564575195);
@@ -283,4 +282,9 @@ TEST_CASE("Graph populates airport_map_ properly", "[weight=5][graph][7]")
     REQUIRE(airp.lonAndLatPoints.second == 151.177001953125);
     REQUIRE(airp.onStack == false);
     REQUIRE(airp.visited == false);
+}
+
+TEST_CASE("adjacancy_matrix_ is correct", "[weight=5][graph][10]")
+{
+    std::cout << graph.getAdjacanceMatrix().size() << std::endl;
 }
