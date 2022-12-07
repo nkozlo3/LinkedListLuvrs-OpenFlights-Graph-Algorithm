@@ -1,7 +1,6 @@
 #include <iostream>
 #include "graph.h"
 #include "dijkstra.h"
-#include "dfs.h"
 #include "cs225/PNG.h"
 
 using namespace cs225;
@@ -49,10 +48,6 @@ int main()
 
     std::cout << std::endl;
     std::cout << shortestRoute << std::endl;
-
-    DFS df;
-    df.dfs();
-    df.dfsToFile();
 
     return 0;
 }
