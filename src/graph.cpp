@@ -532,3 +532,22 @@ void Graph::drawGraphOnPNG(std::pair<double, double> h1h2, std::pair<double, dou
     }
     std::cout << "Image saved as: " << newFileName << ".png" << std::endl;
 }
+
+void Graph::outputAdjacanceMatrix() 
+{
+    for (auto it : adjacency_matrix_) 
+    {
+        airport_list.push_back(it.first);
+    }
+    
+    std::ofstream file("airport_file.txt");
+    for (auto i = airport_list.begin(); i != airport_list.end(); ++i) 
+    {
+        file << *i << std::endl;
+    }
+    file.close();
+}
+
+std::vector<std::string> Graph::getAirportList() {
+    return airport_list;
+}
