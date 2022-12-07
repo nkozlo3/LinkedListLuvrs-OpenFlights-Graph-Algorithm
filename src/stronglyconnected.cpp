@@ -87,3 +87,8 @@ std::vector<std::vector<Graph::airport>> StronglyConnected::getConnectedComponen
 {
     return connected_components_;
 }
+
+Graph StronglyConnected::getGraph()
+{
+    return g_;
+}

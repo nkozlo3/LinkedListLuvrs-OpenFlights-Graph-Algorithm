@@ -7,13 +7,13 @@
 class DFS : public Graph
 {
 public:
+    DFS();
     void dfs();                          // TODO:
     void dfs(std::string airport);  // TODO:
     void dfsToFile();
-    // void fileToVect();
-    ~DFS();                         // TODO:
-    std::vector<std::string> flight_path;
-    std::set<std::string> visited;
+    std::vector<std::string> getFlightPath();
 
 private:
+    std::vector<std::string> flight_path;
+    std::set<std::string> visited;
 };
