@@ -71,10 +71,6 @@ std::vector<std::string> Dijkstras::dijkstra(Graph graph, std::string start, std
         }
         visited.push_back(curr); //curr has now been visited
     }
-    if (path.empty()) {
-        std::cout<<"No path between "<<start<<" and "<<dest<<" exists."<<std::endl;
-        return path;
-    }
     std::string temp = dest;
     path.push_back(dest);
     
@@ -84,6 +80,10 @@ std::vector<std::string> Dijkstras::dijkstra(Graph graph, std::string start, std
         temp = predecesor[temp];   // "increments" temp
     }
     std::reverse(path.begin(), path.end()); //must reverse since it will be in backwards order
+    if (path.empty()) {
+        std::cout<<"No path between "<<start<<" and "<<dest<<" exists."<<std::endl;
+        return path;
+    }
     return path;
 }
 
