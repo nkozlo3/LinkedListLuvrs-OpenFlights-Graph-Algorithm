@@ -5,7 +5,15 @@ void DFS::dfs()
     flight_path.clear();
     visited.clear();
 
-    std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> graph = getAdjacanceMatrix();
+    // std::cout << flight_path.size() << std::endl;
+    // std::cout << visited.size() << std::endl;
+
+    Graph g(1, 1, "mercator🤠.png");
+    std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> graph = g.getAdjacanceMatrix();
+
+    // std::cout << graph.size() << std::endl;
+    // std::cout << graph.size() << std::endl;
+
     for (auto i : graph)
     {
         dfs(i.first);
@@ -50,4 +58,8 @@ void DFS::dfsToFile()
         file << *i << std::endl;
     }
     file.close();
+}
+
+std::vector<std::string> DFS::getFlightPath() {
+    return flight_path;
 }

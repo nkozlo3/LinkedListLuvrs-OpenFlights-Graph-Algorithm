@@ -42,7 +42,7 @@ TEST_CASE("Dijkstra's returns a correct shortest path test 3", "[weight=1][dijks
     
     REQUIRE(!result.empty());
     REQUIRE(result[0] == "AZI");
-    REQUIRE(result[1]) == "DXB");
+    REQUIRE(result[1] == "DXB");
     REQUIRE(result[result.size()-1] == "OTP");
     REQUIRE(result.size() == 3);
 
