@@ -507,7 +507,6 @@ void Graph::drawEdgesOfGraphOnPNG(double h, double s, double l, double a)
             }
             if (std::find(existingNodes_.begin(), existingNodes_.end(), std::make_pair(destPoints.first, destPoints.second)) == existingNodes_.end())
             {
-
                 continue;
             }
 

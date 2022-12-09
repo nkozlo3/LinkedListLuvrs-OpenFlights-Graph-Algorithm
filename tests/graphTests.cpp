@@ -283,3 +283,8 @@ TEST_CASE("Graph populates airport_map_ properly", "[weight=5][graph][7]")
     REQUIRE(airp.onStack == false);
     REQUIRE(airp.visited == false);
 }
+
+TEST_CASE("adjacancy_matrix_ is correct", "[weight=5][graph][10]")
+{
+    std::cout << graph.getAdjacanceMatrix().size() << std::endl;
+}

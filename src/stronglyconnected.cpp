@@ -1,5 +1,7 @@
 #include "stronglyconnected.h"
 
+// Tarjans algorithm wiki: https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
+
 StronglyConnected::StronglyConnected(Graph &graph)
 {
     index_ = 0;
@@ -59,7 +61,7 @@ void StronglyConnected::directConnect(Graph::airport &vertex)
         if (vertex.lowLink == vertex.index)
         {
             std::vector<Graph::airport> currScc;
-            while (vertexSuccessor != vertex)
+            while (vertexSuccessor != vertex && !stack_.empty())
             {
                 vertexSuccessor = stack_.top();
                 stack_.pop();
@@ -84,4 +86,9 @@ std::vector<Graph::airport> StronglyConnected::getVertices()
 std::vector<std::vector<Graph::airport>> StronglyConnected::getConnectedComponents()
 {
     return connected_components_;
+}
+
+Graph StronglyConnected::getGraph()
+{
+    return g_;
 }

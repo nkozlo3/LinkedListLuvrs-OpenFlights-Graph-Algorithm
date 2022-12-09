@@ -99,6 +99,8 @@ foreach(entrypoint IN LISTS assignment_entrypoints)
     add_executable(${entrypoint} ${entry_dir}/${entrypoint}.cpp)
     target_link_libraries(${entrypoint} PRIVATE libs src)
 endforeach()
+
+
 add_custom_target(
     tests
     COMMAND make -j ./test
@@ -109,7 +111,6 @@ add_custom_target(
     COMMAND make
     COMMAND ./main
 )
-
 add_custom_target(
     nine
     COMMAND make -j ./test
@@ -127,11 +128,15 @@ add_custom_target(
     COMMAND ./test [graph]
 )
 add_custom_target(
+    dfs
+    COMMAND make -j ./test
+    COMMAND ./test [dfs]
+)
+add_custom_target(
     ssc
     COMMAND make -j ./test
     COMMAND ./test [ssc]
 )
-
 add_custom_target(
     gdbssc
     COMMAND make -j ./test
