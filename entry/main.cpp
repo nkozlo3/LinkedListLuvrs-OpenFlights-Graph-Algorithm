@@ -7,7 +7,6 @@ using namespace cs225;
 
 int main()
 {
-
     std::cout << "Howdy World! 🤠 " << std::endl;
 
     Graph g(1, 1, "mercator🤠.png");
