@@ -28,11 +28,11 @@ void StronglyConnected::tarjan()
 void StronglyConnected::directConnect(Graph::airport &vertex)
 {
     // set the depth index for vertex to the smallest unused index
+    vertex.onStack = true;
+    vertex.visited = true;
     vertex.index = index_;
     vertex.lowLink = index_;
     index_++;
-    vertex.onStack = true;
-    vertex.visited = true;
     stack_.push(vertex);
 
     // set the airport at vertex.airportCode using the setAirport function from the graph class
@@ -61,18 +61,20 @@ void StronglyConnected::directConnect(Graph::airport &vertex)
         if (vertex.lowLink == vertex.index)
         {
             std::vector<Graph::airport> currScc;
-            while (vertexSuccessor != vertex && !stack_.empty())
+            do
             {
                 vertexSuccessor = stack_.top();
                 stack_.pop();
-                if (!vertexSuccessor.airportCode.empty())
-                {
-                    vertexSuccessor.airportCode = "self connection?"; // TODO: verify this
-                }
-                currScc.push_back(vertexSuccessor);
-
                 vertexSuccessor.onStack = false;
-            }
+                // if (!vertexSuccessor.airportCode.empty())
+                // {
+                //     vertexSuccessor.airportCode = "self connection?"; // TODO: verify this
+                // }
+                currScc.push_back(vertexSuccessor);
+                if (vertexSuccessor.airportCode == vertex.airportCode) {
+                    break;
+                }
+            } while (vertexSuccessor != vertex && !stack_.empty());
             connected_components_.push_back(currScc);
         }
     }
@@ -86,4 +88,9 @@ std::vector<Graph::airport> StronglyConnected::getVertices()
 std::vector<std::vector<Graph::airport>> StronglyConnected::getConnectedComponents()
 {
     return connected_components_;
+}
+
+Graph StronglyConnected::getGraph()
+{
+    return g_;
 }

@@ -61,7 +61,7 @@ int main()
     // }
     // file.close();
 
-    g.outputAdjacanceMatrix();
+    // g.outputAdjacanceMatrix();
 
     return 0;
 }
