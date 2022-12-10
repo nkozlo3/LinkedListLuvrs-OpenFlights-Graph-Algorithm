@@ -40,3 +40,21 @@ TEST_CASE("DFS returns correct ending airport", "[weight=1][dfs][11]")
 
     REQUIRE(ending == "JEG");
 }
+
+// TEST_CASE("Testing random airports with adjacency list", "[weight=1][dfs][11]") 
+// {
+//     Graph graph(1, 1, "mercator🤠.png");
+//     DFS d;
+//     d.dfs();
+
+//     // for (size_t i = 0; i < graph.getAirportList().size(); i++) {
+//     //     for (size_t i = 0; i < d.getFlightPath().size(); i++) {
+//     //         std::string airport = graph.getAirportList()[i];
+//     //         std::string dfs_airport = d.getFlightPath()[i];
+//     //         REQUIRE(airport == dfs_airport);
+//     //     }
+//     // }
+
+//     REQUIRE(d.getFlightPath()[12] == "PRC");
+//     REQUIRE(graph.getAirportList()[12] == "PRC");
+// }
