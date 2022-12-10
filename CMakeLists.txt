@@ -138,6 +138,11 @@ add_custom_target(
     COMMAND ./test [ssc]
 )
 add_custom_target(
+    dijkstra
+    COMMAND make -j ./test
+    COMMAND ./test [dijkstra]
+)
+add_custom_target(
     gdbssc
     COMMAND make -j ./test
     COMMAND gdb --args ./test [ssc]

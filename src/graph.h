@@ -120,7 +120,7 @@ public:
     void drawEdgesOfGraphOnPNG(double h, double s, double l, double a);
 
     // Populate adjacency_list
-    std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyMatrix(std::string textFileName);
+    std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyList(std::string textFileName);
 
     // helper functions:
 
@@ -208,6 +208,9 @@ public:
     std::unordered_map<std::string, std::unordered_map<std::string, pairOfAirports>> getAdjacanceMatrix();
     std::map<std::string, std::pair<double, double>> getNodePositions();
     std::map<std::string, std::pair<double, double>> getPixelPoints();
+    void outputAdjacanceMatrix();
+    std::vector<std::string> getAirportList();
+
 
 private:
     // map from airport to a map of destinations from that airport
@@ -224,6 +227,8 @@ private:
     std::vector<std::pair<double, double>> existingNodes_;
     // a list of airport structs
     std::vector<airport> airports_;
+    // printing out all airports from adjacency matrix
+    std::vector<std::string> airport_list;
 
     bool weighted_;
     bool directed_;

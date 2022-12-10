@@ -36,6 +36,22 @@ TEST_CASE("Dijkstra's returns a correct shortest path test 2", "[weight=1][dijks
     }
 }
 
+TEST_CASE("Dijkstra's returns a correct shortest path test 3", "[weight=1][dijkstra][9]")
+{
+    std::vector<std::string> result = d.dijkstra(g, "AZI", "OTP");
+    
+    REQUIRE(!result.empty());
+    REQUIRE(result[0] == "AZI");
+    REQUIRE(result[1] == "DXB");
+    REQUIRE(result[result.size()-1] == "OTP");
+    REQUIRE(result.size() == 3);
+
+    for (std::string s : result) {
+        std::cout<< s <<std::endl;
+    }
+}
+
+
 TEST_CASE("Dijkstra's returns empty if no path exists", "[weight=1][dijkstra][9]")
 {
     std::vector<std::string> result = d.dijkstra(g, "XEQ", "QJH");

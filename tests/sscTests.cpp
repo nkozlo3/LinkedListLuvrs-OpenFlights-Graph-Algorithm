@@ -33,3 +33,26 @@ TEST_CASE("SSC directConnect returns a vector of nodes directly connected to the
         REQUIRE(std::find(vvAtZeroZero.begin(), vvAtZeroZero.end(), it) != vvAtZeroZero.end());
     }
 }
+
+TEST_CASE("SSC directConnect returns correct vector of vector of nodes, reality check easy", "[weight=1][ssc][9]")
+{
+    ssc.tarjan();
+    std::vector<std::vector<Graph::airport>> vv = ssc.getConnectedComponents();
+
+    REQUIRE(!vv.empty());
+}
+
+TEST_CASE("SSC directConnect returns correct vector of vector of nodes, reality check harder", "[weight=1][ssc][9]")
+{
+    ssc.tarjan();
+
+    std::vector<std::vector<Graph::airport>> vv = ssc.getConnectedComponents();
+    for (auto it : vv)
+    {
+        REQUIRE(!it.empty());
+        for (size_t i = 0; i < it.size(); i++)
+        {
+            REQUIRE(it.at(i).airportCode.length() == 3);
+        }
+    }
+}

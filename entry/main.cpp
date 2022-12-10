@@ -8,7 +8,6 @@ using namespace cs225;
 
 int main()
 {
-
     std::cout << "Howdy World! 🤠 " << std::endl;
 
     Graph g(1, 1, "mercator🤠.png");
@@ -49,6 +48,7 @@ int main()
 
     std::cout << std::endl;
     std::cout << shortestRoute << std::endl;
+
 
     DFS df;
     df.dfs();
