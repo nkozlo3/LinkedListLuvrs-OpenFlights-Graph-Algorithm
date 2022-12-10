@@ -235,6 +235,19 @@ ssc/fast:
 .PHONY : ssc/fast
 
 #=============================================================================
+# Target rules for targets named dijkstra
+
+# Build rule for target.
+dijkstra: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dijkstra
+.PHONY : dijkstra
+
+# fast build rule for target.
+dijkstra/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dijkstra.dir/build.make CMakeFiles/dijkstra.dir/build
+.PHONY : dijkstra/fast
+
+#=============================================================================
 # Target rules for targets named gdbssc
 
 # Build rule for target.
@@ -439,6 +452,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... dfs"
+	@echo "... dijkstra"
 	@echo "... gdbssc"
 	@echo "... graph"
 	@echo "... mains"

@@ -6,8 +6,8 @@
 class Dijkstras
 {
 public:
-    Dijkstras(Graph g);      // TODO:
-    Graph getGraph(); // TODO:
+    Dijkstras(Graph g);
+    Graph getGraph();
     std::vector<std::string> dijkstra(Graph graph, std::string start, std::string dest);
 
 private:
