@@ -71,7 +71,7 @@ void StronglyConnected::directConnect(Graph::airport &vertex)
                 //     vertexSuccessor.airportCode = "self connection?"; // TODO: verify this
                 // }
                 currScc.push_back(vertexSuccessor);
-                if (vertexSuccessor.airportCode == vertex.airpCode) {
+                if (vertexSuccessor.airportCode == vertex.airportCode) {
                     break;
                 }
             } while (vertexSuccessor != vertex && !stack_.empty());

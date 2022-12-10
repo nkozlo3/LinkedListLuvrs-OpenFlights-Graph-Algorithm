@@ -52,11 +52,16 @@ TEST_CASE("Dijkstra's returns a correct shortest path test 3", "[weight=1][dijks
 }
 
 
-TEST_CASE("Dijkstra's returns empty if no path exists", "[weight=1][dijkstra][9]")
+TEST_CASE("Dijkstra's shortest path test 4", "[weight=1][dijkstra][9]")
 {
-    std::vector<std::string> result = d.dijkstra(g, "XEQ", "QJH");
-    
-    REQUIRE(result.size() == 0);
+    std::vector<std::string> result = d.dijkstra(g, "XEQ", "OBY");
+    for (std::string s : result) {
+        std::cout<< s <<std::endl;
+    }
+    REQUIRE(!result.empty());
+    REQUIRE(result[0] == "XEQ");
+    REQUIRE(result[result.size()-1] == "OBY");
+    REQUIRE(result.size() >= 2);
 }
 
 TEST_CASE("Dijkstra's returns only the 2 airports if directly connected", "[weight=1][dijkstra][9]")
