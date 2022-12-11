@@ -48,11 +48,14 @@ int main()
 
     std::cout << std::endl;
     std::cout << shortestRoute << std::endl;
+    std::cout << std::endl;
 
-
+    std::cout << "Creating DFS and saving to 'dfs_file.txt'" << std::endl;
     DFS df;
     df.dfs();
     df.dfsToFile();
+    std::cout << std::endl;
+    std::cout << "DFS succesfully saved to 'dfs_file.txt'" << std::endl;
 
     return 0;
 }

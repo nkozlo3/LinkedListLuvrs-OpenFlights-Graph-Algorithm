@@ -120,7 +120,7 @@ public:
     void drawEdgesOfGraphOnPNG(double h, double s, double l, double a);
 
     // Populate adjacency_list
-    std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyList(std::string textFileName);
+    std::unordered_map<std::string, std::unordered_map<std::string, Graph::pairOfAirports>> populateAdjacencyMatrix(std::string textFileName);
 
     // helper functions:
 
@@ -210,7 +210,6 @@ public:
     std::map<std::string, std::pair<double, double>> getPixelPoints();
     void outputAdjacanceMatrix();
     std::vector<std::string> getAirportList();
-
 
 private:
     // map from airport to a map of destinations from that airport
