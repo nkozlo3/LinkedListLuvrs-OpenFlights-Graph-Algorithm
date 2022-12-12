@@ -76,7 +76,7 @@ Run specific test: ./test “test number four”
 
 -constructor populates adjacency matrix properly
 
-constructor populates node positions properly
+-constructor populates node positions properly
 
 -getAdjacencyListEdge gets the correct edges
 
