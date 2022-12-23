@@ -1,5 +1,5 @@
 # LinkedListLuvrs-OpenFlights-Graph-Algorithm
-Final Project for CS 225
+Data analysis using graph algorithms
 
 Team Members: Collin Fox, Nora Batko, Neil Kozlowski, Nisha Ramanathan
 
