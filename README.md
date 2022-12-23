@@ -100,9 +100,6 @@ Run specific test: ./test “test number four”
 
 -Testing random visited airports with the adjacency list
 
-## Strongly Connected Component (SCC) tests:
-No functioning tests
-
 Defining input data:
 
 Defining output location: 
